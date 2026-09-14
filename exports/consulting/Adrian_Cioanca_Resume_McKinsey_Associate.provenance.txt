@@ -1,0 +1,7 @@
+source:    drafts/consulting/mckinsey-associate.html
+rendered:  2026-09-14T11:55:37Z by pipeline/release.sh
+commit:    fa2c326
+checks:    all passed (see Adrian_Cioanca_Resume_McKinsey_Associate.checks.json)
+fitsignal: rubric v2.0.0 — overall 70/100 (Mixed signals, Advance with reservations), provider=mock
+           NOTE: mock provider — placeholder findings, not an assessment.
+           Re-run with ANTHROPIC_API_KEY set before relying on this number.
