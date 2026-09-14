@@ -4,11 +4,12 @@ Render a draft, check it against `CLAUDE.md`, score it, and promote it to `expor
 if it passed.
 
 ```
-render.py      HTML -> PDF (WeasyPrint), with the vendored fonts embedded
-verify.py      nine checks against the rendered PDF; any FAIL exits non-zero
-score.sh       FitSignal scoring, via the sibling fitsignal repo
-summarise.py   one-paragraph summary of a FitSignal scorecard
-release.sh     all of the above, then promote — the only way into exports/
+render.py       HTML -> PDF (WeasyPrint), with the vendored fonts embedded
+verify.py       checks against the rendered PDF; --kind resume|cover; any FAIL exits non-zero
+score.sh        FitSignal scoring, via the sibling fitsignal repo
+summarise.py    one-paragraph summary of a FitSignal scorecard
+release.sh      render + verify + score, then promote — the only way into exports/
+build_cover.sh  render + verify --kind cover, in place, for applications/<slug>/cover.html
 ```
 
 ## Requirements
@@ -42,6 +43,16 @@ and is invisible to it — the Capabilities block needs an eye, not a check.
 the layout rules can resolve. Defaults target Adrian's brief (`McKinsey Associate`, region
 `AU`, route `experienced-hire`); override with `FITSIGNAL_ROLE`, `FITSIGNAL_REGION`,
 `FITSIGNAL_ROUTE`.
+
+## Cover letters vs. resumes
+
+`verify.py --kind resume` (the default) and `--kind cover` share every check except two:
+a resume must have a Profile section; a cover letter is checked for word count instead.
+Margin and dead-space targets also differ by kind — see the `check_margins` docstring
+comment and "Cover-letter standards" in `CLAUDE.md`. `build_cover.sh` always passes
+`--kind cover` and writes output next to the source (`applications/<slug>/cover.pdf`)
+rather than through `release.sh`'s promotion step, since an application folder is already
+its own final location.
 
 ## Adding a check
 

@@ -11,6 +11,7 @@ knowledge-base/     every fact, with variants and open questions — the only so
 drafts/<sector>/    HTML sources, one per variant. Edit these.
 pipeline/           render -> verify -> score -> promote
 exports/<sector>/   ready to submit. Everything here passed all checks.
+applications/        one folder per job applied to: ad, resume copy, cover letter
 archive/            superseded renders, kept for diffing. Do not send these.
 assets/             vendored typefaces, embedded into every export
 CLAUDE.md           the standards
@@ -48,8 +49,21 @@ falls back to mock mode — the pipeline completes, the numbers are placeholders
 artefact it writes says so. Read the result as a screen-out instrument: the rubric is
 unvalidated and `likelihood` is an uncalibrated band, not a prediction.
 
+## Cover letters
+
+Each job application lives in `applications/<firm>-<role-slug>/` — the ad, the resume that
+was sent, and a cover letter built to MBB structure (hook, why-this-firm, why-you, close;
+~300-400 words). See `applications/README.md` to start one, and "Cover-letter standards"
+in `CLAUDE.md` for what "good" means here.
+
+```bash
+cp -r applications/_template applications/<firm>-<role-slug>
+pipeline/build_cover.sh applications/<firm>-<role-slug>
+```
+
 ## Where to start reading
 
-- Building or tailoring a resume → [`BUILDER_INSTRUCTIONS.md`](BUILDER_INSTRUCTIONS.md)
+- Building or tailoring a resume, or a cover letter for a job → [`BUILDER_INSTRUCTIONS.md`](BUILDER_INSTRUCTIONS.md)
 - What "good" means here → [`CLAUDE.md`](CLAUDE.md)
 - The facts → [`knowledge-base/`](knowledge-base/)
+- Applications in flight → [`applications/`](applications/)

@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
-"""Check a rendered resume PDF against the standards in CLAUDE.md.
+"""Check a rendered PDF against the standards in CLAUDE.md.
 
-    python3 pipeline/verify.py build/mckinsey-associate.pdf [--json report.json]
+    python3 pipeline/verify.py build/mckinsey-associate.pdf [--kind resume|cover] [--json report.json]
 
 Every check prints PASS, WARN or FAIL. Any FAIL exits non-zero, which is what
-stops pipeline/release.sh from promoting a PDF into exports/.
+stops pipeline/release.sh (and pipeline/build_cover.sh) from promoting a PDF.
+
+--kind selects which checks apply. "resume" (default) runs all of them,
+including the Profile-section check, which a cover letter does not have.
+"cover" runs everything except that one, plus a length check sized for a
+cover letter rather than a dense one-page resume.
 """
 import argparse
 import json
@@ -136,7 +141,7 @@ def check_reading_order(pdf, report):
         report.passed("reading order", "every date reads after the role it belongs to")
 
 
-def check_margins(pdf, report):
+def check_margins(pdf, report, kind="resume"):
     xml = run(["pdftotext", "-bbox", str(pdf), "-"])
     root = ET.fromstring(xml)
     ns = {"h": root.tag.split("}")[0].strip("{")} if "}" in root.tag else {}
@@ -155,14 +160,25 @@ def check_margins(pdf, report):
     left, right = xs0 / PT_PER_MM, (page_w - xs1) / PT_PER_MM
     detail = f"top {top:.1f}mm, bottom {bottom:.1f}mm, left {left:.1f}mm, right {right:.1f}mm"
 
+    # A cover letter is a business letter, not a densely packed one-pager: wider
+    # margins (18-25mm) are normal MBB convention, and a page mostly empty
+    # below a ~300-400 word letter is expected, not thin content — unlike a
+    # resume, a letter is not meant to fill the page. So the dead-space check
+    # (below) is resume-only; cover.length (word count) is what stands in
+    # for "is there enough here" on a letter.
+    if kind == "cover":
+        margin_lo, margin_hi, target = 15, 27, "18-25mm"
+    else:
+        margin_lo, margin_hi, target = 10, 20, "13-15mm"
+
     problems = []
-    if bottom > 18:
+    if kind == "resume" and bottom > 18:
         problems.append(f"bottom dead space {bottom:.1f}mm — add content back, the page reads as thin")
     if abs(left - right) > 2:
         problems.append(f"left/right asymmetric by {abs(left - right):.1f}mm")
     for label, value in (("left", left), ("right", right), ("top", top)):
-        if not 10 <= value <= 20:
-            problems.append(f"{label} margin {value:.1f}mm outside 13-15mm target")
+        if not margin_lo <= value <= margin_hi:
+            problems.append(f"{label} margin {value:.1f}mm outside {target} target")
     if problems:
         report.warn("margins", detail + " — " + "; ".join(problems))
     else:
@@ -192,6 +208,21 @@ def check_profile(layout, report):
         report.fail("profile section", "no Profile/summary section — CLAUDE.md requires one stating the target role and angle")
 
 
+def check_cover_length(layout, report):
+    # MBB guidance converges on roughly 300-400 words, one page — long enough
+    # to make the case, short enough that a screener reads all of it. See
+    # CLAUDE.md's cover-letter standards. (Paragraph count isn't checked here:
+    # -layout extraction breaks lines at column edges, not blank lines, so a
+    # reliable paragraph count needs the source HTML, not the rendered PDF.)
+    words = len(re.findall(r"\b[\w'-]+\b", layout))
+    if words > 450:
+        report.warn("cover length", f"{words} words — MBB guidance is ~300-400; trim rather than shrink the font")
+    elif words < 180:
+        report.warn("cover length", f"{words} words — likely too thin to make the case; see CLAUDE.md cover-letter standards")
+    else:
+        report.passed("cover length", f"{words} words")
+
+
 def check_orphans(layout, report):
     orphans = []
     for ln in layout.splitlines():
@@ -209,6 +240,7 @@ def check_orphans(layout, report):
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("pdf")
+    parser.add_argument("--kind", choices=["resume", "cover"], default="resume")
     parser.add_argument("--json", help="also write the report as JSON to this path")
     args = parser.parse_args()
 
@@ -227,9 +259,12 @@ def main() -> int:
     check_fonts(pdf, report)
     check_reading_order(pdf, report)
     layout = run(["pdftotext", "-layout", str(pdf), "-"])
-    check_margins(pdf, report)
+    check_margins(pdf, report, kind=args.kind)
     check_language(layout, report)
-    check_profile(layout, report)
+    if args.kind == "resume":
+        check_profile(layout, report)
+    else:
+        check_cover_length(layout, report)
     check_orphans(layout, report)
 
     print(f"\n  {pdf}\n")

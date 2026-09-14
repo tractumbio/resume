@@ -15,6 +15,7 @@ knowledge-base/     every fact, with its variants and open questions — the onl
 drafts/<sector>/    HTML sources, one file per variant. This is where you write.
 pipeline/           render -> verify -> score -> promote
 exports/<sector>/   ready to submit. Nothing lands here that has not passed every check.
+applications/       one folder per job applied to: ad, resume copy, cover letter
 archive/            superseded renders, kept for diffing. Never send these.
 assets/             vendored typefaces, embedded into every export
 ```
@@ -160,6 +161,83 @@ Commit the draft and its export together. A PDF in the tree whose HTML source is
 beside it cannot be re-rendered, diffed or trusted.
 
 ---
+
+## Building a cover letter
+
+A cover letter is per application, not per sector — it lives with the ad it responds to,
+in `applications/<firm>-<role-slug>/`, not in `drafts/`. See `applications/README.md` for
+the folder layout; this section is the drafting procedure. The standards themselves are in
+"Cover-letter standards" in `CLAUDE.md` — read that first.
+
+### 1. Start the application folder
+
+```bash
+cp -r applications/_template applications/<firm>-<role-slug>
+```
+
+Use the name a recruiter's inbox would sort sensibly by: firm, then role, lowercase and
+hyphenated — `bain-associate-consultant`, not `cover-letter-v2`.
+
+### 2. Fill in `ad.md` first
+
+Paste the job ad in full, then fill the metadata block above it: firm, role, office,
+practice/group if stated, deadline, the ad URL, and any referral. Do this before touching
+the letter — every paragraph in step 4 is written against this ad, not against a general
+impression of the firm.
+
+### 3. Copy in the resume that was actually sent
+
+```bash
+cp exports/consulting/<export-name>.pdf applications/<firm>-<role-slug>/resume.pdf
+```
+
+If this role calls for different emphasis than an existing export supports — a different
+practice, a region-specific format — build a new draft and release it first (see "Building
+a variant" above), then copy that export in. Never edit `resume.pdf` directly; it is a
+build artefact, same rule as `exports/`.
+
+### 4. Draft `cover.html`
+
+The template's four paragraph blocks are commented with what each one has to do — read the
+comments, don't just type around them. In order:
+
+1. **Hook** — something specific to this firm/role/ad in the first sentence or two, not
+   "I am writing to apply for...". State the role once, inside the hook.
+2. **Why this firm** — a named practice, a published case, a sector focus *from the ad or
+   the firm's own materials* — never "your prestigious firm" or "your reputation for
+   excellence". This is where the resume's Profile line gets argued, not repeated.
+3. **Why you** — two, at most three, proof points, each one evidence plus what it
+   demonstrates for *this* role. Quantify anything that has a number, same bar as the
+   resume. If a sentence could be lifted verbatim from a resume bullet, cut it — this
+   paragraph's job is the connective narrative the resume's bullet format can't carry.
+4. **Close** — fit, a clear call to action, thanks. No hedging, no re-summarising.
+
+Personalize the salutation (a named recruiter if you have one; otherwise the practice or
+recruiting team by name) and mirror the firm's own vocabulary for the role
+(McKinsey "Associate", BCG "Consultant", Bain "Associate Consultant" — whatever the ad
+itself says, not a generic label).
+
+### 5. Render and check
+
+```bash
+pipeline/build_cover.sh applications/<firm>-<role-slug>
+```
+
+Runs the same font/page/margin/reading-order/language checks as a resume, minus the
+Profile-section check, plus a word-count check (MBB guidance: ~300-400 words) — read
+"Cover-letter standards" in `CLAUDE.md` for what each one means for a letter specifically.
+A resume's "fill the page" rule does not carry over: white space below a 300-400 word
+letter is normal, not a defect.
+
+Fix issues in `cover.html` and re-run; the script overwrites `cover.pdf` and
+`cover.checks.json` in place — there is no separate promotion step, because
+`applications/<slug>/` already is the final location.
+
+### 6. Commit the whole folder
+
+`ad.md`, `resume.pdf`, `cover.html`, `cover.pdf` and `cover.checks.json` together. A
+resume without its ad, or a cover letter without the resume it accompanied, loses the
+context that makes the application legible six months later.
 
 ## When you change the standards
 

@@ -63,13 +63,56 @@ Any resume produced or edited in this repo must meet the standards below.
 - **Bullets:** consistent glyph and weight across the whole document; avoid bullet markers heavy
   enough to compete visually with bold text in the line.
 
+## Cover-letter standards (MBB recommendations)
+
+Applies to every `cover.html` in `applications/<slug>/`. The same content standards above
+hold — quantify every claim that has a number, no self-laudatory language, no vague filler
+— plus what's specific to a letter:
+
+- **Structure: hook, why-this-firm, why-you, close. Four short paragraphs, nothing more.**
+  This is the structure McKinsey, BCG and Bain career-advice materials converge on:
+    1. **Hook** — open with something specific to this firm, practice, or ad. Never open
+       with "I am writing to apply for..." as the first sentence; state the role once,
+       inside the hook, not as a bare announcement ahead of it.
+    2. **Why this firm** — tie a specific, named thing (a practice area, a published case,
+       a sector focus stated in the ad) to the angle being offered. "Your prestigious firm"
+       or "your reputation for excellence" is exactly the generic language a screener has
+       read a hundred times that week — it signals the whole letter is a template, whether
+       or not it is.
+    3. **Why you** — two, at most three, proof points. Each one is evidence plus what it
+       demonstrates *for this role* — this paragraph's job is to connect the dots the
+       resume can't, not to restate resume bullets. If a sentence here could be copy-pasted
+       out of the resume unchanged, cut it.
+    4. **Close** — state fit plainly, make a clear call to action (a conversation, an
+       interview), say thanks. No hedging, no summarising the letter that was just read.
+- **One page, ~300-400 words.** Long enough to make the case, short enough that a
+  screener reads all of it. This is materially shorter than a resume's information density
+  — a letter that reads like a fifth resume section has failed at the form.
+- **Personalize the salutation.** A named recruiter or partner if the ad or a referral
+  gives you one; otherwise address the practice or recruiting team by name, never "To Whom
+  It May Concern" — a generic salutation undercuts paragraph 2 before it starts.
+- **Match the firm's own vocabulary.** Mirror how the ad refers to the role and practice
+  (McKinsey "Associate", BCG "Consultant", Bain "Associate Consultant", the specific
+  practice name as the ad states it) — not a generic label for the job family.
+- **No restating the resume.** The cover letter's only job is what the resume's format
+  cannot do: build a narrative argument connecting specific experience to this specific
+  role. A letter that lists achievements the resume already lists is redundant, not
+  reinforcing.
+- **Same letterhead as the resume.** Same typefaces (`assets/fonts.css`), same name
+  treatment, same contact line — an application package should read as one document
+  family, not two documents that happen to be about the same person.
+- **Cover-specific layout:** wider margins than the resume (18-25mm — this is a business
+  letter, not a densely packed one-pager) and the resume's "fill the page" rule does **not**
+  apply — white space below a 300-400 word letter is normal, not thin content.
+
 ## Verification checklist before treating a resume PDF as final
 
 Do not run these by hand. `pipeline/verify.py` runs all of them, plus the layout and
 language checks below, and reports PASS/WARN/FAIL per standard:
 
 ```bash
-make verify DRAFT=drafts/consulting/<variant>.html
+make verify DRAFT=drafts/consulting/<variant>.html          # resume
+pipeline/build_cover.sh applications/<firm>-<role-slug>       # cover letter
 ```
 
 It is the executable half of this document. A standard added here that can be tested
@@ -89,7 +132,10 @@ not check. What it checks today:
 | orphan words | no short word stranded alone on a line |
 
 `pipeline/release.sh` runs the same checks and refuses to promote a PDF that fails one, so
-everything in `exports/` has passed them by construction.
+everything in `exports/` has passed them by construction. `pipeline/verify.py --kind cover`
+runs the same checks against a letter, minus the Profile-section check (letters don't have
+one) and with the margin/dead-space targets from "Cover-letter standards" above, plus a
+word-count check in place of it.
 
 Still to be judged by eye, because no check can do it:
 
@@ -111,5 +157,7 @@ Still to be judged by eye, because no check can do it:
   standards.
 - `assets/` — vendored typefaces (Source Sans 3, Source Serif 4) embedded into every export,
   so a render never depends on what is installed on the machine.
+- `applications/<firm>-<role-slug>/` — one folder per job applied to: the ad, the resume
+  sent, and the cover letter, checked and rendered. See `applications/README.md`.
 - `BUILDER_INSTRUCTIONS.md` — the procedure for building a variant, start to finish. This
   file is the specification; that one is the process.

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adrian Cioanca — Cover Letter — <Firm> <Role></title>
+<!--
+Draft source. Copy this whole applications/_template/ folder to
+applications/<firm>-<role-slug>/, fill in ad.md first, then this file.
+
+Render and check with:
+  python3 pipeline/render.py applications/<slug>/cover.html -o applications/<slug>/cover.pdf
+  python3 pipeline/verify.py applications/<slug>/cover.pdf --kind cover
+or in one step:
+  pipeline/build_cover.sh applications/<slug>
+
+Structure and standards: see "Cover-letter standards" in CLAUDE.md and
+"Building a cover letter" in BUILDER_INSTRUCTIONS.md. Each paragraph below is
+commented with what MBB guidance says it needs to do — replace the comment
+and the placeholder text together, don't just fill in around them.
+-->
+<style>
+/* Same type system and page geometry as the resume draft — this is a matched
+   letterhead, not a separate document. See drafts/consulting/*.html. */
+@page{size:A4;margin:0}
+:root{--ink:#111;--muted:#555;--rule:#222}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#fff;color:var(--ink)}
+body{font-family:"Source Sans 3", sans-serif;font-size:10.3pt;line-height:1.5;-webkit-font-smoothing:antialiased}
+.page{width:210mm;height:297mm;padding:20mm 22mm;margin:0 auto;background:#fff;display:flex;flex-direction:column}
+h1{font-family:"Source Serif 4", serif;font-size:16pt;line-height:1;margin:0 0 3pt;font-weight:700;letter-spacing:-.2pt}
+.contact{font-size:8.6pt;color:#444;letter-spacing:.05pt}
+.rule{height:0;border:0;border-top:1.15px solid var(--rule);margin:9pt 0 16pt}
+.meta{display:flex;justify-content:space-between;align-items:baseline;font-size:9.3pt;color:var(--muted);margin-bottom:16pt}
+.recipient{font-size:9.6pt;line-height:1.4;margin-bottom:14pt}
+.salutation{margin-bottom:11pt}
+p{margin:0 0 11pt}
+.body p:last-of-type{margin-bottom:0}
+.signoff{margin-top:14pt}
+.name{font-weight:700;margin-top:26pt}
+@media print{.page{margin:0}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+<h1>ADRIAN CIOANCA</h1>
+<div class="contact">adrian.v.cioanca@gmail.com &nbsp;|&nbsp; 0450 399 725 &nbsp;|&nbsp; Canberra, Australia &nbsp;|&nbsp; linkedin.com/in/adrian-c-58743b25a</div>
+<hr class="rule">
+</header>
+
+<div class="meta">
+<span><!-- date the letter is sent, e.g. 14 September 2026 -->DATE</span>
+</div>
+
+<!--
+Recipient block: use a named person if the ad or a referral gives you one
+("Dear Ms. Smith,"). If not, address the practice, not "To Whom It May
+Concern" — e.g. "Dear <Firm> Associate Recruiting Team,". A generic salutation
+is a signal to the screener that the whole letter is generic; do not let it be.
+-->
+<div class="recipient">
+<Recipient name or team><br>
+<Firm><br>
+<Office / city>
+</div>
+
+<div class="salutation">Dear <Recipient>,</div>
+
+<div class="body">
+
+<!--
+PARAGRAPH 1 — the hook (2-3 sentences).
+Open with something specific to this firm/role/ad, not "I am writing to
+apply for...". Name the practice, a live piece of the firm's work, or the
+specific reason this role: what problem, sector or client type pulled you
+in. State the role you're applying for once, plainly, inside this hook —
+do not lead with it as a bare announcement.
+-->
+<p><!-- hook --></p>
+
+<!--
+PARAGRAPH 2 — why this firm (2-4 sentences).
+Tie the firm's actual positioning (a named practice, a published case, a
+sector focus, something concrete from the ad or the firm's own materials —
+not "your prestigious firm" or "your reputation for excellence") to the
+specific angle you are offering. This is where the Profile line from the
+resume gets argued, not repeated.
+-->
+<p><!-- why this firm --></p>
+
+<!--
+PARAGRAPH 3 — why you (3-5 sentences).
+2, at most 3, proof points. Each one is evidence + what it demonstrates for
+THIS role, not a bullet restated from the resume — the cover letter's job is
+to connect dots the resume can't, not list achievements again. Quantify
+every claim that has a number, same standard as the resume (see CLAUDE.md).
+-->
+<p><!-- why you --></p>
+
+<!--
+PARAGRAPH 4 — the close (2-3 sentences).
+State fit plainly, then a clear call to action (a conversation, an
+interview) and thanks. No hedging language, no restating the whole letter.
+-->
+<p><!-- close --></p>
+
+</div>
+
+<div class="signoff">
+Sincerely,
+<div class="name">Adrian Cioanca</div>
+</div>
+
+</div>
+</body>
+</html>
