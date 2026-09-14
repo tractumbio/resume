@@ -204,38 +204,64 @@ keep everything else — facts, numbers, standards — exactly as strict as any 
 Naming the draft file `<slug>.html` (matching the application folder) lets the next step
 find it automatically.
 
-### 3. Render, check and score it against this ad
+### 3. Draft the cover letter against the same ad
+
+`cover.html` was already scaffolded in step 1 with the firm/role filled into its title.
+Write it now, alongside the resume — see "Building a cover letter" below for the
+paragraph-by-paragraph procedure and the MBB structure it follows. Same rule as the resume:
+the content is a judgement call against `CLAUDE.md`'s standards, not something scaffolded
+for you.
+
+### 4. Render, check, score and refine — `pipeline/apply.sh`
 
 ```bash
-pipeline/score_for_ad.sh applications/<firm>-<role-slug> --draft drafts/consulting/<slug>.html
+pipeline/apply.sh applications/<firm>-<role-slug> --draft drafts/consulting/<slug>.html
 ```
 
+One command for both documents. It runs `score_for_ad.sh` (render → verify → score the
+resume, with `FITSIGNAL_ROLE`/`REGION`/`ROUTE`/`PRACTICE` read back out of `ad.md` — so the
+score reflects this ad's actual role, region, hiring route and practice, not the hardcoded
+McKinsey/AU/experienced-hire defaults) and `build_cover.sh` (render → verify the letter),
+then finishes by printing the resume's highest-impact gaps via `pipeline/weak_rules.py`.
 (`--draft` can be omitted if the draft is named `drafts/<sector>/<slug>.html` to match the
-application folder — the script looks there first.)
-
-This reads `ad.md`'s metadata back out, turns it into `FITSIGNAL_ROLE` / `FITSIGNAL_REGION`
-/ `FITSIGNAL_ROUTE` / `FITSIGNAL_PRACTICE`, and runs the normal `pipeline/release.sh` render
-→ verify → score → promote with those set — so the score reflects this ad's actual role,
-region, hiring route and practice, not the hardcoded McKinsey/AU/experienced-hire defaults.
-On success it copies the result into the application folder itself:
+application folder — the script looks there first; `--skip-cover` runs the resume half
+only.) On success it leaves the whole scored, checked application package in place:
 
 ```
-applications/<slug>/resume.pdf              # the scored, checked export
-applications/<slug>/resume.checks.json
+applications/<slug>/resume.pdf              applications/<slug>/cover.pdf
+applications/<slug>/resume.checks.json      applications/<slug>/cover.checks.json
 applications/<slug>/resume.scorecard.json
 applications/<slug>/resume.provenance.txt
 ```
 
-Same caveats as always: `provider=mock` in `resume.provenance.txt` means placeholder
-findings (no `ANTHROPIC_API_KEY` was set); the rubric is unvalidated and `likelihood` is an
-uncalibrated band. Read the scorecard's `findings` for what to actually act on — a low
-score on a named rule (say, `R25` specialist-practice domain evidence) tells you which
-paragraph of the draft to strengthen, more usefully than the `overall` number does.
+**Refining toward the highest score achievable is a loop, not a setting.** There is no
+unattended "maximize the score" mode — deciding what a low score on a given rule should
+change in the draft is exactly the kind of judgement call this repo has never scripted, the
+same reason step 2 and step 3 aren't automated either. What `apply.sh` gives you is a fast,
+cheap loop to run that judgement through:
 
-### 4. Then the cover letter
-
-`cover.html` was already scaffolded in step 1 with the firm/role filled into its title —
-continue with "Building a cover letter" below.
+1. Read the "where to focus the next revision" block `apply.sh` just printed — it ranks
+   findings by `weight × (3 - score)`, i.e. actual points of `overall` left on the table,
+   highest first. Fix the top one or two, not everything at once.
+2. Each finding names the rule and quotes the evidence span the model used to justify its
+   score — that span tells you what the model actually saw. If a low score is quoting the
+   wrong sentence (or none), the content needed for a better score may already be in the
+   knowledge base and simply isn't on the page yet; if it's quoting the right sentence and
+   still scoring low, the phrasing or the claim itself needs to change, not just its
+   position.
+3. Edit `drafts/consulting/<slug>.html` (or `cover.html`) accordingly. Never invent a fact
+   or a figure to satisfy a rule — a rule that wants evidence the knowledge base doesn't
+   have stays unresolved, or gets flagged to Adrian, same standard as everywhere else in
+   this repo.
+4. Re-run `pipeline/apply.sh`. Repeat until either the score plateaus (a round of edits
+   doesn't move `overall`), or every remaining weak rule is one you've deliberately decided
+   not to chase (commonly `R07`/`R15`, the prestige proxies FitSignal itself flags as
+   low-weight convention — see `fitsignal`'s README) — not until some target number, since
+   the rubric is unvalidated and a specific `overall` isn't a real target to hit.
+5. `provider=mock` in `resume.provenance.txt` means every score in this loop was a
+   placeholder (no `ANTHROPIC_API_KEY` was set) — the ranking is deterministic and the
+   loop's mechanics are worth exercising, but don't treat a mock-mode "improvement" as real
+   until it's re-run with a key.
 
 ## Building a cover letter
 

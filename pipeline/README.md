@@ -13,6 +13,8 @@ build_cover.sh   render + verify --kind cover, in place, for applications/<slug>
 ad_meta.py       heuristics: guess/parse firm, role, region, route, practice from ad text
 from_ad.py       scaffold applications/<slug>/ from a job ad (file, stdin, or URL)
 score_for_ad.sh  release.sh, with FITSIGNAL_* set from the ad's own metadata
+weak_rules.py    rank a scorecard's findings by weighted points left on the table
+apply.sh         score_for_ad.sh + build_cover.sh + weak_rules.py, one command per round
 ```
 
 ## Requirements
@@ -54,6 +56,13 @@ variables set automatically from `applications/<slug>/ad.md`'s own metadata, via
 `BUILDER_INSTRUCTIONS.md`. `ad_meta.py`'s guesses are heuristic (known firm names, role
 titles, city/country keywords) and meant to be checked, not trusted blindly — they save
 typing on the mechanical fields, they don't replace reading the ad.
+
+**Refining toward a higher score.** `weak_rules.py` ranks a scorecard's findings by
+`weight × (3 - score)` — actual points of `overall` left on the table, not the rawest-
+looking number — and quotes the evidence span each one scored against. `apply.sh` runs it
+automatically after every round. There is no automated "maximize the score" mode: deciding
+what a low score should change in the draft is a judgement call, same as drafting the
+content in the first place. Never invent a fact to satisfy a rule.
 
 ## Cover letters vs. resumes
 
