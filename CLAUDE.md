@@ -1,7 +1,9 @@
 # Resume formatting standards — McKinsey / MBB-calibre
 
-This repo holds Adrian Cioanca's resume source-of-truth (`Adrian_Cioanca_Master_Knowledge_Base.md`)
-and rendered resumes (`resumes/<sector>/`). Adrian is targeting **top-tier management
+This repo holds Adrian Cioanca's resume source-of-truth
+(`knowledge-base/Adrian_Cioanca_Master_Knowledge_Base.md`), the HTML drafts built from it
+(`drafts/<sector>/`), and the ready-to-submit renders those drafts produce
+(`exports/<sector>/`). Adrian is targeting **top-tier management
 consulting firms (MBB-calibre)** — see the Career Intentions section of the knowledge base.
 Any resume produced or edited in this repo must meet the standards below.
 
@@ -48,7 +50,9 @@ Any resume produced or edited in this repo must meet the standards below.
   role/org line — this inverts reading order in ATS/PDF text extraction (date gets pulled out
   before the role it belongs to). Use `display:flex; justify-content:space-between` (or
   equivalent) so the date remains after the role in source/DOM order while still appearing
-  right-aligned visually. Verify with `pdftotext -layout` that role text precedes its date.
+  right-aligned visually. Verify with plain `pdftotext` (no `-layout`) that role text
+  precedes its date — `-layout` reconstructs columns geometrically and hides exactly this
+  defect, which is what an ATS would hit.
 - **Margins:** roughly 13–15mm on all sides for A4. Keep left/right and top/bottom symmetric
   pairs within ~2mm of each other.
 - **Section headers:** small caps or all-caps, letter-spaced, with a thin rule — consistent
@@ -61,24 +65,51 @@ Any resume produced or edited in this repo must meet the standards below.
 
 ## Verification checklist before treating a resume PDF as final
 
-Run from the file's directory:
+Do not run these by hand. `pipeline/verify.py` runs all of them, plus the layout and
+language checks below, and reports PASS/WARN/FAIL per standard:
 
 ```bash
-pdffonts <file>.pdf      # every font row should show emb=yes, sub=yes, and the intended family
-pdftotext -layout <file>.pdf -   # role must read before its date; no garbled/reordered text
-pdfinfo <file>.pdf        # confirm A4 page size, 1 page
+make verify DRAFT=drafts/consulting/<variant>.html
 ```
 
-Visually render the page (or open the PDF) and confirm:
-- No dead space exceeding the margin size at the foot of the page
-- Reading order top-to-bottom matches source order
-- No self-laudatory language in the header tagline
-- All dollar figures/metrics match the reconciled numbers in the knowledge base
+It is the executable half of this document. A standard added here that can be tested
+against a rendered PDF should be added there too, or the repo asserts something it does
+not check. What it checks today:
+
+| Check | Standard |
+|---|---|
+| one page | one page, A4 |
+| A4 page size | `pdfinfo` page geometry |
+| fonts embedded | every font `emb=yes`, `sub=yes`, and a chosen family, not a substitute |
+| reading order | role reads before its date in raw extraction (no `float:right`) |
+| margins | 13–15mm, symmetric, no dead space at the foot |
+| header tagline | no self-laudatory language |
+| quantification | no vague filler where a number belongs |
+| profile section | a Profile/summary section is present |
+| orphan words | no short word stranded alone on a line |
+
+`pipeline/release.sh` runs the same checks and refuses to promote a PDF that fails one, so
+everything in `exports/` has passed them by construction.
+
+Still to be judged by eye, because no check can do it:
+
+- Bullets are MECE, and each one carries its own distinct claim
+- Every dollar figure and metric matches the reconciled number in the knowledge base
+- The Profile answers the question the firm is actually asking
 
 ## Repo structure
 
-- `Adrian_Cioanca_Master_Knowledge_Base.md` — source of truth; pull and trim from here, do not
-  invent facts not present in it (or explicitly confirmed by Adrian).
-- `resumes/<sector>/` — rendered resumes grouped by target sector (currently `consulting/`).
-  Each variant should include its HTML source alongside the rendered PDF so it can be
-  re-rendered and diffed.
+- `knowledge-base/` — source of truth. Pull and trim from here; do not invent facts not
+  present in it (or explicitly confirmed by Adrian). See `knowledge-base/README.md`.
+- `drafts/<sector>/` — HTML sources, one file per variant, grouped by target sector
+  (currently `consulting/`). **This is where you edit.**
+- `pipeline/` — render, verify, score, promote. See `pipeline/README.md`.
+- `exports/<sector>/` — ready-to-submit PDFs, each with its checks, FitSignal scorecard and
+  provenance. Build output: never edited by hand, and only ever written by
+  `pipeline/release.sh`.
+- `archive/` — superseded renders, kept for diffing. Not submittable; some predate these
+  standards.
+- `assets/` — vendored typefaces (Source Sans 3, Source Serif 4) embedded into every export,
+  so a render never depends on what is installed on the machine.
+- `BUILDER_INSTRUCTIONS.md` — the procedure for building a variant, start to finish. This
+  file is the specification; that one is the process.

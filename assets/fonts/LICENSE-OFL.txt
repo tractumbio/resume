@@ -1,0 +1,7 @@
+The fonts in this directory — Source Sans 3 and Source Serif 4 — are (c) Adobe
+(https://github.com/adobe-fonts), licensed under the SIL Open Font License v1.1:
+https://openfontlicense.org
+
+They are vendored here so that every export in this repository embeds the same
+typefaces regardless of what is installed on the rendering machine. See
+pipeline/README.md.

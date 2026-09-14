@@ -1,0 +1,8 @@
+/* Vendored typefaces — embedded into every export so that no render depends on
+   what happens to be installed on the machine. See assets/fonts/LICENSE-OFL.txt. */
+
+@font-face{font-family:"Source Sans 3";font-style:normal;font-weight:400;src:url("fonts/SourceSans3-Regular.ttf") format("truetype")}
+@font-face{font-family:"Source Sans 3";font-style:normal;font-weight:600;src:url("fonts/SourceSans3-SemiBold.ttf") format("truetype")}
+@font-face{font-family:"Source Sans 3";font-style:normal;font-weight:700;src:url("fonts/SourceSans3-Bold.ttf") format("truetype")}
+@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:600;src:url("fonts/SourceSerif4-SemiBold.ttf") format("truetype")}
+@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:700;src:url("fonts/SourceSerif4-Bold.ttf") format("truetype")}
