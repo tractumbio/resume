@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adrian Cioanca — Cover Letter — McKinsey Associate (APD)</title>
+<!--
+Draft source. Copy this whole applications/_template/ folder to
+applications/<firm>-<role-slug>/, fill in ad.md first, then this file.
+
+Render and check with:
+  python3 pipeline/render.py applications/<slug>/cover.html -o applications/<slug>/cover.pdf
+  python3 pipeline/verify.py applications/<slug>/cover.pdf --kind cover
+or in one step:
+  pipeline/build_cover.sh applications/<slug>
+
+Structure and standards: see "Cover-letter standards" in CLAUDE.md and
+"Building a cover letter" in BUILDER_INSTRUCTIONS.md. Each paragraph below is
+commented with what MBB guidance says it needs to do — replace the comment
+and the placeholder text together, don't just fill in around them.
+-->
+<style>
+/* Same type system and page geometry as the resume draft — this is a matched
+   letterhead, not a separate document. See drafts/consulting/*.html. */
+@page{size:A4;margin:0}
+:root{--ink:#111;--muted:#555;--rule:#222}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#fff;color:var(--ink)}
+body{font-family:"Source Sans 3", sans-serif;font-size:10.3pt;line-height:1.5;-webkit-font-smoothing:antialiased}
+.page{width:210mm;height:297mm;padding:20mm 22mm;margin:0 auto;background:#fff;display:flex;flex-direction:column}
+h1{font-family:"Source Serif 4", serif;font-size:16pt;line-height:1;margin:0 0 3pt;font-weight:700;letter-spacing:-.2pt}
+.contact{font-size:8.6pt;color:#444;letter-spacing:.05pt}
+.rule{height:0;border:0;border-top:1.15px solid var(--rule);margin:9pt 0 16pt}
+.meta{display:flex;justify-content:space-between;align-items:baseline;font-size:9.3pt;color:var(--muted);margin-bottom:16pt}
+.recipient{font-size:9.6pt;line-height:1.4;margin-bottom:14pt}
+.salutation{margin-bottom:11pt}
+p{margin:0 0 11pt}
+.body p:last-of-type{margin-bottom:0}
+.signoff{margin-top:14pt}
+.name{font-weight:700;margin-top:26pt}
+@media print{.page{margin:0}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+<h1>ADRIAN CIOANCA</h1>
+<div class="contact">adrian.v.cioanca@gmail.com &nbsp;|&nbsp; 0450 399 725 &nbsp;|&nbsp; Canberra, Australia &nbsp;|&nbsp; linkedin.com/in/adrian-c-58743b25a</div>
+<hr class="rule">
+</header>
+
+<div class="meta">
+<span>14 September 2026</span>
+</div>
+
+<!--
+Recipient block: use a named person if the ad or a referral gives you one
+("Dear Ms. Smith,"). If not, address the practice, not "To Whom It May
+Concern" — e.g. "Dear <Firm> Associate Recruiting Team,". A generic salutation
+is a signal to the screener that the whole letter is generic; do not let it be.
+-->
+<div class="recipient">
+McKinsey &amp; Company — APD Recruiting Team<br>
+McKinsey &amp; Company<br>
+Sydney / Canberra, Australia
+</div>
+
+<div class="salutation">Dear McKinsey APD Recruiting Team,</div>
+
+<div class="body">
+
+<!--
+PARAGRAPH 1 — the hook (2-3 sentences).
+Open with something specific to this firm/role/ad, not "I am writing to
+apply for...". Name the practice, a live piece of the firm's work, or the
+specific reason this role: what problem, sector or client type pulled you
+in. State the role you're applying for once, plainly, inside this hook —
+do not lead with it as a bare announcement.
+-->
+<p>I am applying to the Associate role through the Advanced Professional Degree pathway, on
+the strength of a PhD in retinal degeneration and two years leading postdoctoral research at
+the John Curtin School of Medical Research. Most APD candidates make the jump from the bench
+to a client team on faith; I have already spent two years doing client-facing consulting
+delivery at Accenture, so the part of this transition McKinsey usually has to take on trust is
+one I can already show evidence for.</p>
+
+<!--
+PARAGRAPH 2 — why this firm (2-4 sentences).
+Tie the firm's actual positioning (a named practice, a published case, a
+sector focus, something concrete from the ad or the firm's own materials —
+not "your prestigious firm" or "your reputation for excellence") to the
+specific angle you are offering. This is where the Profile line from the
+resume gets argued, not repeated.
+-->
+<p>The APD pathway exists because McKinsey has found that people who spend years running an
+independent, ambiguous research problem end up well suited to running a client workstream the
+same way — combining research, data, interviews and structured problem-solving into
+recommendations someone senior has to act on. That is the exact pattern of my last four years:
+building and defending a commercial valuation for a biotech asset, then walking a compliance
+team through why an AI system's flagged clause actually mattered. I am not applying to test
+whether that pattern transfers to client work — I am applying because I have already run it
+against real clients and want to do it inside McKinsey's case-team model instead of alone.</p>
+
+<!--
+PARAGRAPH 3 — why you (3-5 sentences).
+2, at most 3, proof points. Each one is evidence + what it demonstrates for
+THIS role, not a bullet restated from the resume — the cover letter's job is
+to connect dots the resume can't, not list achievements again. Quantify
+every claim that has a number, same standard as the resume (see CLAUDE.md).
+-->
+<p>Three things I would bring to a case team. First, PhD-level quantitative rigour tested at
+scale and under peer review — statistical modelling across 50M+ observations, work that earned
+early promotion to Level B in 1.5 years against a typical 4-5 year track. Second, commercial
+ownership of a technical asset end to end: as co-founder of a biotech spin-off I built the DCF
+and risk-adjusted NPV case for our lead candidate, raised $670K in non-dilutive funding, and
+delivered a $200K preclinical engagement for Merck &amp; Co. that returned 8x its build cost.
+Third, live delivery experience translating technical complexity for a non-technical audience
+under commercial pressure — at Accenture I led the build of an AI retrieval system that cut a
+national energy retailer's regulatory-compliance review time from days to minutes, working
+directly with their compliance team to get the requirements right.</p>
+
+<!--
+PARAGRAPH 4 — the close (2-3 sentences).
+State fit plainly, then a clear call to action (a conversation, an
+interview) and thanks. No hedging language, no restating the whole letter.
+-->
+<p>I would welcome the chance to discuss how this combination — PhD-level rigour, commercial
+ownership of a technical asset, and delivery experience already tested against real clients —
+fits the Associate class you are building through the APD pathway. I am flexible on Sydney or
+Canberra and happy to provide any further materials your team needs. Thank you for your
+consideration.</p>
+
+</div>
+
+<div class="signoff">
+Sincerely,
+<div class="name">Adrian Cioanca</div>
+</div>
+
+</div>
+</body>
+</html>

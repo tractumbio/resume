@@ -54,13 +54,18 @@ REGION_KEYWORDS = {
     "Japan": ["japan", "tokyo", "osaka"],
 }
 
+# Checked in this order, most specific first: "undergraduate" alone is common
+# boilerplate in any ad that states a bachelor's-degree requirement (including
+# APD/experienced-hire ads), so a weak campus keyword must not out-rank a
+# strong, rare APD signal like "advanced professional degree" just because
+# campus happened to be checked first.
 ROUTE_KEYWORDS = {
-    "campus": ["campus hire", "undergraduate", "final-year student", "penultimate-year",
-               "current student"],
+    "apd": ["advanced professional degree", " apd ", "apd pathway", "apd track",
+            "phd track", "doctoral candidate", "postdoctoral", "postdocs"],
     "graduate": ["graduate program", "graduate scheme", "new graduate", "graduate intake",
                  "2027 intake", "2026 intake"],
-    "apd": ["advanced professional degree", "apd", "phd track", "doctoral candidate",
-            "postdoctoral"],
+    "campus": ["campus hire", "undergraduate", "final-year student", "penultimate-year",
+               "current student"],
 }
 
 PRACTICE_KEYWORDS = {

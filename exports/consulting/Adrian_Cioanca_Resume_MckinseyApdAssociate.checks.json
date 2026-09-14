@@ -1,0 +1,50 @@
+{
+  "pdf": "/home/user/resume/build/consulting/Adrian_Cioanca_Resume_MckinseyApdAssociate.pdf",
+  "checks": [
+    {
+      "level": "PASS",
+      "check": "one page",
+      "detail": "1 page"
+    },
+    {
+      "level": "PASS",
+      "check": "A4 page size",
+      "detail": "595 x 842 pt"
+    },
+    {
+      "level": "PASS",
+      "check": "fonts embedded",
+      "detail": "Source-Serif-4-Bold (emb=yes, sub=yes), Source-Sans-3-Bold (emb=yes, sub=yes), Source-Sans-3, (emb=yes, sub=yes)"
+    },
+    {
+      "level": "PASS",
+      "check": "reading order",
+      "detail": "every date reads after the role it belongs to"
+    },
+    {
+      "level": "PASS",
+      "check": "margins",
+      "detail": "top 12.4mm, bottom 8.5mm, left 15.0mm, right 15.0mm"
+    },
+    {
+      "level": "PASS",
+      "check": "header tagline",
+      "detail": "no self-laudatory claims in the header"
+    },
+    {
+      "level": "PASS",
+      "check": "quantification",
+      "detail": "no vague filler phrases"
+    },
+    {
+      "level": "PASS",
+      "check": "profile section",
+      "detail": "present"
+    },
+    {
+      "level": "PASS",
+      "check": "orphan words",
+      "detail": "no single short words stranded on a line"
+    }
+  ]
+}

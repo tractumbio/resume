@@ -1,0 +1,50 @@
+{
+  "pdf": "applications/mckinsey-apd-associate/cover.pdf",
+  "checks": [
+    {
+      "level": "PASS",
+      "check": "one page",
+      "detail": "1 page"
+    },
+    {
+      "level": "PASS",
+      "check": "A4 page size",
+      "detail": "595 x 842 pt"
+    },
+    {
+      "level": "PASS",
+      "check": "fonts embedded",
+      "detail": "Source-Serif-4-Bold (emb=yes, sub=yes), Source-Sans-3, (emb=yes, sub=yes), Source-Sans-3-Bold (emb=yes, sub=yes)"
+    },
+    {
+      "level": "PASS",
+      "check": "reading order",
+      "detail": "every date reads after the role it belongs to"
+    },
+    {
+      "level": "PASS",
+      "check": "margins",
+      "detail": "top 19.0mm, bottom 44.8mm, left 22.0mm, right 22.2mm"
+    },
+    {
+      "level": "PASS",
+      "check": "header tagline",
+      "detail": "no self-laudatory claims in the header"
+    },
+    {
+      "level": "PASS",
+      "check": "quantification",
+      "detail": "no vague filler phrases"
+    },
+    {
+      "level": "PASS",
+      "check": "cover length",
+      "detail": "438 words"
+    },
+    {
+      "level": "PASS",
+      "check": "orphan words",
+      "detail": "no single short words stranded on a line"
+    }
+  ]
+}

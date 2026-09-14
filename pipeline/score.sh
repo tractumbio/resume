@@ -5,8 +5,11 @@
 #
 # FitSignal is a sibling repo, not a dependency of this one. Point FITSIGNAL_HOME
 # at your checkout, or leave it and the script looks for ../fitsignal.
-# Without an ANTHROPIC_API_KEY the run falls back to --mock, which exercises the
-# whole pipeline with placeholder findings — useful for wiring, useless as a score.
+# Scoring needs one of: ANTHROPIC_API_KEY, OPENAI_API_KEY, a fitsignal/.env, or
+# the `claude` CLI installed and logged in (FitSignal's own fallback — see
+# provider-claude-cli.js there). Only when NONE of those are available does
+# this fall back to --mock, which exercises the whole pipeline with
+# placeholder findings — useful for wiring, useless as a score.
 set -euo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -41,9 +44,12 @@ pdftotext -layout "$pdf" "$txt"
 
 args=(--file "$txt" --role "$ROLE" --input-mode pdf_layout --region "$REGION" --route "$ROUTE")
 [[ -n "$PRACTICE" ]] && args+=(--practice "$PRACTICE")
-if [[ -z "${ANTHROPIC_API_KEY:-}${OPENAI_API_KEY:-}" ]] && [[ ! -f "$FITSIGNAL_HOME/.env" ]]; then
-  echo "No model API key found — running FitSignal in --mock mode (placeholder scores)." >&2
+if [[ -z "${ANTHROPIC_API_KEY:-}${OPENAI_API_KEY:-}" ]] && [[ ! -f "$FITSIGNAL_HOME/.env" ]] && ! command -v claude >/dev/null 2>&1; then
+  echo "No model API key and no local \`claude\` CLI found — running FitSignal in --mock mode (placeholder scores)." >&2
   args+=(--mock)
 fi
+# Otherwise let FitSignal's own resolveProvider() decide (key, then .env, then
+# the claude CLI) — don't force --mock just because this script doesn't know
+# which of those is in play.
 
 node "$FITSIGNAL_HOME/src/cli.js" "${args[@]}" "$@"
