@@ -16,6 +16,7 @@ FITSIGNAL_HOME="${FITSIGNAL_HOME:-$(cd "$REPO/.." && pwd)/fitsignal}"
 ROLE="${FITSIGNAL_ROLE:-McKinsey Associate}"
 REGION="${FITSIGNAL_REGION:-AU}"
 ROUTE="${FITSIGNAL_ROUTE:-experienced-hire}"
+PRACTICE="${FITSIGNAL_PRACTICE:-}"
 
 pdf="${1:-}"
 [[ -n "$pdf" ]] || { echo "usage: $0 <resume.pdf> [-- extra fitsignal args]" >&2; exit 2; }
@@ -39,6 +40,7 @@ trap 'rm -f "$txt"' EXIT
 pdftotext -layout "$pdf" "$txt"
 
 args=(--file "$txt" --role "$ROLE" --input-mode pdf_layout --region "$REGION" --route "$ROUTE")
+[[ -n "$PRACTICE" ]] && args+=(--practice "$PRACTICE")
 if [[ -z "${ANTHROPIC_API_KEY:-}${OPENAI_API_KEY:-}" ]] && [[ ! -f "$FITSIGNAL_HOME/.env" ]]; then
   echo "No model API key found — running FitSignal in --mock mode (placeholder scores)." >&2
   args+=(--mock)

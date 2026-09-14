@@ -162,6 +162,81 @@ beside it cannot be re-rendered, diffed or trusted.
 
 ---
 
+## Building a resume from a job ad
+
+Start here when a specific ad is what's driving the work — it scaffolds the application
+folder and does the mechanical parts (metadata, rendering, checking, scoring), so the only
+judgement call left is picking and phrasing the resume content.
+
+### 1. Scaffold the application from the ad
+
+```bash
+python3 pipeline/from_ad.py path/to/ad.txt --name <firm>-<role-slug>
+# or: pbpaste | python3 pipeline/from_ad.py -
+# or: python3 pipeline/from_ad.py https://firm.example/careers/12345
+```
+
+This creates `applications/<slug>/` from the template, with `ad.md` prefilled: firm, role,
+office and practice guessed from the ad text (`pipeline/ad_meta.py`'s heuristics — known
+firm names, role titles, region/route/practice keywords), and the ad itself pasted below
+the rule. **Read what it guessed before trusting it** — it prints its guesses and where
+they landed in `ad.md`; correct any that are wrong (a firm or role it didn't recognise
+comes back blank) before scoring.
+
+A URL fetch is best-effort HTML-stripping, not a real scraper — a JS-rendered careers page
+often comes back empty. If that happens, paste the ad text into a file and pass that
+instead.
+
+### 2. Draft the resume against this specific ad
+
+This step is not automated, deliberately — see "What the pipeline does not check" at the
+end of this file. Selecting which bullets to lead with, matching the ad's language, and
+deciding what to cut is a judgement call CLAUDE.md's standards govern (MECE, quantified,
+no invented facts), not something a script should do unsupervised.
+
+```bash
+cp drafts/consulting/<nearest-existing-variant>.html drafts/consulting/<slug>.html
+```
+
+Then follow "Building a variant" above: tailor the Profile line to name the specific role
+and practice from the ad, reorder or reweight bullets toward what the ad asks for, and
+keep everything else — facts, numbers, standards — exactly as strict as any other variant.
+Naming the draft file `<slug>.html` (matching the application folder) lets the next step
+find it automatically.
+
+### 3. Render, check and score it against this ad
+
+```bash
+pipeline/score_for_ad.sh applications/<firm>-<role-slug> --draft drafts/consulting/<slug>.html
+```
+
+(`--draft` can be omitted if the draft is named `drafts/<sector>/<slug>.html` to match the
+application folder — the script looks there first.)
+
+This reads `ad.md`'s metadata back out, turns it into `FITSIGNAL_ROLE` / `FITSIGNAL_REGION`
+/ `FITSIGNAL_ROUTE` / `FITSIGNAL_PRACTICE`, and runs the normal `pipeline/release.sh` render
+→ verify → score → promote with those set — so the score reflects this ad's actual role,
+region, hiring route and practice, not the hardcoded McKinsey/AU/experienced-hire defaults.
+On success it copies the result into the application folder itself:
+
+```
+applications/<slug>/resume.pdf              # the scored, checked export
+applications/<slug>/resume.checks.json
+applications/<slug>/resume.scorecard.json
+applications/<slug>/resume.provenance.txt
+```
+
+Same caveats as always: `provider=mock` in `resume.provenance.txt` means placeholder
+findings (no `ANTHROPIC_API_KEY` was set); the rubric is unvalidated and `likelihood` is an
+uncalibrated band. Read the scorecard's `findings` for what to actually act on — a low
+score on a named rule (say, `R25` specialist-practice domain evidence) tells you which
+paragraph of the draft to strengthen, more usefully than the `overall` number does.
+
+### 4. Then the cover letter
+
+`cover.html` was already scaffolded in step 1 with the firm/role filled into its title —
+continue with "Building a cover letter" below.
+
 ## Building a cover letter
 
 A cover letter is per application, not per sector — it lives with the ad it responds to,

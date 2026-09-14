@@ -18,6 +18,20 @@ applications/
 
 ## Starting a new application
 
+The fast path, if you have the ad's text (a file, stdin, or a URL):
+
+```bash
+python3 pipeline/from_ad.py path/to/ad.txt --name <firm>-<role-slug>
+```
+
+This scaffolds the folder for you and prefills `ad.md`'s metadata (firm, role, office,
+practice) by guessing from the ad text — read what it guessed, it's heuristic. See
+"Building a resume from a job ad" in `BUILDER_INSTRUCTIONS.md` for the full procedure,
+including `pipeline/score_for_ad.sh`, which scores the resume against this ad's actual
+role/region/route/practice instead of hardcoded defaults.
+
+Otherwise, copy the template directly:
+
 ```bash
 cp -r applications/_template applications/<firm>-<role-slug>
 ```

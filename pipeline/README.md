@@ -4,12 +4,15 @@ Render a draft, check it against `CLAUDE.md`, score it, and promote it to `expor
 if it passed.
 
 ```
-render.py       HTML -> PDF (WeasyPrint), with the vendored fonts embedded
-verify.py       checks against the rendered PDF; --kind resume|cover; any FAIL exits non-zero
-score.sh        FitSignal scoring, via the sibling fitsignal repo
-summarise.py    one-paragraph summary of a FitSignal scorecard
-release.sh      render + verify + score, then promote — the only way into exports/
-build_cover.sh  render + verify --kind cover, in place, for applications/<slug>/cover.html
+render.py        HTML -> PDF (WeasyPrint), with the vendored fonts embedded
+verify.py        checks against the rendered PDF; --kind resume|cover; any FAIL exits non-zero
+score.sh         FitSignal scoring, via the sibling fitsignal repo
+summarise.py     one-paragraph summary of a FitSignal scorecard
+release.sh       render + verify + score, then promote — the only way into exports/
+build_cover.sh   render + verify --kind cover, in place, for applications/<slug>/cover.html
+ad_meta.py       heuristics: guess/parse firm, role, region, route, practice from ad text
+from_ad.py       scaffold applications/<slug>/ from a job ad (file, stdin, or URL)
+score_for_ad.sh  release.sh, with FITSIGNAL_* set from the ad's own metadata
 ```
 
 ## Requirements
@@ -42,7 +45,15 @@ and is invisible to it — the Capabilities block needs an eye, not a check.
 **Scoring.** `score.sh` extracts with `-layout` and passes `--input-mode pdf_layout`, so
 the layout rules can resolve. Defaults target Adrian's brief (`McKinsey Associate`, region
 `AU`, route `experienced-hire`); override with `FITSIGNAL_ROLE`, `FITSIGNAL_REGION`,
-`FITSIGNAL_ROUTE`.
+`FITSIGNAL_ROUTE`, `FITSIGNAL_PRACTICE` (healthcare | life-sciences | pe-diligence — unset
+by default, since most roles don't declare one).
+
+**Scoring against a specific ad.** `score_for_ad.sh` is `release.sh` with those four
+variables set automatically from `applications/<slug>/ad.md`'s own metadata, via
+`ad_meta.py`, instead of the hardcoded defaults — see "Building a resume from a job ad" in
+`BUILDER_INSTRUCTIONS.md`. `ad_meta.py`'s guesses are heuristic (known firm names, role
+titles, city/country keywords) and meant to be checked, not trusted blindly — they save
+typing on the mechanical fields, they don't replace reading the ad.
 
 ## Cover letters vs. resumes
 
