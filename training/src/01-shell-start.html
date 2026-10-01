@@ -1,0 +1,266 @@
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar" role="banner">
+  <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open course navigation" aria-expanded="false" aria-controls="sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+  <a class="brand" href="#top" aria-label="Back to the top of the course">
+    <span class="brand-mark" aria-hidden="true">&gt;</span>
+    <span class="brand-text">
+      <span class="brand-title">Claude Code: Zero to Functional</span>
+      <span class="brand-sub">3-day beginner course · 3 × 2-hour sessions</span>
+    </span>
+  </a>
+  <span class="topbar-spacer"></span>
+  <div class="top-controls">
+    <div class="search-wrap" id="searchWrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input class="search-input" id="searchInput" type="search" placeholder="Search the course…" autocomplete="off" aria-label="Search the course" aria-controls="searchResults" aria-expanded="false">
+      <div class="search-results" id="searchResults" role="listbox" aria-label="Search results"></div>
+    </div>
+    <button class="icon-btn search-toggle" id="searchToggle" type="button" aria-label="Search the course">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    </button>
+    <div class="seg" role="group" aria-label="Your operating system">
+      <button type="button" data-os="win" aria-pressed="false" aria-label="Windows" title="Show Windows commands and shortcuts"><span class="seg-long">Windows</span><span class="seg-short">Win</span></button>
+      <button type="button" data-os="mac" aria-pressed="false" aria-label="macOS" title="Show macOS commands and shortcuts"><span class="seg-long">macOS</span><span class="seg-short">Mac</span></button>
+    </div>
+    <button class="icon-btn" id="facBtn" type="button" aria-pressed="false" title="Show facilitator notes (timing, talking points, pitfalls)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+      <span class="lbl">Facilitator</span>
+    </button>
+    <button class="icon-btn pres-btn" id="presBtn" type="button" aria-pressed="false" title="Presenter view: bigger text, no sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+      <span class="lbl">Present</span>
+    </button>
+    <button class="icon-btn theme-btn" id="themeBtn" type="button" title="Toggle light / dark theme" aria-label="Toggle light or dark theme">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+    <span class="progress-pill" title="Your progress: labs, checklists and quizzes (saved in this browser)">
+      <svg class="ring" viewBox="0 0 30 30" aria-hidden="true"><circle class="ring-bg" cx="15" cy="15" r="12"/><circle class="ring-fg" id="ringFg" cx="15" cy="15" r="12" stroke-dasharray="75.4" stroke-dashoffset="75.4" transform="rotate(-90 15 15)"/></svg>
+      <span><strong id="progressPct">0%</strong> <span class="lbl">complete</span></span>
+    </span>
+  </div>
+</header>
+
+<div class="layout" id="top">
+  <nav class="sidebar" id="sidebar" aria-label="Course navigation">
+    <div class="nav-group">
+      <div class="nav-group-title">Start here</div>
+      <a class="nav-link" href="#welcome"><span class="nav-num">›</span><span>Welcome &amp; your facilitator</span><span class="nav-check">✓</span></a>
+      <a class="nav-link" href="#outcomes"><span class="nav-num">›</span><span>What you'll be able to do</span></a>
+      <a class="nav-link" href="#how-to-use"><span class="nav-num">›</span><span>How to use this page</span></a>
+      <a class="nav-link" href="#prereqs" data-track="prereqs"><span class="nav-num">›</span><span>Before Day 1 checklist</span><span class="nav-check">✓</span></a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">Day 1 · Foundations <span class="nav-day-badge">2h</span></div>
+      <a class="nav-link" href="#day1"><span class="nav-num">D1</span><span>Agenda &amp; session clock</span></a>
+      <a class="nav-link" href="#m11"><span class="nav-num">1.1</span><span>Claude chat vs Claude Code</span></a>
+      <a class="nav-link" href="#m12" data-track="install"><span class="nav-num">1.2</span><span>Install: Windows · macOS · VS Code</span><span class="nav-check">✓</span></a>
+      <a class="nav-link" href="#m13"><span class="nav-num">1.3</span><span>First launch &amp; the interface</span></a>
+      <a class="nav-link" href="#m14"><span class="nav-num">1.4</span><span>Talking to Claude Code</span></a>
+      <a class="nav-link" href="#lab1" data-track="lab1"><span class="nav-num">Lab</span><span>Lab 1: Hello, Claude Code</span><span class="nav-check">✓</span></a>
+      <a class="nav-link" href="#quiz1" data-track="quiz-day1"><span class="nav-num">Q</span><span>Day 1 knowledge check</span><span class="nav-check">✓</span></a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">Day 2 · Working well <span class="nav-day-badge">2h</span></div>
+      <a class="nav-link" href="#day2"><span class="nav-num">D2</span><span>Agenda &amp; session clock</span></a>
+      <a class="nav-link" href="#m21"><span class="nav-num">2.1</span><span>Slash commands that matter</span></a>
+      <a class="nav-link" href="#m22"><span class="nav-num">2.2</span><span>Context &amp; sessions</span></a>
+      <a class="nav-link" href="#m23"><span class="nav-num">2.3</span><span>Permissions &amp; safety</span></a>
+      <a class="nav-link" href="#m24"><span class="nav-num">2.4</span><span>CLAUDE.md &amp; memory</span></a>
+      <a class="nav-link" href="#m25"><span class="nav-num">2.5</span><span>Explore → Plan → Build → Verify</span></a>
+      <a class="nav-link" href="#lab2" data-track="lab2"><span class="nav-num">Lab</span><span>Lab 2: Real mini use cases</span><span class="nav-check">✓</span></a>
+      <a class="nav-link" href="#quiz2" data-track="quiz-day2"><span class="nav-num">Q</span><span>Day 2 knowledge check</span><span class="nav-check">✓</span></a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">Day 3 · Extend &amp; automate <span class="nav-day-badge">2h</span></div>
+      <a class="nav-link" href="#day3"><span class="nav-num">D3</span><span>Agenda &amp; session clock</span></a>
+      <a class="nav-link" href="#m31"><span class="nav-num">3.1</span><span>Connectors (MCP)</span></a>
+      <a class="nav-link" href="#m32"><span class="nav-num">3.2</span><span>Skills: your own slash commands</span></a>
+      <a class="nav-link" href="#m33"><span class="nav-num">3.3</span><span>Subagents, hooks, plugins &amp; styles</span></a>
+      <a class="nav-link" href="#m34"><span class="nav-num">3.4</span><span>Beyond the terminal</span></a>
+      <a class="nav-link" href="#m35"><span class="nav-num">3.5</span><span>Use-case playbook</span></a>
+      <a class="nav-link" href="#lab3" data-track="lab3"><span class="nav-num">Lab</span><span>Capstone lab</span><span class="nav-check">✓</span></a>
+      <a class="nav-link" href="#quiz3" data-track="quiz-day3"><span class="nav-num">Q</span><span>Day 3 knowledge check</span><span class="nav-check">✓</span></a>
+      <a class="nav-link" href="#final" data-track="quiz-final"><span class="nav-num">★</span><span>Final assessment &amp; certificate</span><span class="nav-check">✓</span></a>
+      <a class="nav-link" href="#next"><span class="nav-num">→</span><span>After the course</span></a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">Reference</div>
+      <a class="nav-link" href="#ref-commands"><span class="nav-num">/</span><span>Slash command explorer</span></a>
+      <a class="nav-link" href="#ref-keys"><span class="nav-num">⌨</span><span>Keyboard shortcuts</span></a>
+      <a class="nav-link" href="#ref-cli"><span class="nav-num">$</span><span>CLI cheat sheet</span></a>
+      <a class="nav-link" href="#ref-files"><span class="nav-num">📁</span><span>Where things live</span></a>
+      <a class="nav-link" href="#ref-trouble"><span class="nav-num">?</span><span>Troubleshooting</span></a>
+      <a class="nav-link" href="#ref-glossary"><span class="nav-num">Aa</span><span>Glossary</span></a>
+      <a class="nav-link" href="#ref-facilitator"><span class="nav-num">🎤</span><span>Facilitator guide</span></a>
+      <a class="nav-link" href="#ref-resources"><span class="nav-num">↗</span><span>Resources</span></a>
+    </div>
+    <div class="sidebar-foot">
+      Facilitator: <strong>Adrian Cioanca</strong><br>
+      <a href="mailto:Adrian.Cioanca@accenture.com">Adrian.Cioanca@accenture.com</a><br>
+      <span>Progress is saved in this browser only.</span><br>
+      <button class="btn btn-ghost btn-sm" id="resetProgress" type="button" style="margin-top:10px">Reset my progress</button>
+    </div>
+  </nav>
+  <div class="nav-scrim" id="navScrim"></div>
+
+  <main id="main">
+    <div class="content">
+
+<!-- ===================================================== START ===================================================== -->
+<section class="section mt0" id="welcome" data-title="Welcome &amp; your facilitator" style="border-top:0;padding-top:0">
+  <div class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Interactive course · Beginner friendly</div>
+        <h1><span class="gt">&gt;</span> Claude Code:<br>from zero to functional</h1>
+        <p>Three 2-hour sessions that take you from "I've used Claude chat" to confidently delegating real work to Claude Code on Windows, macOS and in VS Code.</p>
+        <div class="meta-row">
+          <span class="tag purple">3 days</span>
+          <span class="tag">3 × 2-hour sessions</span>
+          <span class="tag">Hands-on labs</span>
+          <span class="tag">Quizzes &amp; certificate</span>
+          <span class="tag">No coding experience needed</span>
+        </div>
+        <div class="inline-actions">
+          <a class="btn btn-primary" href="#prereqs">Start with the checklist</a>
+          <a class="btn btn-ghost" href="#day1">Jump to Day 1</a>
+        </div>
+      </div>
+      <aside class="contact-card" aria-label="Facilitator contact details">
+        <div class="cc-label">Your facilitator</div>
+        <div class="cc-name">Adrian Cioanca, PhD</div>
+        <div class="cc-role">Data &amp; AI Consultant · Accenture</div>
+        <a class="cc-email" href="mailto:Adrian.Cioanca@accenture.com?subject=Claude%20Code%20course">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <span class="cc-addr">Adrian.Cioanca<wbr>@accenture.com</span>
+        </a>
+        <p style="font-size:.92rem;margin:12px 0 0;color:#D9CCF0">Questions before, during or after the course? Email me — include a screenshot of any error.</p>
+        <div class="cc-actions">
+          <a class="btn btn-primary btn-sm" href="mailto:Adrian.Cioanca@accenture.com?subject=Claude%20Code%20course">Email Adrian</a>
+          <button class="btn btn-ghost btn-sm" type="button" data-copy-text="Adrian.Cioanca@accenture.com">Copy email</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="days-grid">
+    <a class="day-card" href="#day1">
+      <div class="dc-num">Day 1 · 2 hours</div>
+      <h3>Foundations</h3>
+      <ul>
+        <li>Chat vs Claude Code</li>
+        <li>Install on Windows, macOS, VS Code</li>
+        <li>Your first session</li>
+      </ul>
+      <div class="dc-bar"><span data-daybar="1"></span></div>
+    </a>
+    <a class="day-card" href="#day2">
+      <div class="dc-num">Day 2 · 2 hours</div>
+      <h3>Working effectively</h3>
+      <ul>
+        <li>Slash commands &amp; shortcuts</li>
+        <li>Context, sessions, rewind</li>
+        <li>Permissions &amp; CLAUDE.md</li>
+      </ul>
+      <div class="dc-bar"><span data-daybar="2"></span></div>
+    </a>
+    <a class="day-card" href="#day3">
+      <div class="dc-num">Day 3 · 2 hours</div>
+      <h3>Extend &amp; automate</h3>
+      <ul>
+        <li>Connectors (MCP)</li>
+        <li>Skills, hooks, subagents</li>
+        <li>Capstone &amp; certificate</li>
+      </ul>
+      <div class="dc-bar"><span data-daybar="3"></span></div>
+    </a>
+  </div>
+  <p class="badge-ver">Content checked against the official Claude Code documentation (code.claude.com/docs) on 1 October 2026, Claude Code v2.1.28x. Claude Code ships updates almost weekly — if something on your screen looks different, run <code>/help</code>, check <code>/release-notes</code>, or simply ask Claude "how do I…?".</p>
+</section>
+
+<section class="section" id="outcomes" data-title="What you'll be able to do">
+  <div class="eyebrow">Learning outcomes</div>
+  <h2>By the end of Day 3 you will be able to…</h2>
+  <ol class="outcomes">
+    <li>Explain how Claude Code differs from Claude chat, and pick the right one for a task.</li>
+    <li>Install, sign in and verify Claude Code on Windows, macOS and in VS Code — and fix the common install errors.</li>
+    <li>Drive a session confidently: plain-English prompts, <code>@</code> file mentions, <code>!</code> shell mode, interrupting and rewinding.</li>
+    <li>Use the ~25 slash commands that cover almost all day-to-day work.</li>
+    <li>Choose the right permission mode and write allow / ask / deny rules that keep you safe.</li>
+    <li>Give Claude lasting project knowledge with <code>CLAUDE.md</code> and manage its context window.</li>
+    <li>Connect Claude Code to other tools with MCP connectors — and know the security trade-offs.</li>
+    <li>Turn a repeatable task into your own slash command (a skill) and share it with your team.</li>
+    <li>Apply the explore → plan → build → verify workflow to real consulting-style work: data, documents, code.</li>
+    <li>Know where to go next: VS Code, Desktop, web sessions, automation and further learning.</li>
+  </ol>
+  <div class="callout tip">
+    <div class="callout-title">The one-sentence goal</div>
+    <p>You leave able to hand Claude Code a real, low-risk task from your own work, steer it, check its output, and stay in control of what it is allowed to do.</p>
+  </div>
+</section>
+
+<section class="section" id="how-to-use" data-title="How to use this page">
+  <div class="eyebrow">Orientation</div>
+  <h2>How to use this page</h2>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-kicker">Navigate</div>
+      <ul class="gt-list mb0">
+        <li>The sidebar follows the three sessions. Each day starts with a timed agenda and a <strong>session clock</strong> for the facilitator.</li>
+        <li>Use <strong>Search</strong> (top bar) to find any command or topic later — this page doubles as your reference manual.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-kicker">Personalise</div>
+      <ul class="gt-list mb0">
+        <li>Pick <strong>Windows</strong> or <strong>macOS</strong> in the top bar: install steps, paths and keyboard shortcuts switch to match.</li>
+        <li>Toggle dark mode, and <strong>Present</strong> for big-screen delivery.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-kicker">Practise</div>
+      <ul class="gt-list mb0">
+        <li>Every grey code box has a <strong>Copy</strong> button. Boxes marked <em>Type in Claude Code</em> are prompts; the others go in your terminal.</li>
+        <li>Labs, checklists and quizzes save your progress in this browser (nothing is sent anywhere).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-kicker">Facilitate</div>
+      <ul class="gt-list mb0">
+        <li>Turn on <strong>Facilitator</strong> to reveal timing cues, talking points, live-demo scripts and common pitfalls.</li>
+        <li>Can't install yet? The <a href="#sim">practice terminal</a> on Day 1 lets you try commands safely in the browser.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="facilitator">
+    <p><strong>Before you share this page:</strong> send it to attendees one week ahead with the Before Day 1 checklist highlighted. Ask everyone to complete the install at home if their machine allows it — fixing installs live eats session time. Keep the <a href="#ref-facilitator">Facilitator guide</a> open on a second screen.</p>
+  </div>
+</section>
+
+<section class="section" id="prereqs" data-title="Before Day 1 checklist">
+  <div class="eyebrow">Preparation · 15 minutes</div>
+  <h2>Before Day 1 checklist</h2>
+  <p>Tick these off before the first session. Anything you can't complete, flag to your facilitator early.</p>
+  <div class="checklist-head"><h4>Accounts &amp; access</h4><span class="cl-count" data-count-for="prereqs"></span></div>
+  <ul class="checklist" data-checklist="prereqs">
+    <li><label><input type="checkbox" data-id="acct"><span><strong>A Claude plan that includes Claude Code</strong><span class="cl-detail">Pro, Max, Team or Enterprise subscription, or a Claude Console (API) account. The free Claude plan does <em>not</em> include Claude Code. Organisations may instead provide access through Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry or a company gateway — ask your admin which applies.</span></span></label></li>
+    <li><label><input type="checkbox" data-id="policy"><span><strong>Know your organisation's AI usage policy</strong><span class="cl-detail">Use only data you're permitted to use with AI tools. For the labs we provide synthetic sample files, so no client or personal data is needed.</span></span></label></li>
+    <li><label><input type="checkbox" data-id="network"><span><strong>Network access</strong><span class="cl-detail">Claude Code needs to reach <code>claude.ai</code>, <code>claude.com</code>, <code>platform.claude.com</code>, <code>api.anthropic.com</code> and <code>downloads.claude.ai</code> (plus <code>mcp-proxy.anthropic.com</code> for claude.ai connectors). On a corporate proxy, see <a href="#ref-trouble">Troubleshooting</a>.</span></span></label></li>
+  </ul>
+  <div class="checklist-head"><h4>Your computer</h4></div>
+  <ul class="checklist" data-checklist="prereqs">
+    <li><label><input type="checkbox" data-id="os"><span><strong>A supported operating system</strong><span class="cl-detail">Windows 10 version 1809+ or Windows Server 2019+ · macOS 13 (Ventura) or later · 4 GB+ RAM · x64 or ARM64.</span></span></label></li>
+    <li><label><input type="checkbox" data-id="terminal"><span><strong>You can open a terminal</strong><span class="cl-detail"><span class="os-win">Windows: press <kbd>Win</kbd>+<kbd>X</kbd> and choose <em>Terminal</em> or <em>Windows PowerShell</em>. The prompt should start with <code>PS C:\Users\…&gt;</code>.</span><span class="os-mac">macOS: press <kbd>Cmd</kbd>+<kbd>Space</kbd>, type <em>Terminal</em>, press <kbd>Enter</kbd>.</span></span></span></label></li>
+    <li><label><input type="checkbox" data-id="vscode"><span><strong>VS Code 1.94 or later</strong> <span class="pill-note">recommended</span><span class="cl-detail">Download from code.visualstudio.com. Check your version under <em>Help → About</em> (Windows) or <em>Code → About Visual Studio Code</em> (macOS).</span></span></label></li>
+    <li><label><input type="checkbox" data-id="git"><span><strong>Git</strong> <span class="pill-note">recommended</span><span class="cl-detail"><span class="os-win">Install <em>Git for Windows</em> (git-scm.com/downloads/win) and accept the defaults. It gives Claude a Bash shell; without it Claude uses PowerShell, which also works.</span><span class="os-mac">Run <code>git --version</code> in Terminal. If macOS offers to install the developer tools, accept.</span></span></span></label></li>
+    <li><label><input type="checkbox" data-id="node"><span><strong>Node.js 18+</strong> <span class="pill-note">optional</span><span class="cl-detail">Only needed for the optional Day 3 browser-automation connector (Playwright). Not required to install Claude Code.</span></span></label></li>
+    <li><label><input type="checkbox" data-id="labkit"><span><strong>Download the lab kit</strong><span class="cl-detail">One small zip with synthetic practice files. <button class="btn btn-dark btn-sm" type="button" data-action="download-labkit" style="margin-top:6px">⬇ Download claude-lab.zip</button></span></span></label></li>
+  </ul>
+  <div class="callout note">
+    <div class="callout-title">No admin rights? No problem.</div>
+    <p class="mb0">The recommended native installer installs into your user profile and does <strong>not</strong> need administrator rights on Windows or macOS. If your laptop blocks installs entirely, you can still follow along with the Desktop app, claude.ai/code in the browser, or the in-page practice terminal.</p>
+  </div>
+</section>

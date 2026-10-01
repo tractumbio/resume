@@ -1,0 +1,568 @@
+
+<!-- ===================================================== DAY 1 ===================================================== -->
+<section class="section" id="day1" data-title="Day 1 · Agenda &amp; session clock" data-day="1">
+  <div class="day-banner">
+    <div class="eyebrow">Day 1 of 3 · 2 hours</div>
+    <h2>Foundations: from chat to agent</h2>
+    <p>Understand what makes Claude Code different, get it installed and signed in, and run your first real session.</p>
+    <div class="meta-row" style="margin-bottom:0"><span class="tag time">120 min</span><span class="tag">4 modules</span><span class="tag">Lab 1</span><span class="tag">Knowledge check</span></div>
+  </div>
+  <div class="agenda" data-agenda="1"></div>
+  <div class="facilitator">
+    <p><strong>Room check (first 5 min):</strong> ask for a show of hands — who has used Claude chat? Who has opened a terminal before? Who installed Claude Code already? Pair anyone who hasn't installed with someone who has. Remind people the course page saves their progress locally.</p>
+    <p><strong>Pacing:</strong> installation is the biggest time risk. If more than a third of the room is blocked at 0:45, move them to the Desktop app, claude.ai/code or the practice terminal and keep going — fix individual installs during the break.</p>
+  </div>
+</section>
+
+<section class="section" id="m11" data-title="1.1 Claude chat vs Claude Code" data-day="1">
+  <div class="eyebrow">Module 1.1 · 20 min</div>
+  <h2><span class="gt">&gt;</span>Claude chat vs Claude Code</h2>
+  <p class="lead">Same Claude models, very different way of working. In chat, Claude <em>tells</em> you what to do. In Claude Code, Claude <em>does</em> the work on your files and tools — and shows you what it did.</p>
+
+  <div class="grid-2">
+    <div class="card accent">
+      <div class="card-kicker">Claude chat (claude.ai, desktop &amp; mobile apps)</div>
+      <h4>"Phone a brilliant expert"</h4>
+      <p class="mb0">You describe the problem and paste in what's relevant. Claude answers. <strong>You</strong> copy the answer back into your files, run it, and report what happened.</p>
+    </div>
+    <div class="card accent">
+      <div class="card-kicker">Claude Code (terminal, VS Code, Desktop "Code" tab, web)</div>
+      <h4>"The expert sits at your computer"</h4>
+      <p class="mb0">You delegate a goal. Claude <strong>reads</strong> your files, <strong>runs</strong> commands, <strong>edits</strong> what needs changing, <strong>checks</strong> its own work — and asks your permission for anything you haven't pre-approved.</p>
+    </div>
+  </div>
+
+  <h3>The agentic loop</h3>
+  <p>When you give Claude Code a task, it works through three phases that blend together — <strong>gather context</strong>, <strong>take action</strong>, <strong>verify results</strong> — repeating until the task is done. A simple question might only need the first phase; a bug fix cycles through all three many times.</p>
+  <figure class="diagram">
+    <svg viewBox="0 0 900 310" role="img" aria-labelledby="loopTitle loopDesc">
+      <title id="loopTitle">The agentic loop</title>
+      <desc id="loopDesc">Your prompt leads to Claude gathering context, taking action and verifying results, repeating until the task is complete; then it reports the result. You can interrupt at any time.</desc>
+      <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="dg-arrow" d="M0 0 L10 5 L0 10 z"/></marker></defs>
+      <rect class="dg-box dark" x="10" y="118" width="140" height="66" rx="12"/>
+      <text class="dg-w" x="80" y="148" text-anchor="middle">Your prompt</text>
+      <text class="dg-w" x="80" y="168" text-anchor="middle" style="font-size:12px;font-weight:400">"Fix the failing test"</text>
+
+      <rect class="dg-box hl" x="215" y="26" width="200" height="78" rx="12"/>
+      <text class="dg-t" x="315" y="58" text-anchor="middle">1 · Gather context</text>
+      <text class="dg-s" x="315" y="80" text-anchor="middle">reads files, searches, runs</text>
+      <text class="dg-s" x="315" y="95" text-anchor="middle">read-only commands</text>
+
+      <rect class="dg-box hl" x="485" y="26" width="200" height="78" rx="12"/>
+      <text class="dg-t" x="585" y="58" text-anchor="middle">2 · Take action</text>
+      <text class="dg-s" x="585" y="80" text-anchor="middle">edits files, runs commands,</text>
+      <text class="dg-s" x="585" y="95" text-anchor="middle">calls connected tools</text>
+
+      <rect class="dg-box hl" x="350" y="196" width="200" height="78" rx="12"/>
+      <text class="dg-t" x="450" y="228" text-anchor="middle">3 · Verify results</text>
+      <text class="dg-s" x="450" y="250" text-anchor="middle">runs tests, checks output,</text>
+      <text class="dg-s" x="450" y="265" text-anchor="middle">compares to the goal</text>
+
+      <rect class="dg-box dark" x="745" y="118" width="145" height="66" rx="12"/>
+      <text class="dg-w" x="817" y="148" text-anchor="middle">Result</text>
+      <text class="dg-w" x="817" y="168" text-anchor="middle" style="font-size:12px;font-weight:400">changes + summary</text>
+
+      <path class="dg-line" d="M150 140 C185 120 190 90 213 72" marker-end="url(#arr)"/>
+      <path class="dg-line" d="M415 65 L483 65" marker-end="url(#arr)"/>
+      <path class="dg-line" d="M600 104 C600 150 580 200 552 225" marker-end="url(#arr)"/>
+      <path class="dg-line" d="M350 228 C300 215 290 150 300 106" marker-end="url(#arr)"/>
+      <path class="dg-line" d="M550 245 C640 250 700 200 743 166" marker-end="url(#arr)"/>
+      <text class="dg-s" x="450" y="150" text-anchor="middle" style="font-weight:700;fill:var(--accent-ink)">repeat until done</text>
+      <text class="dg-s" x="672" y="272" text-anchor="middle">task complete</text>
+      <text class="dg-s" x="450" y="300" text-anchor="middle">You're in the loop too: interrupt with Esc, redirect, approve or deny actions at any point.</text>
+    </svg>
+    <figcaption>Claude Code = a Claude model (reasons) + tools (act) + a harness that manages context and permissions.</figcaption>
+  </figure>
+
+  <h3>Side-by-side</h3>
+  <div class="table-wrap">
+    <table class="compare">
+      <thead><tr><th></th><th>Claude (chat)</th><th>Claude Code</th></tr></thead>
+      <tbody>
+        <tr><td>Where you use it</td><td>claude.ai, desktop and mobile apps</td><td>Terminal (CLI), VS Code &amp; JetBrains, Desktop app "Code" tab, claude.ai/code (web), Slack, CI pipelines</td></tr>
+        <tr><td>What it can see</td><td>What you type, paste or upload, plus connectors you enable</td><td>Your project folder (it reads files as needed), git status, command output, <code>CLAUDE.md</code>, auto memory, connected MCP tools</td></tr>
+        <tr><td>What it can do</td><td>Answer, write, analyse uploads, create artifacts</td><td>Create and edit files, run commands (tests, scripts, git), search code, fetch web pages, use connected tools, spin up helper agents</td></tr>
+        <tr><td>Who applies the work</td><td>You copy, paste and run it</td><td>Claude applies it; you review, approve and steer</td></tr>
+        <tr><td>Memory between sessions</td><td>Chat history and Projects</td><td><code>CLAUDE.md</code> instructions, auto memory, resumable local sessions</td></tr>
+        <tr><td>Safety controls</td><td>Mostly read-and-answer</td><td>Permission modes, allow/ask/deny rules, checkpoints &amp; rewind, optional sandbox</td></tr>
+        <tr><td>Sweet spot</td><td>Thinking, writing, brainstorming, quick questions</td><td>Multi-step work on files: code, data, documents, automation</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>What Claude Code can reach when you run <code>claude</code> in a folder</h3>
+  <ul class="gt-list">
+    <li><strong>Your project:</strong> files in that folder and its subfolders (and other folders only with your permission).</li>
+    <li><strong>Your terminal:</strong> any command you could run — build tools, git, package managers, scripts.</li>
+    <li><strong>Your git state:</strong> current branch, uncommitted changes, recent commits.</li>
+    <li><strong>Your instructions:</strong> <code>CLAUDE.md</code> (team or personal) and auto memory Claude keeps for itself.</li>
+    <li><strong>Extensions you add:</strong> MCP connectors, skills, subagents, hooks, plugins.</li>
+  </ul>
+  <p>Its built-in tools fall into five families: <strong>file operations</strong>, <strong>search</strong>, <strong>execution</strong>, <strong>web</strong> and <strong>code intelligence</strong> — plus tools to delegate to subagents and to ask you questions.</p>
+
+  <div class="callout tip">
+    <div class="callout-title">Not just for developers</div>
+    <p class="mb0">"Coding" is in the name, but Claude Code helps with anything you can do from a command line: analysing a folder of CSVs, turning meeting notes into action lists, renaming and organising files, building a one-page HTML dashboard, drafting documentation, or researching a question across many files.</p>
+  </div>
+
+  <div class="game" data-game="sorter"></div>
+
+  <div class="facilitator">
+    <p><strong>Live demo (5 min):</strong> open the same small project in claude.ai and in Claude Code. In chat, ask "what does this project do?" — it can't know without you pasting files. In Claude Code, ask the same question and point out the tool calls (Read, Glob/Grep) appearing in the transcript. Then ask Claude Code to "add a README section on how to run it" and show the permission prompt.</p>
+    <p><strong>Key message:</strong> the model is the same family; the <em>harness</em> (tools + context + permissions) is what changes. People who treat Claude Code like chat (asking for snippets to paste) miss most of the value.</p>
+  </div>
+</section>
+
+<section class="section" id="m12" data-title="1.2 Install: Windows · macOS · VS Code" data-day="1">
+  <div class="eyebrow">Module 1.2 · 30 min · hands-on</div>
+  <h2><span class="gt">&gt;</span>Install on Windows, macOS and VS Code</h2>
+  <p class="lead">Pick your path below — the tabs default to the operating system selected in the top bar. Most installs take about two minutes.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Requirement</th><th>Details</th></tr></thead>
+      <tbody>
+        <tr><td>Operating system</td><td>Windows 10 1809+ / Windows Server 2019+ · macOS 13+ · Ubuntu 20.04+, Debian 10+, Alpine 3.19+</td></tr>
+        <tr><td>Hardware</td><td>4 GB+ RAM, x64 or ARM64 processor</td></tr>
+        <tr><td>Shell</td><td>PowerShell or CMD (Windows) · Zsh or Bash (macOS/Linux)</td></tr>
+        <tr><td>Account</td><td>Pro, Max, Team, Enterprise or Console — or a cloud provider set up by your organisation</td></tr>
+        <tr><td>Network</td><td>Internet access (see the domains in the <a href="#prereqs">checklist</a>)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tabs" data-tabs="install" data-os-default="true">
+    <div class="tab-list" role="tablist" aria-label="Installation method">
+      <button class="tab-btn" role="tab" data-tab="win" data-os-tab="win">⊞ Windows</button>
+      <button class="tab-btn" role="tab" data-tab="mac" data-os-tab="mac">⌘ macOS</button>
+      <button class="tab-btn" role="tab" data-tab="vscode">⟨⟩ VS Code extension</button>
+      <button class="tab-btn" role="tab" data-tab="other">More options</button>
+    </div>
+
+    <!-- WINDOWS -->
+    <div class="tab-panel" role="tabpanel" data-panel="win" data-print-label="Windows">
+      <ol class="steps">
+        <li><strong>(Recommended) Install Git for Windows</strong>
+          Download from <code>git-scm.com/downloads/win</code>, run the installer and click <em>Next</em> through the defaults (keep the recommended PATH option). It provides Git Bash, which Claude uses for its Bash tool. <em>It's optional:</em> without it, Claude Code runs shell commands through PowerShell instead.</li>
+        <li><strong>Open PowerShell</strong>
+          Press <kbd>Win</kbd>+<kbd>X</kbd> → <em>Terminal</em> or <em>Windows PowerShell</em>. Check the prompt starts with <code>PS C:\Users\YourName&gt;</code> — if there's no <code>PS</code>, you're in CMD (use the CMD command below). Do <strong>not</strong> pick "Windows PowerShell (x86)" — that's 32-bit and isn't supported.</li>
+        <li><strong>Run the native installer</strong> (no administrator rights needed)
+          <pre class="cb" data-label="PowerShell"><code>irm https://claude.ai/install.ps1 | iex</code></pre>
+          <code>irm</code> downloads the installer script and <code>iex</code> runs it. Wait for <em>"Claude Code successfully installed!"</em>. Native installs update themselves automatically in the background.</li>
+        <li><strong>Open a NEW terminal window and verify</strong>
+          <pre class="cb" data-label="PowerShell"><code>claude --version
+claude doctor</code></pre>
+          You should see a version such as <code>2.1.2xx (Claude Code)</code>. <code>claude doctor</code> prints read-only diagnostics (install health, settings errors, warnings with suggested fixes) without starting a session.</li>
+        <li><strong>Start Claude Code and sign in</strong>
+          <pre class="cb" data-label="PowerShell"><code>cd $HOME
+claude</code></pre>
+          A browser window opens for sign-in. See <a href="#signin">Sign in</a> below.</li>
+      </ol>
+
+      <details class="acc"><summary>Alternative: install from CMD (Command Prompt)</summary><div class="acc-body">
+        <pre class="cb" data-label="CMD"><code>curl -fsSL https://claude.ai/install.cmd -o install.cmd &amp;&amp; install.cmd &amp;&amp; del install.cmd</code></pre>
+        <p>If you see <code>The token '&amp;&amp;' is not a valid statement separator</code>, you're actually in PowerShell — use the PowerShell command instead.</p>
+      </div></details>
+      <details class="acc"><summary>Alternative: install with WinGet</summary><div class="acc-body">
+        <pre class="cb" data-label="PowerShell"><code>winget install Anthropic.ClaudeCode</code></pre>
+        <p>WinGet installs don't auto-update. Run <code>winget upgrade Anthropic.ClaudeCode</code> periodically (close Claude Code first — Windows locks the running executable).</p>
+      </div></details>
+      <details class="acc"><summary>Alternative: run inside WSL (Windows Subsystem for Linux)</summary><div class="acc-body">
+        <p>Open your WSL distribution (e.g. Ubuntu) and run the Linux installer there; launch <code>claude</code> inside WSL, not from PowerShell. Choose WSL 2 if you work with Linux toolchains or want Claude's <strong>sandbox</strong> (OS-level isolation), which isn't available on native Windows. WSL setups don't need Git for Windows.</p>
+        <pre class="cb" data-label="WSL (bash)"><code>curl -fsSL https://claude.ai/install.sh | bash</code></pre>
+      </div></details>
+      <details class="acc"><summary>Fix: <code>'claude' is not recognized</code> after installing</summary><div class="acc-body">
+        <p>First, close and reopen your terminal — PATH changes only apply to new windows. If it still fails, add the install folder (<code>%USERPROFILE%\.local\bin</code>) to your user PATH:</p>
+        <pre class="cb" data-label="PowerShell"><code>$currentPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
+[Environment]::SetEnvironmentVariable('PATH', "$currentPath;$env:USERPROFILE\.local\bin", 'User')</code></pre>
+        <p>Close PowerShell, open a new window and run <code>claude --version</code> again.</p>
+      </div></details>
+
+      <h4>Windows error decoder</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>You see</th><th>What it means → fix</th></tr></thead>
+          <tbody>
+            <tr><td class="wrap"><code>'irm' is not recognized</code></td><td>You're in CMD. Open PowerShell, or use the CMD installer.</td></tr>
+            <tr><td class="wrap"><code>The token '&amp;&amp;' is not a valid statement separator</code></td><td>You're in PowerShell running the CMD command. Use <code>irm https://claude.ai/install.ps1 | iex</code>.</td></tr>
+            <tr><td class="wrap"><code>A parameter cannot be found that matches parameter name 'fsSL'</code></td><td>You pasted the macOS/Linux command into PowerShell. Use the PowerShell command.</td></tr>
+            <tr><td class="wrap"><code>Could not create SSL/TLS secure channel</code></td><td>Older Windows 10. Run <code>[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12</code> then the installer again.</td></tr>
+            <tr><td class="wrap"><code>unable to get local issuer certificate</code></td><td>Corporate proxy inspecting TLS. Ask IT for the proxy CA certificate; see <a href="#ref-trouble">Troubleshooting</a>.</td></tr>
+            <tr><td class="wrap"><code>Claude Code does not support 32-bit Windows</code></td><td>You opened "Windows PowerShell (x86)". Use the entry without "(x86)".</td></tr>
+            <tr><td class="wrap"><code>running scripts is disabled on this system</code></td><td>Only affects npm installs. Use the native installer, or run <code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code>.</td></tr>
+            <tr><td class="wrap">Typing <code>claude</code> opens the Desktop app</td><td>An old Claude Desktop registered a conflicting <code>Claude.exe</code>. Update Claude Desktop.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- MACOS -->
+    <div class="tab-panel" role="tabpanel" data-panel="mac" data-print-label="macOS" hidden>
+      <ol class="steps">
+        <li><strong>Open Terminal</strong>
+          Press <kbd>Cmd</kbd>+<kbd>Space</kbd>, type <em>Terminal</em>, press <kbd>Enter</kbd>. Requires macOS 13 (Ventura) or later.</li>
+        <li><strong>Run the native installer</strong> (recommended — auto-updates in the background)
+          <pre class="cb" data-label="Terminal (zsh)"><code>curl -fsSL https://claude.ai/install.sh | bash</code></pre>
+          Wait for <em>"Claude Code successfully installed!"</em>. The installer prints any PATH fix you need under <em>Setup notes</em>.</li>
+        <li><strong>Open a NEW Terminal window and verify</strong>
+          <pre class="cb" data-label="Terminal"><code>claude --version
+claude doctor</code></pre>
+          A working install prints something like <code>2.1.2xx (Claude Code)</code>.</li>
+        <li><strong>Start Claude Code and sign in</strong>
+          <pre class="cb" data-label="Terminal"><code>cd ~
+claude</code></pre>
+          Your browser opens to complete sign-in.</li>
+      </ol>
+      <details class="acc"><summary>Alternative: install with Homebrew</summary><div class="acc-body">
+        <pre class="cb" data-label="Terminal"><code>brew install --cask claude-code</code></pre>
+        <p><code>claude-code</code> tracks the <strong>stable</strong> channel (about a week behind, skips releases with major regressions); <code>claude-code@latest</code> gets new versions immediately. Homebrew installs don't auto-update — run <code>brew upgrade claude-code</code> regularly.</p>
+      </div></details>
+      <details class="acc"><summary>Fix: <code>command not found: claude</code></summary><div class="acc-body">
+        <p>Open a new Terminal first. If it persists, add <code>~/.local/bin</code> to your PATH (zsh is the macOS default shell):</p>
+        <pre class="cb" data-label="Terminal (zsh)"><code>echo 'export PATH="$HOME/.local/bin:$PATH"' &gt;&gt; ~/.zshrc
+source ~/.zshrc</code></pre>
+        <p>Then check that <code>~/.local/bin/claude</code> exists; if it doesn't, the install didn't finish — run the installer again.</p>
+      </div></details>
+      <h4>macOS error decoder</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>You see</th><th>What it means → fix</th></tr></thead>
+          <tbody>
+            <tr><td class="wrap"><code>syntax error near unexpected token '&lt;'</code> or HTML in the terminal</td><td>The URL returned a web page. Retry; if it says "App unavailable in region", Claude Code isn't available in your country. Otherwise try Homebrew.</td></tr>
+            <tr><td class="wrap"><code>dyld: cannot load</code> / <code>built for Mac OS X 13.0</code></td><td>Your macOS is older than 13. Update via Software Update.</td></tr>
+            <tr><td class="wrap"><code>curl: (22) … error: 403</code></td><td>Usually a proxy/network filter blocking the host. Check with IT, or try another network.</td></tr>
+            <tr><td class="wrap"><code>unable to get local issuer certificate</code></td><td>TLS-inspecting corporate proxy. See <a href="#ref-trouble">Troubleshooting</a> (<code>NODE_EXTRA_CA_CERTS</code>).</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout tip">
+        <div class="callout-title">Make the Option key work in Terminal</div>
+        <p class="mb0">Shortcuts like <kbd>Option</kbd>+<kbd>P</kbd> (switch model) need "Option as Meta" enabled in your terminal's settings. In Apple Terminal, run <code>/terminal-setup</code> inside Claude Code to enable <kbd>Option</kbd>+<kbd>Enter</kbd> for new lines. iTerm2, Ghostty, Warp and Kitty support <kbd>Shift</kbd>+<kbd>Enter</kbd> out of the box.</p>
+      </div>
+    </div>
+
+    <!-- VS CODE -->
+    <div class="tab-panel" role="tabpanel" data-panel="vscode" data-print-label="VS Code extension" hidden>
+      <p>The <strong>Claude Code extension for VS Code</strong> gives you a graphical panel with inline diffs, <code>@</code>-mentions of your selection, plan review, checkpoints and multiple conversations in tabs. It's the recommended way to use Claude Code inside VS Code, and also installs in Cursor and other VS Code forks.</p>
+      <ol class="steps">
+        <li><strong>Check prerequisites</strong>
+          VS Code <strong>1.94 or later</strong> and a paid Claude account (no API key required).</li>
+        <li><strong>Install the extension</strong>
+          Open the Extensions view (<span class="k" data-mac="Cmd+Shift+X" data-win="Ctrl+Shift+X"></span>), search <em>Claude Code</em> (publisher: Anthropic) and click <strong>Install</strong>. Or from a terminal:
+          <pre class="cb" data-label="Terminal"><code>code --install-extension anthropic.claude-code</code></pre>
+          If it doesn't appear, run <em>Developer: Reload Window</em> from the Command Palette.</li>
+        <li><strong>Open the Claude panel</strong>
+          Look for the <strong>Spark ✻ icon</strong>:
+          <ul>
+            <li><strong>Editor toolbar</strong> (top-right of the editor) — only visible when a file is open.</li>
+            <li><strong>Activity Bar</strong> (left) — opens your list of sessions.</li>
+            <li><strong>Status Bar</strong> — click <em>✻ Claude Code</em> bottom-right (works with no file open).</li>
+            <li><strong>Command Palette</strong> (<span class="k" data-mac="Cmd+Shift+P" data-win="Ctrl+Shift+P"></span>) → <em>Claude Code: Open in New Tab</em>.</li>
+          </ul></li>
+        <li><strong>Sign in</strong>
+          Click <strong>Sign in</strong> and finish in the browser. A <em>Learn Claude Code</em> checklist appears — click <em>Show me</em> on each item, or run <em>Claude Code: Open Walkthrough</em>.</li>
+        <li><strong>Also install the CLI</strong> (strongly recommended)
+          The extension bundles a private copy of Claude Code for its panel but does <strong>not</strong> put <code>claude</code> on your PATH. Install the CLI (Windows/macOS tabs) so you can run <code>claude</code>, <code>claude mcp add</code> and <code>claude --resume</code> in VS Code's integrated terminal (<span class="k" data-mac="Ctrl+`" data-win="Ctrl+`"></span>). The CLI and extension share settings and conversation history.</li>
+      </ol>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>VS Code action</th><th>Shortcut</th></tr></thead>
+          <tbody>
+            <tr><td>Toggle focus between editor and Claude</td><td><span class="k" data-mac="Cmd+Esc" data-win="Ctrl+Esc"></span></td></tr>
+            <tr><td>Open a new conversation tab</td><td><span class="k" data-mac="Cmd+Shift+Esc" data-win="Ctrl+Shift+Esc"></span></td></tr>
+            <tr><td>Insert an @-mention of your selection (e.g. <code>@app.py#5-10</code>)</td><td><span class="k" data-mac="Option+K" data-win="Alt+K"></span></td></tr>
+            <tr><td>New line in the prompt box</td><td><kbd>Shift</kbd>+<kbd>Enter</kbd></td></tr>
+            <tr><td>Toggle Focus view (hide tool noise)</td><td><span class="k" data-mac="Ctrl+Option+F" data-win="Ctrl+Alt+F"></span></td></tr>
+            <tr><td>Reopen the last closed Claude tab</td><td><span class="k" data-mac="Cmd+Shift+T" data-win="Ctrl+Shift+T"></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <details class="acc"><summary>Fix: I can't see the Spark icon</summary><div class="acc-body">
+        <ol>
+          <li>Open a file — the editor-toolbar icon needs one. Or use the Status Bar <em>✻ Claude Code</em> item.</li>
+          <li>Check VS Code is 1.94+ (<em>Help → About</em>).</li>
+          <li>Run <em>Developer: Reload Window</em>.</li>
+          <li>Temporarily disable other AI extensions that may conflict.</li>
+          <li>Trust the workspace — the extension doesn't run in Restricted Mode.</li>
+        </ol>
+        <p class="os-mac">On macOS Tahoe and later, <kbd>Cmd</kbd>+<kbd>Esc</kbd> may be captured by the system Game Overlay shortcut — clear it in System Settings → Keyboard → Keyboard Shortcuts → Game Controllers, or rebind <em>Claude Code: Focus input</em>.</p>
+      </div></details>
+    </div>
+
+    <!-- OTHER -->
+    <div class="tab-panel" role="tabpanel" data-panel="other" data-print-label="More options" hidden>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-kicker">No terminal needed</div>
+          <h4>Claude Desktop app → Code tab</h4>
+          <p>Download Claude for macOS or Windows from claude.com/download, sign in, and click the <strong>Code</strong> tab. It includes Claude Code — no CLI or Node.js required. Choose <em>Local</em> and select a folder; it also offers Cloud, SSH and WSL environments, visual diff review and parallel sessions.</p>
+        </div>
+        <div class="card">
+          <div class="card-kicker">Nothing to install</div>
+          <h4>Claude Code on the web</h4>
+          <p>Go to <strong>claude.ai/code</strong>. Sessions run on Anthropic-managed cloud machines against your GitHub repositories, keep going when you close the tab, and can run in parallel. Also available in the Claude mobile app.</p>
+        </div>
+        <div class="card">
+          <div class="card-kicker">IntelliJ, PyCharm, WebStorm…</div>
+          <h4>JetBrains plugin</h4>
+          <p>Install the <em>Claude Code</em> plugin from the JetBrains Marketplace and restart the IDE. It requires the CLI, installed separately.</p>
+        </div>
+        <div class="card">
+          <div class="card-kicker">Linux</div>
+          <h4>Native installer or package managers</h4>
+          <p>Use <code>curl -fsSL https://claude.ai/install.sh | bash</code>, or the signed <code>apt</code>, <code>dnf</code> and <code>apk</code> repositories (manual updates). npm (<code>npm install -g @anthropic-ai/claude-code</code>) also works but needs Node.js 22+ — never use <code>sudo npm install -g</code>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="signin">Sign in</h3>
+  <p>Run <code>claude</code> and follow the browser prompts. Credentials are stored securely (macOS Keychain; protected files on Windows/Linux) so you only sign in once.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Account type</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Claude Pro, Max, Team or Enterprise</strong></td><td>Recommended. Usage counts against your plan limits — check with <code>/usage</code>.</td></tr>
+        <tr><td><strong>Claude Console</strong> (API, pre-paid credits)</td><td>Billed per token. A "Claude Code" workspace is created in the Console for cost tracking.</td></tr>
+        <tr><td><strong>Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry</strong></td><td>Enterprise cloud providers, configured by your admin.</td></tr>
+        <tr><td><strong>Claude apps gateway</strong></td><td>If your organisation runs one, <code>/login</code> opens on the Cloud gateway screen for corporate SSO.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Useful later: <code>/login</code> to switch accounts, <code>/logout</code> to sign out, <code>/status</code> to see version, model and account, and <code>claude auth status</code> from your shell.</p>
+
+  <h3>Keeping it up to date</h3>
+  <ul class="gt-list">
+    <li><strong>Native installs</strong> update automatically in the background; the new version applies next time you start Claude Code. Force it with <code>claude update</code>.</li>
+    <li>Prefer fewer surprises? Switch the release channel to <strong>stable</strong> (about a week behind) via <code>/config</code> → <em>Auto-update channel</em>.</li>
+    <li><strong>Homebrew / WinGet</strong> don't auto-update: <code>brew upgrade claude-code</code> · <code>winget upgrade Anthropic.ClaudeCode</code>.</li>
+    <li>See what changed with <code>/release-notes</code>.</li>
+  </ul>
+
+  <div class="checklist-head"><h4>Installation checkpoint</h4><span class="cl-count" data-count-for="install"></span></div>
+  <ul class="checklist" data-checklist="install">
+    <li><label><input type="checkbox" data-id="installed"><span><strong>Installer finished without errors</strong></span></label></li>
+    <li><label><input type="checkbox" data-id="version"><span><strong><code>claude --version</code> prints a version</strong><span class="cl-detail">In a new terminal window.</span></span></label></li>
+    <li><label><input type="checkbox" data-id="doctor"><span><strong><code>claude doctor</code> shows no blocking errors</strong></span></label></li>
+    <li><label><input type="checkbox" data-id="login"><span><strong>Signed in</strong><span class="cl-detail">Run <code>claude</code>, complete the browser sign-in, see the welcome screen.</span></span></label></li>
+    <li><label><input type="checkbox" data-id="ext"><span><strong>VS Code extension installed and signed in</strong> <span class="pill-note">optional</span></span></label></li>
+  </ul>
+
+  <div class="facilitator">
+    <p><strong>Most common live blockers:</strong> (1) wrong shell — CMD vs PowerShell; (2) not opening a <em>new</em> terminal after install (PATH); (3) TLS-inspecting corporate proxy — needs the CA certificate from IT; (4) account without Claude Code access (free plan, or Team/Enterprise seat without the right role).</p>
+    <p><strong>Fallbacks:</strong> Desktop app Code tab, claude.ai/code, or the in-page practice terminal. Don't let one blocked install stall the room.</p>
+  </div>
+</section>
+
+<section class="section" id="m13" data-title="1.3 First launch &amp; the interface" data-day="1">
+  <div class="eyebrow">Module 1.3 · 10 min</div>
+  <h2><span class="gt">&gt;</span>First launch &amp; the interface</h2>
+  <ol class="steps">
+    <li><strong>Go to a project folder first</strong>
+      Claude works in the folder you start it from — its <em>working directory</em>. It can read and edit files there and below; anything outside needs your permission.
+      <div class="os-win"><pre class="cb" data-label="PowerShell"><code>cd $HOME\claude-lab
+claude</code></pre></div>
+      <div class="os-mac"><pre class="cb" data-label="Terminal"><code>cd ~/claude-lab
+claude</code></pre></div></li>
+    <li><strong>Trust the folder</strong>
+      The first time you open a folder, Claude Code asks whether you trust it. Only trust folders you know — a project's settings can pre-approve tools and run hooks. (Starting in your home folder re-asks every launch; prefer a project subfolder.)</li>
+    <li><strong>Read the welcome screen</strong>
+      You'll see the version, current model and working directory above the prompt box. Type <code>/help</code> for commands or <code>/resume</code> to continue an earlier conversation.</li>
+  </ol>
+
+  <h3>Anatomy of a session</h3>
+  <div class="mock-term" aria-label="Illustration of the Claude Code terminal interface">
+<div class="mt-box"><span class="mt-acc">✻</span> Claude Code v2.1.2xx<span class="pin">1</span>
+<span class="mt-dim">opus · medium effort · ~/claude-lab</span></div>
+<span class="mt-dim">&gt; what's in this folder?</span>
+<span class="mt-acc">●</span> I'll look at the files first.
+  <span class="mt-dim">⎿ Read(meeting-notes.md) · Read(sales_q3.csv)</span><span class="pin">2</span>
+<span class="mt-acc">●</span> This folder holds the Day 1 lab kit: …
+<div class="mt-prompt">&gt; <span class="mt-dim">Type your next request…</span><span class="pin">3</span></div><span class="mt-acc">⏵⏵ auto mode on</span> <span class="mt-dim">(shift+tab to cycle)</span><span class="pin">4</span>   <span class="mt-dim">? for shortcuts · / for commands</span><span class="pin">5</span>
+  </div>
+  <ul class="legend">
+    <li><span class="pin">1</span><span><strong>Header:</strong> version, model, effort level and working directory.</span></li>
+    <li><span class="pin">2</span><span><strong>Tool calls:</strong> every file read, edit, command and search appears in the transcript. Press <kbd>Ctrl</kbd>+<kbd>O</kbd> for the detailed transcript view.</span></li>
+    <li><span class="pin">3</span><span><strong>Prompt box:</strong> type in plain English and press <kbd>Enter</kbd>. You can type while Claude works — your message is queued.</span></li>
+    <li><span class="pin">4</span><span><strong>Permission mode indicator:</strong> shows what Claude may do without asking. <kbd>Shift</kbd>+<kbd>Tab</kbd> cycles modes (Day 2 goes deep).</span></li>
+    <li><span class="pin">5</span><span><strong>Help is one key away:</strong> <kbd>?</kbd> on an empty prompt shows shortcuts; <kbd>/</kbd> opens the command menu.</span></li>
+  </ul>
+  <p class="muted"><small>Illustration only — exact wording and layout change between versions.</small></p>
+
+  <h3>Permission prompts — your safety valve</h3>
+  <p>When Claude wants to do something that isn't pre-approved, it stops and asks. A typical prompt shows the exact command or file diff and offers options such as:</p>
+  <ul class="gt-list">
+    <li><strong>Yes</strong> — allow this one action.</li>
+    <li><strong>Yes, and don't ask again</strong> — for that command or web domain in this project (saved to <code>.claude/settings.local.json</code>). File edits approved this way last until the session ends.</li>
+    <li><strong>No</strong> (or <kbd>Esc</kbd>) — decline. Press <kbd>Tab</kbd> on Yes/No first to attach a comment telling Claude what to do instead.</li>
+  </ul>
+
+  <div class="callout warn">
+    <div class="callout-title">Heads-up: you may start in auto mode</div>
+    <p>From v2.1.283, new terminal and VS Code sessions start in <strong>auto mode</strong> by default (if your plan, model and organisation allow it): a separate safety classifier reviews actions instead of prompting you, so you'll see far fewer prompts and risky actions get blocked.</p>
+    <p class="mb0"><strong>For today's labs, switch to Manual mode</strong> so you can watch and approve each step: press <kbd>Shift</kbd>+<kbd>Tab</kbd> until the status line shows <code>⏸ manual mode on</code>.</p>
+  </div>
+
+  <h3>Leaving and coming back</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>To…</th><th>Do this</th></tr></thead>
+      <tbody>
+        <tr><td>Exit Claude Code</td><td><code>/exit</code>, or <kbd>Ctrl</kbd>+<kbd>D</kbd> twice, or <kbd>Ctrl</kbd>+<kbd>C</kbd> twice on an empty prompt</td></tr>
+        <tr><td>Continue your most recent conversation in this folder</td><td><code>claude -c</code> (or <code>claude --continue</code>)</td></tr>
+        <tr><td>Pick an older conversation</td><td><code>claude -r</code> in your shell, or <code>/resume</code> inside a session</td></tr>
+        <tr><td>Start with a task straight away</td><td><code>claude "explain this project"</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="facilitator">
+    <p><strong>Demo (4 min):</strong> on the projector, <code>cd</code> into <code>claude-lab</code>, start <code>claude</code>, accept the trust prompt and ask "what's in this folder?". Walk through the five numbered parts of the annotated screen on your real screen, then press <kbd>Ctrl</kbd>+<kbd>O</kbd> once to show the detailed transcript.</p>
+    <p><strong>Do it together:</strong> everyone switches to Manual mode now (<kbd>Shift</kbd>+<kbd>Tab</kbd> until <code>⏸ manual mode on</code>). Anyone who never sees auto mode in the cycle is fine: their plan, model or organisation doesn't offer it, so they already start in Manual.</p>
+    <p><strong>Watch for:</strong> people launching from their home folder, or from <code>C:\Windows\System32</code> because they opened PowerShell as administrator. Have them exit, <code>cd</code> into the lab folder and relaunch in a normal (non-admin) terminal.</p>
+  </div>
+</section>
+
+<section class="section" id="m14" data-title="1.4 Talking to Claude Code" data-day="1">
+  <div class="eyebrow">Module 1.4 · 10 min</div>
+  <h2><span class="gt">&gt;</span>Talking to Claude Code</h2>
+  <p class="lead">You don't need special syntax — talk to it like a capable colleague. A handful of keys and symbols make you much faster.</p>
+
+  <div class="table-wrap">
+    <table class="kbd-table">
+      <thead><tr><th>Type / press</th><th>What it does</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><kbd>/</kbd> at the start</td><td>Opens the command &amp; skill menu (type to filter, <kbd>Tab</kbd> to complete)</td><td><code>/help</code></td></tr>
+        <tr><td><kbd>@</kbd></td><td>Mention a file or folder — Claude reads it before answering</td><td class="wrap"><code>explain @src/app.py</code> · <code>what's in @docs/</code></td></tr>
+        <tr><td><kbd>!</kbd> at the start</td><td>Shell mode: run a command yourself; output joins the conversation and Claude responds</td><td><code>! git status</code></td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Stop Claude right now (work so far is kept)</td><td>—</td></tr>
+        <tr><td><kbd>Esc</kbd> <kbd>Esc</kbd></td><td>Empty prompt: open the <strong>rewind</strong> menu · with text: clear your draft</td><td>—</td></tr>
+        <tr><td><kbd>Enter</kbd> while Claude works</td><td>Queue a message — Claude reads it as soon as its current tool calls finish</td><td><code>also update the README</code></td></tr>
+        <tr><td><kbd>\</kbd> + <kbd>Enter</kbd></td><td>New line (works everywhere; <kbd>Shift</kbd>+<kbd>Enter</kbd> or <kbd>Ctrl</kbd>+<kbd>J</kbd> in most terminals)</td><td>—</td></tr>
+        <tr><td><kbd>↑</kbd> / <kbd>Ctrl</kbd>+<kbd>R</kbd></td><td>Previous prompts / search your prompt history</td><td>—</td></tr>
+        <tr><td><span class="k" data-mac="Ctrl+V" data-win="Alt+V"></span></td><td>Paste an image (screenshot, mock-up, error dialog) — or drag-and-drop, or give a file path</td><td><code>what's wrong in this screenshot?</code></td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>G</kbd></td><td>Write a long prompt in your text editor</td><td>—</td></tr>
+        <tr><td><kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Cycle permission modes</td><td>—</td></tr>
+        <tr><td><code>/btw</code></td><td>Side question that doesn't clutter the conversation</td><td><code>/btw which file was that again?</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>The 5-part prompt formula</h3>
+  <p>Short prompts work, but the more precise you are, the fewer corrections you need. The best prompts usually contain:</p>
+  <div class="grid-3">
+    <div class="card"><div class="card-kicker">1 · Goal</div>What outcome you want, in one sentence.</div>
+    <div class="card"><div class="card-kicker">2 · Context</div>Where to look: <code>@files</code>, folders, examples to follow.</div>
+    <div class="card"><div class="card-kicker">3 · Constraints</div>What not to touch; style; tools or libraries to use or avoid.</div>
+    <div class="card"><div class="card-kicker">4 · Verification</div>How Claude proves it worked: tests, totals, a screenshot.</div>
+    <div class="card"><div class="card-kicker">5 · Output</div>Where results go and in what format.</div>
+    <div class="card" style="background:var(--bg-tint)"><div class="card-kicker">Bonus</div>"Ask me questions first if anything is unclear."</div>
+  </div>
+  <div class="builder" data-builder="prompt"></div>
+
+  <h3>Before → after</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th style="width:40%">Vague</th><th>Specific</th></tr></thead>
+      <tbody>
+        <tr><td class="wrap"><code>add tests for foo.py</code></td><td class="wrap"><code>write a test for foo.py covering the edge case where the user is logged out. avoid mocks.</code></td></tr>
+        <tr><td class="wrap"><code>fix the login bug</code></td><td class="wrap"><code>users report that login fails after session timeout. check the auth flow in src/auth/, especially token refresh. write a failing test that reproduces the issue, then fix it</code></td></tr>
+        <tr><td class="wrap"><code>make the dashboard look better</code></td><td class="wrap"><code>[paste screenshot] implement this design. take a screenshot of the result and compare it to the original. list differences and fix them</code></td></tr>
+        <tr><td class="wrap"><code>the build is failing</code></td><td class="wrap"><code>the build fails with this error: [paste error]. fix it and verify the build succeeds. address the root cause, don't suppress the error</code></td></tr>
+        <tr><td class="wrap"><code>summarise the data</code></td><td class="wrap"><code>read @sales_q3.csv and write analysis.md with revenue by region and month, the top 5 products, and any data-quality problems. recompute the grand total two ways and confirm they match</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Five mini examples to try</h3>
+  <div class="grid-2">
+    <div><h4 class="mt0">Explore</h4><pre class="cb" data-label="Type in Claude Code" data-prompt><code>what does this project do? give me a one-paragraph overview and the key files</code></pre></div>
+    <div><h4 class="mt0">Find</h4><pre class="cb" data-label="Type in Claude Code" data-prompt><code>where do we calculate the average? show me the file and line</code></pre></div>
+    <div><h4 class="mt0">Change</h4><pre class="cb" data-label="Type in Claude Code" data-prompt><code>add input validation so divide() raises a clear error when dividing by zero</code></pre></div>
+    <div><h4 class="mt0">Verify</h4><pre class="cb" data-label="Type in Claude Code" data-prompt><code>run the tests, explain any failures in plain English, then fix them and re-run</code></pre></div>
+  </div>
+  <pre class="cb" data-label="Type in Claude Code" data-prompt><code>commit my changes with a descriptive message</code></pre>
+
+  <h3 id="sim">Practice terminal <span class="pill-note">simulation</span></h3>
+  <p>Try the basics safely before (or instead of) the real thing. This is a <strong>scripted simulation</strong> for practice — it isn't connected to Claude and won't touch your computer. Type a command such as <code>/help</code>, press <kbd>Shift</kbd>+<kbd>Tab</kbd> in the input to cycle modes, or click a suggestion.</p>
+  <div class="term" data-sim="1"></div>
+  <div class="facilitator">
+    <p><strong>Live rewrite (4 min):</strong> put the vague "summarise the data" prompt on screen and ask the room which of the five parts are missing. Build the specific version together, run both, and compare the outputs side by side.</p>
+    <p><strong>Watch for:</strong> people pressing <kbd>Enter</kbd> for a new line and sending half a prompt (show <kbd>\</kbd> + <kbd>Enter</kbd> again), and people pasting whole files into the prompt: steer them to <code>@file</code> instead.</p>
+    <p><strong>No working install yet?</strong> Those attendees do the mini examples in the practice terminal on this page, then pair with a neighbour for Lab 1.</p>
+  </div>
+</section>
+
+<section class="section" id="lab1" data-title="Lab 1: Hello, Claude Code" data-day="1">
+  <div class="lab">
+    <span class="lab-badge">Lab 1 · 22 min</span>
+    <h3>Hello, Claude Code</h3>
+    <p><strong>Goal:</strong> experience the agentic loop end to end — explore, create, edit, rewind — while approving each action yourself.</p>
+
+    <h4>Get the lab kit</h4>
+    <div class="tabs" data-tabs="labkit">
+      <div class="tab-list" role="tablist" aria-label="Lab kit options">
+        <button class="tab-btn" role="tab" data-tab="dl">Option A · Download the kit</button>
+        <button class="tab-btn" role="tab" data-tab="gen">Option B · Ask Claude to build it</button>
+      </div>
+      <div class="tab-panel" role="tabpanel" data-panel="dl" data-print-label="Option A · Download the kit">
+        <p><button class="btn btn-dark btn-sm" type="button" data-action="download-labkit">⬇ Download claude-lab.zip</button> <span class="muted"><small>Synthetic files only: sales data, meeting notes, a small Python calculator with tests, a messy "inbox" folder and a dummy <code>.env</code>.</small></span></p>
+        <div class="os-win"><pre class="cb" data-label="PowerShell"><code>Expand-Archive "$HOME\Downloads\claude-lab.zip" -DestinationPath "$HOME"
+cd "$HOME\claude-lab"
+claude</code></pre></div>
+        <div class="os-mac"><pre class="cb" data-label="Terminal"><code>cd ~ &amp;&amp; unzip -o ~/Downloads/claude-lab.zip
+cd ~/claude-lab
+claude</code></pre>
+        <p class="muted"><small>If Safari already unzipped the download, move the <code>claude-lab</code> folder into your home folder instead.</small></p></div>
+      </div>
+      <div class="tab-panel" role="tabpanel" data-panel="gen" data-print-label="Option B · Ask Claude to build it" hidden>
+        <p>Create an empty folder called <code>claude-lab</code>, open it in your terminal, run <code>claude</code>, and paste this prompt — your first real delegation:</p>
+        <pre class="cb" data-label="Type in Claude Code" data-prompt><code>Create a training lab in this folder with these files:
+1. sales_q3.csv - 40 rows of realistic sales data with columns date (Jul-Sep 2026), region (NSW, VIC, QLD, WA, ACT), product (5 products), channel (Online/Retail), units, unit_price, revenue. Include one obvious data error.
+2. meeting-notes.md - messy notes from a project steering meeting with 6 action items buried in the text, with owners and due dates.
+3. calculator.py with add, subtract, multiply, divide, average and percent_change functions, plus test_calculator.py using the standard unittest module. Put two subtle bugs in calculator.py but don't tell me where.
+4. .env containing FAKE_API_KEY=not-a-real-key
+Then list what you created.</code></pre>
+      </div>
+    </div>
+
+    <div class="checklist-head"><h4>Steps</h4><span class="cl-count" data-count-for="lab1"></span></div>
+    <ul class="checklist" data-checklist="lab1">
+      <li><label><input type="checkbox" data-id="s1"><span><strong>Start in the lab folder and trust it</strong><span class="cl-detail">Run <code>claude</code> inside <code>claude-lab</code> and accept the trust prompt.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="s2"><span><strong>Switch to Manual mode</strong><span class="cl-detail">Press <kbd>Shift</kbd>+<kbd>Tab</kbd> until you see <code>⏸ manual mode on</code>.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="s3"><span><strong>Explore</strong><span class="cl-detail">Ask: <code>what's in this folder? give me a one-line summary of each file</code>. Notice reading files doesn't need approval.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="s4"><span><strong>Find something</strong><span class="cl-detail">Ask: <code>which file has action items, and who owns the most of them?</code></span></span></label></li>
+      <li><label><input type="checkbox" data-id="s5"><span><strong>Create a file</strong><span class="cl-detail">Ask: <code>create hello.html, a simple page that says "Hello from &lt;your name&gt;" with a purple #A100FF heading, then tell me how to open it</code>. Read the proposed file, approve it, then open it in your browser.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="s6"><span><strong>Edit it</strong><span class="cl-detail">Ask: <code>add a subtitle with today's date and a list of three things I want to learn this week</code>. Review the diff before approving.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="s7"><span><strong>Rewind it</strong><span class="cl-detail">On an empty prompt press <kbd>Esc</kbd> <kbd>Esc</kbd> (or type <code>/rewind</code>), pick the prompt from step 6, choose <em>Restore code</em>. Refresh the browser — the subtitle is gone.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="s8"><span><strong>Shell mode</strong><span class="cl-detail">Type <span class="os-win"><code>! dir</code></span><span class="os-mac"><code>! ls -la</code></span> — the command runs directly and Claude comments on the output.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="s9"><span><strong>@-mention a file</strong><span class="cl-detail">Ask: <code>@meeting-notes.md turn the action items into a table with owner and due date</code>.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="s10"><span><strong>Side question</strong><span class="cl-detail">Type: <code>/btw what files have we changed so far?</code> — the answer won't enter the conversation history.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="s11"><span><strong>Explore the menu</strong><span class="cl-detail">Run <code>/help</code>, then <code>/powerup</code> and try one interactive lesson.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="s12"><span><strong>Exit and resume</strong><span class="cl-detail"><code>/exit</code>, then <code>claude -c</code> — your conversation is back.</span></span></label></li>
+    </ul>
+    <div class="callout try">
+      <div class="callout-title">Stretch goals</div>
+      <ul class="mb0">
+        <li>Paste a screenshot (<span class="k" data-mac="Ctrl+V" data-win="Alt+V"></span>) and ask Claude to describe it.</li>
+        <li>Run <code>/context</code> to see what's using Claude's context window.</li>
+        <li>Switch to Accept-edits mode and ask for another change — notice there's no prompt for the edit.</li>
+      </ul>
+    </div>
+    <div class="facilitator">
+      <p><strong>Debrief (3 min):</strong> What surprised you? When did Claude ask permission and when didn't it? What did the rewind menu offer? Point out that rewind only restores edits made by Claude's file tools — not changes made by shell commands like <code>rm</code> or <code>mv</code>, and never anything sent to external systems.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="quiz1" data-title="Day 1 knowledge check" data-day="1">
+  <div class="eyebrow">Wrap-up · 8 min</div>
+  <h2>Day 1 knowledge check</h2>
+  <div class="quiz" data-quiz="day1"></div>
+  <div class="callout tip">
+    <div class="callout-title">Homework (15 minutes)</div>
+    <p class="mb0">Use Claude Code on one real, low-risk task from your week — tidy a folder, summarise a document set, or explain an unfamiliar project. Write down one thing that impressed you and one thing that went wrong. We'll share at the start of Day 2.</p>
+  </div>
+  <div class="facilitator">
+    <p><strong>Run it (8 min):</strong> five minutes solo, then go through the two most-missed questions together. Before people leave, ask each person to name the real task they'll use for the homework, so the Day 2 share-out starts with concrete examples.</p>
+  </div>
+</section>

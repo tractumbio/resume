@@ -14,6 +14,7 @@ exports/<sector>/   ready to submit. Everything here passed all checks.
 applications/        one folder per job applied to: ad, resume copy, cover letter
 archive/            superseded renders, kept for diffing. Do not send these.
 assets/             vendored typefaces, embedded into every export
+training/           a standalone Claude Code course. Not resume content; the pipeline ignores it.
 CLAUDE.md           the standards
 BUILDER_INSTRUCTIONS.md   how to build one, step by step
 ```

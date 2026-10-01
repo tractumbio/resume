@@ -1,0 +1,271 @@
+
+<!-- ===================================================== REFERENCE ===================================================== -->
+<section class="section" id="ref-commands" data-title="Slash command explorer">
+  <div class="eyebrow">Reference</div>
+  <h2>Slash command explorer</h2>
+  <p>Every built-in command and bundled skill, in plain English. Search by name or purpose, filter by job, or show only the beginner essentials. Not every command appears for every user — availability depends on your plan, platform and provider.</p>
+  <div data-explorer></div>
+</section>
+
+<section class="section" id="ref-keys" data-title="Keyboard shortcuts">
+  <div class="eyebrow">Reference</div>
+  <h2>Keyboard shortcuts</h2>
+  <p>Shown for the operating system selected in the top bar. <span class="os-mac">On macOS, <kbd>Option</kbd> shortcuts need "Option as Meta" enabled in your terminal (except <kbd>Option</kbd>+<kbd>T</kbd>).</span><span class="os-win">Some terminals intercept shortcuts — Windows Terminal supports all of the ones below.</span></p>
+  <div data-shortcuts></div>
+</section>
+
+<section class="section" id="ref-cli" data-title="CLI cheat sheet">
+  <div class="eyebrow">Reference</div>
+  <h2>CLI cheat sheet</h2>
+  <p>Commands you type in your <strong>shell</strong> (PowerShell, CMD, zsh, bash) — not inside a Claude session.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Command</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>claude</code></td><td>Start an interactive session in the current folder</td></tr>
+        <tr><td><code>claude "explain this project"</code></td><td>Start a session with a first prompt</td></tr>
+        <tr><td><code>claude -p "query"</code></td><td>Print mode: run once, print the answer, exit (scripts &amp; CI)</td></tr>
+        <tr><td><code>cat file | claude -p "query"</code></td><td>Pipe content in (PowerShell: <code>Get-Content file | claude -p "query"</code>)</td></tr>
+        <tr><td><code>claude -c</code></td><td>Continue the most recent conversation in this folder</td></tr>
+        <tr><td><code>claude -r</code> · <code>claude -r "name"</code></td><td>Session picker · resume a named session</td></tr>
+        <tr><td><code>claude -n "name"</code></td><td>Name the session you're starting</td></tr>
+        <tr><td><code>claude --version</code></td><td>Show the installed version</td></tr>
+        <tr><td><code>claude doctor</code></td><td>Read-only install and settings diagnostics</td></tr>
+        <tr><td><code>claude update</code></td><td>Update now</td></tr>
+        <tr><td><code>claude auth login</code> · <code>logout</code> · <code>status</code></td><td>Manage sign-in from the shell</td></tr>
+        <tr><td><code>claude mcp add | list | get | remove | login</code></td><td>Manage MCP connectors</td></tr>
+        <tr><td><code>claude plugin install &lt;name&gt;@&lt;marketplace&gt;</code></td><td>Install a plugin from the shell</td></tr>
+        <tr><td><code>claude agents</code></td><td>Monitor and dispatch background sessions</td></tr>
+        <tr><td><code>claude --cloud "task"</code> · <code>claude --teleport</code></td><td>Start a cloud session · pull a cloud session into this terminal</td></tr>
+        <tr><td><code>claude project purge</code></td><td>Delete local Claude Code data for a project</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>Most useful flags</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Flag</th><th>Purpose</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><code>--permission-mode</code></td><td>Start in a mode</td><td><code>claude --permission-mode plan</code></td></tr>
+        <tr><td><code>--model</code></td><td>Pick a model for this session</td><td><code>claude --model sonnet</code></td></tr>
+        <tr><td><code>--effort</code></td><td>Reasoning depth for this session</td><td><code>claude --effort high</code></td></tr>
+        <tr><td><code>--add-dir</code></td><td>Give access to extra folders</td><td><code>claude --add-dir ../shared</code></td></tr>
+        <tr><td><code>--allowedTools</code> / <code>--disallowedTools</code></td><td>Pre-approve / deny tools for this run</td><td><code>--allowedTools "Read,Edit"</code></td></tr>
+        <tr><td><code>--output-format</code></td><td><code>text</code>, <code>json</code> or <code>stream-json</code> (with <code>-p</code>)</td><td><code>-p "…" --output-format json</code></td></tr>
+        <tr><td><code>--max-turns</code> · <code>--max-budget-usd</code></td><td>Cap an unattended <code>-p</code> run</td><td><code>-p "…" --max-turns 5</code></td></tr>
+        <tr><td><code>--worktree</code>, <code>-w</code></td><td>Work in an isolated git worktree</td><td><code>claude -w feature-auth</code></td></tr>
+        <tr><td><code>--safe-mode</code></td><td>Start with all customisations off (troubleshooting)</td><td><code>claude --safe-mode</code></td></tr>
+        <tr><td><code>--verbose</code> · <code>--debug</code></td><td>Show full turn-by-turn output · debug logs</td><td><code>claude --debug</code></td></tr>
+        <tr><td><code>--dangerously-skip-permissions</code></td><td>Bypass mode — <strong>isolated containers/VMs only</strong></td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" id="ref-files" data-title="Where things live">
+  <div class="eyebrow">Reference</div>
+  <h2>Where things live</h2>
+  <p>Paths shown for <span class="os-win">Windows (<code>~</code> = <code>%USERPROFILE%</code>, e.g. <code>C:\Users\you</code>)</span><span class="os-mac">macOS (<code>~</code> = your home folder)</span>. "Project" means the folder you start Claude in.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>What</th><th>Personal (all projects)</th><th>Project (shared via git)</th></tr></thead>
+      <tbody>
+        <tr><td>Settings &amp; permissions</td><td><code>~/.claude/settings.json</code></td><td><code>.claude/settings.json</code> · personal override: <code>.claude/settings.local.json</code></td></tr>
+        <tr><td>Instructions</td><td><code>~/.claude/CLAUDE.md</code></td><td><code>CLAUDE.md</code> or <code>.claude/CLAUDE.md</code> · personal: <code>CLAUDE.local.md</code></td></tr>
+        <tr><td>Topic rules</td><td><code>~/.claude/rules/*.md</code></td><td><code>.claude/rules/*.md</code></td></tr>
+        <tr><td>Skills</td><td><code>~/.claude/skills/&lt;name&gt;/SKILL.md</code></td><td><code>.claude/skills/&lt;name&gt;/SKILL.md</code></td></tr>
+        <tr><td>Legacy custom commands</td><td><code>~/.claude/commands/*.md</code></td><td><code>.claude/commands/*.md</code></td></tr>
+        <tr><td>Subagents</td><td><code>~/.claude/agents/*.md</code></td><td><code>.claude/agents/*.md</code></td></tr>
+        <tr><td>MCP servers</td><td><code>~/.claude.json</code> (local &amp; user scope)</td><td><code>.mcp.json</code></td></tr>
+        <tr><td>Session transcripts</td><td><code>~/.claude/projects/</code> (30 days by default)</td><td>—</td></tr>
+        <tr><td>Auto memory</td><td><code>~/.claude/projects/&lt;project&gt;/memory/MEMORY.md</code></td><td>—</td></tr>
+        <tr><td>The Claude Code program (native install)</td><td><span class="os-win"><code>%USERPROFILE%\.local\bin\claude.exe</code></span><span class="os-mac"><code>~/.local/bin/claude</code></span></td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted"><small>Organisations can also deploy managed settings, a managed CLAUDE.md and managed MCP configuration that override personal and project files.</small></p>
+</section>
+
+<section class="section" id="ref-trouble" data-title="Troubleshooting">
+  <div class="eyebrow">Reference</div>
+  <h2>Troubleshooting</h2>
+  <p>Start with <code>claude doctor</code> (shell) or <code>/doctor</code> (in a session). Still stuck? Email your facilitator with a screenshot.</p>
+
+  <h3>Installation &amp; sign-in</h3>
+  <details class="acc"><summary><code>claude</code> isn't found / isn't recognised</summary><div class="acc-body">
+    <p>Open a <strong>new</strong> terminal first. Then add the install folder to PATH — Windows: <code>%USERPROFILE%\.local\bin</code> (see the command in <a href="#m12">Install</a>); macOS: <code>echo 'export PATH="$HOME/.local/bin:$PATH"' &gt;&gt; ~/.zshrc &amp;&amp; source ~/.zshrc</code>. If you only installed the VS Code extension, install the CLI too — the extension doesn't add <code>claude</code> to PATH.</p>
+  </div></details>
+  <details class="acc"><summary>Behind a corporate proxy or firewall</summary><div class="acc-body">
+    <p>Ask IT for the proxy address and set it before installing:</p>
+    <pre class="cb" data-label="PowerShell"><code>$env:HTTP_PROXY = 'http://proxy.example.com:8080'
+$env:HTTPS_PROXY = 'http://proxy.example.com:8080'
+irm https://claude.ai/install.ps1 | iex</code></pre>
+    <pre class="cb" data-label="macOS / Linux"><code>export HTTP_PROXY=http://proxy.example.com:8080
+export HTTPS_PROXY=http://proxy.example.com:8080
+curl -fsSL https://claude.ai/install.sh | bash</code></pre>
+    <p>Test connectivity with <code>curl -sI https://downloads.claude.ai/claude-code-releases/latest</code> (Windows: <code>curl.exe -sI …</code>) — a <code>200</code> means you can reach the download server; a <code>403</code> usually means a proxy or filter is blocking it. Domains to allow-list: <code>api.anthropic.com</code>, <code>claude.ai</code>, <code>claude.com</code>, <code>platform.claude.com</code>, <code>downloads.claude.ai</code> and (for claude.ai connectors) <code>mcp-proxy.anthropic.com</code>.</p>
+  </div></details>
+  <details class="acc"><summary>TLS errors: <code>unable to get local issuer certificate</code>, <code>SELF_SIGNED_CERT_IN_CHAIN</code></summary><div class="acc-body">
+    <p>Your network inspects TLS traffic. Get the corporate CA certificate (a <code>.pem</code> file) from IT. For the install on macOS/Linux: <code>curl --cacert /path/to/corporate-ca.pem -fsSL https://claude.ai/install.sh | bash</code>. On Windows, IT adds the CA to the Windows certificate store. Then point Claude Code at it:</p>
+    <pre class="cb" data-label="PowerShell"><code>$env:NODE_EXTRA_CA_CERTS = 'C:\path\to\corporate-ca.pem'</code></pre>
+    <pre class="cb" data-label="macOS / Linux"><code>export NODE_EXTRA_CA_CERTS=/path/to/corporate-ca.pem</code></pre>
+  </div></details>
+  <details class="acc"><summary>"Claude Code access has not been granted" / 403 after login</summary><div class="acc-body">
+    <p>Your account doesn't include Claude Code — e.g. the free plan, or a Team/Enterprise seat without a role that includes Claude Code. Ask your admin, or sign in with another account via <code>/login</code>. Run <code>/status</code> to see which account and method are active.</p>
+  </div></details>
+  <details class="acc"><summary>Login fails in WSL, over SSH or in a container</summary><div class="acc-body">
+    <p>The browser can't reach the local callback. Copy the URL Claude Code prints into a browser on your machine and complete sign-in there; if it asks for a code, paste it back into the terminal.</p>
+  </div></details>
+  <details class="acc"><summary>Windows: "requires either Git for Windows (for bash) or PowerShell"</summary><div class="acc-body">
+    <p>Neither shell was found. Make sure <code>powershell.exe</code> is on PATH (or install PowerShell 7), or install Git for Windows. If Git is installed but not detected, set <code>CLAUDE_CODE_GIT_BASH_PATH</code> to <code>C:\Program Files\Git\bin\bash.exe</code> in the <code>env</code> block of your settings.json.</p>
+  </div></details>
+
+  <h3>Using Claude Code</h3>
+  <details class="acc"><summary>Too many permission prompts</summary><div class="acc-body">
+    <ul>
+      <li>Tick <em>"Yes, and don't ask again"</em> for commands you trust, or add allow rules in <code>/permissions</code>.</li>
+      <li>Run <code>/fewer-permission-prompts</code> to get a suggested allow list from your history.</li>
+      <li>Use Accept-edits mode while iterating, or auto mode for longer tasks you trust.</li>
+      <li>On macOS/Linux/WSL 2, <code>/sandbox</code> lets sandboxed commands run without prompts.</li>
+    </ul>
+  </div></details>
+  <details class="acc"><summary>Auto mode keeps blocking something I need</summary><div class="acc-body">
+    <p>Open <code>/permissions</code> → <em>Recently denied</em> and press <kbd>r</kbd> to retry with manual approval, or switch to Manual mode for that step. Name the exact action you approve in your message (e.g. "force-push to my branch feature-x is fine"). Repeated false positives usually mean the classifier lacks context about trusted infrastructure — admins can configure it, and you can report it with <code>/feedback</code>.</p>
+  </div></details>
+  <details class="acc"><summary>Claude ignores my CLAUDE.md</summary><div class="acc-body">
+    <ul>
+      <li>Run <code>/context</code> — is the file listed under Memory files? If not, it's in the wrong place.</li>
+      <li>Make instructions concrete ("use 2-space indentation", not "format nicely") and remove contradictions.</li>
+      <li>Trim it — long files dilute important rules. <code>/doctor prompt-audit</code> can review your instruction files.</li>
+      <li>Anything that must always happen belongs in a hook or permission rule.</li>
+    </ul>
+  </div></details>
+  <details class="acc"><summary>Claude seems forgetful, slow or confused in a long session</summary><div class="acc-body">
+    <p>The context is cluttered. Run <code>/context</code> to see why, <code>/compact</code> with a focus, or <code>/clear</code> and restart with a sharper prompt. Put durable instructions in CLAUDE.md, and delegate big investigations to a subagent.</p>
+  </div></details>
+  <details class="acc"><summary>I hit my usage limit</summary><div class="acc-body">
+    <p>Run <code>/usage</code> to see your limits and what's consuming them. <code>/rate-limit-options</code> shows choices such as waiting for the reset, adding usage credits or upgrading. Long contexts, very high effort and many parallel agents use more.</p>
+  </div></details>
+  <details class="acc"><summary>Something broke after I changed a setting, skill or hook</summary><div class="acc-body">
+    <p>Start with <code>claude --safe-mode</code> — it disables CLAUDE.md, skills, plugins, hooks and MCP servers so you can tell whether a customisation is the cause. <code>/doctor</code> also flags unparseable settings files and slow hooks.</p>
+  </div></details>
+  <details class="acc"><summary>VS Code: Spark icon missing or Claude never responds</summary><div class="acc-body">
+    <p>Open a file (the toolbar icon needs one) or use the Status Bar <em>✻ Claude Code</em> item; check VS Code is 1.94+; run <em>Developer: Reload Window</em>; disable conflicting AI extensions; trust the workspace. If responses never arrive, run <code>claude</code> in a terminal to see a more detailed error.</p>
+  </div></details>
+</section>
+
+<section class="section" id="ref-glossary" data-title="Glossary">
+  <div class="eyebrow">Reference</div>
+  <h2>Glossary</h2>
+  <div data-glossary></div>
+</section>
+
+<section class="section" id="ref-facilitator" data-title="Facilitator guide">
+  <div class="eyebrow">Reference · for the person running the course</div>
+  <h2>Facilitator guide</h2>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-kicker">One week before</div>
+      <ul class="mb0">
+        <li>Confirm every attendee has a plan or seat that includes Claude Code.</li>
+        <li>Send this page with the <a href="#prereqs">checklist</a>; ask people to install at home if allowed.</li>
+        <li>Test the install on a standard corporate laptop — proxy, TLS inspection, software-install policy.</li>
+        <li>Check whether your organisation provides claude.ai connectors, managed settings or disables auto mode.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-kicker">On the day</div>
+      <ul class="mb0">
+        <li>Projector: switch on <strong>Present</strong> and <strong>Facilitator</strong>; start the session clock.</li>
+        <li>Have fallbacks ready: Desktop app, claude.ai/code, the practice terminal.</li>
+        <li>Pair beginners with confident users for labs.</li>
+        <li>Keep a "parking lot" for questions that would derail timing.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-kicker">Teaching tips</div>
+      <ul class="mb0">
+        <li>Demo live, including mistakes — rewinding a bad edit teaches more than a perfect run.</li>
+        <li>Narrate the transcript: point at each tool call and why Claude made it.</li>
+        <li>Keep labs on synthetic data; never use client data in training.</li>
+        <li>Repeat the core habits daily: plan first, verify, <code>/clear</code>, commit.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-kicker">After the course</div>
+      <ul class="mb0">
+        <li>Create a team channel; pin this page and one strong example.</li>
+        <li>Run a weekly "what did Claude help you with?" thread.</li>
+        <li>Collect shared skills and CLAUDE.md snippets in a team repo.</li>
+        <li>Offer 15-minute pairing for anyone stuck on their first real task.</li>
+      </ul>
+    </div>
+  </div>
+  <h3>Timing at a glance</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Day</th><th>Core message</th><th>If you're running late, cut…</th></tr></thead>
+      <tbody>
+        <tr><td>1 · Foundations</td><td>Claude Code <em>does</em> the work; you steer and approve</td><td>Stretch goals in Lab 1; the "More options" install tab</td></tr>
+        <tr><td>2 · Working well</td><td>Manage context; control permissions; write a sharp CLAUDE.md</td><td>Explorer browsing (assign as homework); one Lab 2 Part B option</td></tr>
+        <tr><td>3 · Extend</td><td>Connect tools carefully; package repeatable work as skills</td><td>Plugins and output styles (cover in 2 min); capstone steps 7–8</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>Questions you'll get</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Question</th><th>Suggested answer</th></tr></thead>
+      <tbody>
+        <tr><td>"Is this just autocomplete?"</td><td>No — show Claude explaining an unfamiliar folder, tracing a bug across files or drafting a plan. That's reasoning across a project, not completing a line.</td></tr>
+        <tr><td>"How do I trust it with my files?"</td><td>Plan mode shows exactly what it will touch before anything changes; Manual mode asks before each action; rewind and git provide undo.</td></tr>
+        <tr><td>"It got something wrong."</td><td>Feed the failure back — paste the error or failing output. That beats rephrasing the original request.</td></tr>
+        <tr><td>"It doesn't know our conventions."</td><td><code>/init</code>, then add the team's rules to CLAUDE.md.</td></tr>
+        <tr><td>"What about security and data?"</td><td>Refer to your organisation's AI policy and admin. Don't improvise policy answers.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" id="ref-resources" data-title="Resources">
+  <div class="eyebrow">Reference</div>
+  <h2>Resources</h2>
+  <div class="grid-2">
+    <div class="card"><div class="card-kicker">Official documentation</div><ul class="mb0">
+      <li><a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener">Overview</a> · <a href="https://code.claude.com/docs/en/quickstart" target="_blank" rel="noopener">Quickstart</a></li>
+      <li><a href="https://code.claude.com/docs/en/setup" target="_blank" rel="noopener">Advanced setup</a> · <a href="https://code.claude.com/docs/en/troubleshoot-install" target="_blank" rel="noopener">Install troubleshooting</a></li>
+      <li><a href="https://code.claude.com/docs/en/terminal-guide" target="_blank" rel="noopener">Terminal guide for new users</a></li>
+      <li><a href="https://code.claude.com/docs/en/vs-code" target="_blank" rel="noopener">VS Code extension</a></li>
+      <li><a href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noopener">Best practices</a> · <a href="https://code.claude.com/docs/en/common-workflows" target="_blank" rel="noopener">Common workflows</a></li>
+    </ul></div>
+    <div class="card"><div class="card-kicker">Deep dives</div><ul class="mb0">
+      <li><a href="https://code.claude.com/docs/en/commands" target="_blank" rel="noopener">Commands reference</a> · <a href="https://code.claude.com/docs/en/interactive-mode" target="_blank" rel="noopener">Interactive mode</a></li>
+      <li><a href="https://code.claude.com/docs/en/permission-modes" target="_blank" rel="noopener">Permission modes</a> · <a href="https://code.claude.com/docs/en/permissions" target="_blank" rel="noopener">Permission rules</a></li>
+      <li><a href="https://code.claude.com/docs/en/memory" target="_blank" rel="noopener">CLAUDE.md &amp; memory</a> · <a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener">Skills</a></li>
+      <li><a href="https://code.claude.com/docs/en/mcp-quickstart" target="_blank" rel="noopener">MCP quickstart</a> · <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">MCP reference</a></li>
+      <li><a href="https://code.claude.com/docs/en/hooks-guide" target="_blank" rel="noopener">Hooks guide</a> · <a href="https://code.claude.com/docs/en/security" target="_blank" rel="noopener">Security</a></li>
+    </ul></div>
+    <div class="card"><div class="card-kicker">Learn more</div><ul class="mb0">
+      <li><a href="https://academy.claude.com/" target="_blank" rel="noopener">Claude Academy</a> — Claude Code 101 and Claude Code in Action (free)</li>
+      <li><a href="https://code.claude.com/docs/en/whats-new/index" target="_blank" rel="noopener">What's new</a> — weekly feature digest</li>
+      <li><a href="https://code.claude.com/docs/en/prompt-library" target="_blank" rel="noopener">Prompt library</a></li>
+    </ul></div>
+    <div class="card"><div class="card-kicker">In the tool</div><ul class="mb0">
+      <li><code>/powerup</code> — interactive lessons</li>
+      <li><code>/help</code> — command list · <code>/release-notes</code> — what changed</li>
+      <li>Ask Claude: <em>"how do I set up hooks?"</em> — it knows its own features</li>
+    </ul></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p><strong>Claude Code: Zero to Functional</strong> — a 3-day beginner course. Facilitated by Adrian Cioanca, PhD · Data &amp; AI Consultant, Accenture · <a href="mailto:Adrian.Cioanca@accenture.com">Adrian.Cioanca@accenture.com</a></p>
+  <p>Content reflects the Claude Code documentation as of 1 October 2026. Claude Code, Claude and Anthropic are trademarks of Anthropic, PBC; this course is independent training material. Progress and certificate data stay in your browser.</p>
+</footer>
+
+    </div><!-- /.content -->
+  </main>
+</div><!-- /.layout -->
+
+<button class="btn btn-dark btn-sm back-top" id="backTop" type="button" aria-label="Back to top">↑ Top</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>

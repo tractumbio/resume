@@ -1,0 +1,503 @@
+
+<!-- ===================================================== DAY 3 ===================================================== -->
+<section class="section" id="day3" data-title="Day 3 · Agenda &amp; session clock" data-day="3">
+  <div class="day-banner">
+    <div class="eyebrow">Day 3 of 3 · 2 hours</div>
+    <h2>Extend &amp; automate: connectors, skills and beyond</h2>
+    <p>Connect Claude Code to your other tools, package your repeatable work as slash commands, and see where Claude Code goes next — then prove it all in the capstone.</p>
+    <div class="meta-row" style="margin-bottom:0"><span class="tag time">120 min</span><span class="tag">5 modules</span><span class="tag">Capstone</span><span class="tag">Certificate</span></div>
+  </div>
+  <div class="agenda" data-agenda="3"></div>
+  <div class="facilitator">
+    <p><strong>Recap (8 min):</strong> quick-fire — what's the difference between <code>/clear</code> and <code>/compact</code>? Where do team permission rules live? Why isn't CLAUDE.md enough to protect a secret? Then ask who brought a repeatable weekly task for the skills module.</p>
+  </div>
+</section>
+
+<section class="section" id="m31" data-title="3.1 Connectors (MCP)" data-day="3">
+  <div class="eyebrow">Module 3.1 · 27 min</div>
+  <h2><span class="gt">&gt;</span>Connectors: plugging Claude Code into your tools (MCP)</h2>
+  <p class="lead">The <strong>Model Context Protocol (MCP)</strong> is an open standard for connecting AI tools to external systems — issue trackers, wikis, databases, design tools, browsers. Each connection is an <strong>MCP server</strong>; in Claude apps they're often called <strong>connectors</strong>.</p>
+  <div class="callout tip">
+    <div class="callout-title">When to add a connector</div>
+    <p class="mb0">When you catch yourself copying data into the chat from another tool. Once connected, Claude reads and acts on that system directly: <em>"Add the feature described in JIRA issue ENG-4521 and open a PR"</em>, <em>"Update our email template from the new Figma designs posted in Slack"</em>.</p>
+  </div>
+
+  <h3>Two kinds of server</h3>
+  <div class="grid-2">
+    <div class="card accent">
+      <div class="card-kicker">Remote · HTTP</div>
+      <h4>A hosted service at a URL</h4>
+      <p>Notion, Sentry, GitHub, Stripe, HubSpot… Usually you sign in through your browser (OAuth), or pass a token in a header.</p>
+      <pre class="cb" data-label="Terminal"><code>claude mcp add --transport http notion https://mcp.notion.com/mcp</code></pre>
+    </div>
+    <div class="card accent">
+      <div class="card-kicker">Local · stdio</div>
+      <h4>A program on your machine</h4>
+      <p>Started by Claude Code as a subprocess — for things that need local access, like a browser or a database socket. Everything after <code>--</code> is the command to run.</p>
+      <pre class="cb" data-label="Terminal"><code>claude mcp add playwright -- npx -y @playwright/mcp@latest</code></pre>
+    </div>
+  </div>
+
+  <h3>Three ways connectors reach Claude Code</h3>
+  <ol class="gt-list" style="padding-left:0">
+    <li><strong><code>claude mcp add …</code></strong> in your terminal (works the same in PowerShell, CMD, zsh and bash). Run it <em>outside</em> a Claude session.</li>
+    <li><strong>A <code>.mcp.json</code> file</strong> in the project — shared with the team through git. Teammates get an approval prompt the first time.</li>
+    <li><strong>claude.ai connectors</strong> — added at claude.ai/customize/connectors (on Team/Enterprise, by admins) appear automatically when you sign in to Claude Code with that claude.ai account. They show up in <code>/mcp</code> labelled as coming from claude.ai.</li>
+  </ol>
+  <p>Plugins (later today) can also bundle MCP servers. In VS Code, type <code>/mcp</code> in the chat panel to add, remove, enable and authenticate servers without the terminal.</p>
+
+  <h3>Scopes: who gets the server, where</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Scope</th><th>Flag</th><th>Loads in</th><th>Shared?</th><th>Stored in</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Local</strong> (default)</td><td><code>--scope local</code></td><td>This project only</td><td>No — just you</td><td><code>~/.claude.json</code> (under the project)</td></tr>
+        <tr><td><strong>Project</strong></td><td><code>--scope project</code></td><td>This project</td><td>Yes, via git</td><td><code>.mcp.json</code> in the project root</td></tr>
+        <tr><td><strong>User</strong></td><td><code>--scope user</code></td><td>All your projects</td><td>No — just you</td><td><code>~/.claude.json</code> (top level)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted"><small>On Windows, <code>~/.claude.json</code> is <code>%USERPROFILE%\.claude.json</code>. If the same server is defined twice, local beats project beats user beats plugin beats claude.ai connector.</small></p>
+
+  <h3>Hands-on: connect your first server (no sign-in needed)</h3>
+  <p>The Claude Code documentation has a hosted MCP server with full-text search over the docs — perfect for a first connection.</p>
+  <ol class="steps">
+    <li><strong>Add it</strong> (in your terminal, not inside Claude)
+      <pre class="cb" data-label="Terminal"><code>claude mcp add --transport http claude-code-docs https://code.claude.com/docs/mcp</code></pre>
+      You'll see <em>Added HTTP MCP server claude-code-docs … to local config</em>.</li>
+    <li><strong>Check the connection</strong>
+      <pre class="cb" data-label="Terminal"><code>claude mcp list</code></pre>
+      Look for <code>✔ Connected</code>.</li>
+    <li><strong>Use it</strong>
+      <pre class="cb" data-label="Type in Claude Code" data-prompt><code>Use the claude-code-docs server to look up how to pass arguments to a skill</code></pre>
+      Approve the first tool call if asked. The tool call is labelled with the server name — proof the answer came from the connector. (Normally you don't need to name the server; naming it just guarantees it's used.)</li>
+    <li><strong>Manage it inside a session</strong>
+      <pre class="cb" data-label="Type in Claude Code" data-prompt><code>/mcp</code></pre>
+      See status, authenticate, enable/disable or reconnect servers.</li>
+    <li><strong>Remove it when done</strong> (optional)
+      <pre class="cb" data-label="Terminal"><code>claude mcp remove claude-code-docs</code></pre></li>
+  </ol>
+
+  <h3>Servers that need sign-in</h3>
+  <p>Hosted services such as Sentry, Notion or Linear use OAuth: add the URL, then authenticate.</p>
+  <pre class="cb" data-label="Terminal"><code>claude mcp add --transport http sentry https://mcp.sentry.dev/mcp</code></pre>
+  <p><code>claude mcp list</code> shows <code>! Needs authentication</code> — that's expected. Start <code>claude</code>, run <code>/mcp</code>, select the server and choose <strong>Authenticate</strong> (or run <code>claude mcp login sentry</code> from your shell). Servers that use a static token take it at add time:</p>
+  <pre class="cb" data-label="Terminal"><code>claude mcp add --transport http github https://api.githubcopilot.com/mcp/ --header "Authorization: Bearer YOUR_GITHUB_PAT"</code></pre>
+
+  <h3>Status decoder</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Status</th><th>Meaning / next step</th></tr></thead>
+      <tbody>
+        <tr><td><code>✔ Connected</code></td><td>Ready to use</td></tr>
+        <tr><td><code>! Needs authentication</code></td><td>Run <code>/mcp</code> → Authenticate, or pass a token with <code>--header</code></td></tr>
+        <tr><td><code>✘ Failed to connect</code></td><td>Server didn't respond. <code>claude mcp get &lt;name&gt;</code> shows details; test the URL with <code>curl -I</code> (<code>curl.exe -I</code> in PowerShell) or run a stdio command directly</td></tr>
+        <tr><td><code>⏸ Pending approval</code></td><td>A project <code>.mcp.json</code> server you haven't approved — run <code>claude</code> to approve</td></tr>
+        <tr><td><code>⊘ Disabled for this project</code></td><td>Turned off — re-enable in <code>/mcp</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Using connectors well</h3>
+  <ul class="gt-list">
+    <li><strong>Just ask.</strong> Claude picks relevant tools itself; name the server when you want to be sure.</li>
+    <li><strong>Reference resources with <code>@</code>:</strong> <code>analyse @github:issue://123 and suggest a fix</code>.</li>
+    <li><strong>Server prompts become commands:</strong> they appear in the <kbd>/</kbd> menu as <code>/mcp__server__prompt</code>.</li>
+    <li><strong>Pre-approve trusted tools</strong> with rules like <code>mcp__claude-code-docs__*</code> in your allow list.</li>
+    <li><strong>Context-friendly:</strong> tool definitions are loaded on demand (tool search), but each server still adds names and instructions — remove servers you don't use.</li>
+  </ul>
+
+  <div class="callout danger">
+    <div class="callout-title">Connector security checklist</div>
+    <ul class="mb0">
+      <li><strong>Only connect servers you trust.</strong> The Anthropic Directory (claude.ai/directory) lists reviewed connectors, but no MCP server is security-audited by Anthropic.</li>
+      <li><strong>Servers that fetch external content</strong> (web pages, emails, tickets) can carry prompt-injection attempts. Keep an eye on what Claude does after reading them.</li>
+      <li><strong>Least privilege:</strong> read-only database users, fine-grained tokens scoped to specific repositories.</li>
+      <li><strong>Keep tokens out of git:</strong> in <code>.mcp.json</code> use <code>${API_KEY}</code> environment-variable expansion instead of pasting secrets.</li>
+      <li><strong>Check with your organisation</strong> before connecting client systems; admins can allow-list or block servers centrally.</li>
+    </ul>
+  </div>
+
+  <div class="builder" data-builder="mcp"></div>
+
+  <details class="acc"><summary>Troubleshooting connectors</summary><div class="acc-body">
+    <ul>
+      <li><strong><code>/mcp</code> says "No MCP servers configured"</strong> — you added a local-scope server from a different folder. Re-add it here, or use <code>--scope user</code>.</li>
+      <li><strong>Edited <code>.mcp.json</code> but nothing changed</strong> — Claude Code reads it at startup; exit and restart. If you previously rejected it: <code>claude mcp reset-project-choices</code>.</li>
+      <li><strong>Timeout on first start</strong> — <code>npx</code> may still be downloading. Raise the limit: <span class="os-mac"><code>MCP_TIMEOUT=60000 claude</code></span><span class="os-win"><code>$env:MCP_TIMEOUT = "60000"; claude</code></span>.</li>
+      <li><strong>Connected but no tools</strong> — usually a missing environment variable (API key). Pass <code>--env KEY=value</code> when adding.</li>
+      <li><strong>"Server already exists"</strong> — remove it first (<code>claude mcp remove &lt;name&gt;</code>) or pick another name.</li>
+      <li><strong>A claude.ai connector is missing</strong> — run <code>/status</code>: connectors only load when you're signed in with a claude.ai subscription (not an API key or cloud provider).</li>
+    </ul>
+  </div></details>
+
+  <div class="facilitator">
+    <p><strong>Demo order:</strong> (1) add the docs server live and ask it a question; (2) show <code>/mcp</code>; (3) show a claude.ai connector if your org has one configured; (4) talk through the security checklist. Don't connect real client systems in a training room.</p>
+  </div>
+</section>
+
+<section class="section" id="m32" data-title="3.2 Skills: your own slash commands" data-day="3">
+  <div class="eyebrow">Module 3.2 · 12 min</div>
+  <h2><span class="gt">&gt;</span>Skills: turn repeatable work into your own slash commands</h2>
+  <p class="lead">A <strong>skill</strong> is a folder with a <code>SKILL.md</code> file: a short description (when to use it) plus instructions (what to do). Type <code>/skill-name</code> to run it — or let Claude load it automatically when your request matches the description.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-kicker">Where skills live</div>
+      <ul class="mb0">
+        <li><strong>Project</strong> (share via git): <code>.claude/skills/&lt;name&gt;/SKILL.md</code></li>
+        <li><strong>Personal</strong> (all your projects): <code class="os-mac">~/.claude/skills/&lt;name&gt;/SKILL.md</code><code class="os-win">%USERPROFILE%\.claude\skills\&lt;name&gt;\SKILL.md</code></li>
+        <li>Older custom commands in <code>.claude/commands/name.md</code> still work the same way.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-kicker">Why skills beat copy-pasted prompts</div>
+      <ul class="mb0">
+        <li>Consistent results — the same checklist every time</li>
+        <li>Shareable — commit to the repo, colleagues get <code>/your-skill</code></li>
+        <li>Cheap — only the description sits in context until the skill runs</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Anatomy of a skill</h3>
+  <pre class="cb" data-label=".claude/skills/weekly-status/SKILL.md"><code>---
+name: weekly-status
+description: Drafts a weekly status update from recent work. Use when the user asks for a status report or weekly update.
+disable-model-invocation: true
+---
+
+Draft this week's status update for $ARGUMENTS.
+
+1. Read notes/ and any files changed in the last 7 days
+2. Summarise progress under: Done · In progress · Risks &amp; issues · Next week
+3. Keep it under 200 words, plain English, Australian spelling
+4. Flag anything you're unsure about instead of guessing
+5. Save it to reports/status-YYYY-MM-DD.md and show me the result</code></pre>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Piece</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>name</code></td><td>The command you type (<code>/weekly-status</code>). Defaults to the folder name.</td></tr>
+        <tr><td><code>description</code></td><td>Tells Claude when the skill applies — write it like a trigger: "Use when…"</td></tr>
+        <tr><td><code>disable-model-invocation: true</code></td><td>Only <em>you</em> can run it — use for anything with side effects (deploy, send, commit)</td></tr>
+        <tr><td><code>user-invocable: false</code></td><td>Only Claude can load it — background knowledge, not a command</td></tr>
+        <tr><td><code>allowed-tools</code></td><td>Pre-approves tools while the skill runs, e.g. <code>Bash(git add *) Bash(git commit *)</code></td></tr>
+        <tr><td><code>$ARGUMENTS</code> · <code>$0</code>, <code>$1</code>…</td><td>Whatever you type after the command (<code>/weekly-status Project Atlas</code>) — all of it, or by position</td></tr>
+        <tr><td><code>!`command`</code></td><td>Runs a shell command first and inlines its output (e.g. <code>!`git diff HEAD`</code>)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Run <code>/skills</code> to list what's available, and <code>/reload-skills</code> after adding one mid-session. Easiest of all: ask Claude — <em>"create a /weekly-status skill for this project that …"</em>.</p>
+
+  <h3>Built-in (bundled) skills worth knowing</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Skill</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>/code-review</code></td><td>Reviews the current diff (or a PR) for correctness bugs; <code>--fix</code> applies findings</td></tr>
+        <tr><td><code>/simplify</code></td><td>Clean-up pass: reuse, simplification, efficiency — and applies the fixes</td></tr>
+        <tr><td><code>/debug</code></td><td>Turns on debug logging and helps troubleshoot Claude Code itself</td></tr>
+        <tr><td><code>/loop 5m &lt;prompt&gt;</code></td><td>Repeats a prompt on an interval while the session is open</td></tr>
+        <tr><td><code>/batch &lt;change&gt;</code></td><td>Splits a large change into parallel units, each in its own git worktree</td></tr>
+        <tr><td><code>/run</code> · <code>/verify</code></td><td>Launch your app / confirm a change actually works in the running app</td></tr>
+        <tr><td><code>/fewer-permission-prompts</code></td><td>Finds read-only commands you approve often and proposes an allow list</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="builder" data-builder="skill"></div>
+  <div class="facilitator">
+    <p><strong>Demo (5 min):</strong> ask Claude to create a small skill from the anatomy example, open the <code>SKILL.md</code> it wrote, then run it with an argument. Point at the <code>description</code> line: it decides when Claude loads the skill on its own.</p>
+    <p><strong>Watch for:</strong> a skill folder in the wrong place (it must sit directly under <code>.claude/skills/</code>, with the file named exactly <code>SKILL.md</code>), and a new skill not appearing in the session until <code>/reload-skills</code> is run.</p>
+  </div>
+</section>
+
+<section class="section" id="m33" data-title="3.3 Subagents, hooks, plugins &amp; styles" data-day="3">
+  <div class="eyebrow">Module 3.3 · 8 min</div>
+  <h2><span class="gt">&gt;</span>Subagents, hooks, plugins &amp; output styles</h2>
+  <p class="lead">Four more ways to shape Claude Code. You don't need them on day one — add each when its trigger shows up.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>When this happens…</th><th>Add this</th></tr></thead>
+      <tbody>
+        <tr><td>Claude gets a convention wrong twice</td><td><code>CLAUDE.md</code> line</td></tr>
+        <tr><td>You keep typing the same prompt to start a task</td><td>A <strong>skill</strong></td></tr>
+        <tr><td>You keep copying data in from another tool</td><td>An <strong>MCP connector</strong></td></tr>
+        <tr><td>A side task floods the conversation with output you won't reuse</td><td>A <strong>subagent</strong></td></tr>
+        <tr><td>Something must happen every time, no exceptions</td><td>A <strong>hook</strong></td></tr>
+        <tr><td>You want answers in a different voice or format all session</td><td>An <strong>output style</strong></td></tr>
+        <tr><td>A second project needs the same setup</td><td>Package it as a <strong>plugin</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Subagents: helpers with their own context</h3>
+  <p>A subagent works in a <strong>separate context window</strong> and returns only a summary — great for research that reads many files. Claude Code has built-ins (<em>Explore</em> for fast read-only searching, <em>Plan</em> for planning research, <em>general-purpose</em> for multi-step work) and delegates to them automatically. You can also ask:</p>
+  <pre class="cb" data-label="Type in Claude Code" data-prompt><code>use a subagent to review reports/analysis.md against the raw data and report any numbers that don't match</code></pre>
+  <p>Custom subagents are Markdown files in <code>.claude/agents/</code> (project) or <code>~/.claude/agents/</code> (personal). The easiest way to make one is to ask Claude to create it:</p>
+  <pre class="cb" data-label=".claude/agents/security-reviewer.md"><code>---
+name: security-reviewer
+description: Reviews code for security vulnerabilities
+tools: Read, Grep, Glob, Bash
+model: opus
+---
+You are a senior security engineer. Review code for injection flaws,
+auth problems, secrets in code and insecure data handling.
+Give specific line references and suggested fixes.</code></pre>
+
+  <h3>Hooks: guaranteed automation</h3>
+  <p>Hooks run your own command at fixed moments — before or after a tool runs, when Claude needs your input, when a session starts or stops. Unlike instructions, they <strong>always</strong> fire. Classic uses: auto-format after every edit, block edits to protected files, notify you when Claude is waiting.</p>
+  <div class="tabs" data-tabs="hook" data-os-default="true">
+    <div class="tab-list" role="tablist" aria-label="Notification hook by OS">
+      <button class="tab-btn" role="tab" data-tab="win" data-os-tab="win">Windows</button>
+      <button class="tab-btn" role="tab" data-tab="mac" data-os-tab="mac">macOS</button>
+    </div>
+    <div class="tab-panel" role="tabpanel" data-panel="win" data-print-label="Windows notification hook">
+      <p>Add to <code>%USERPROFILE%\.claude\settings.json</code> — a dialog pops up when Claude needs you:</p>
+      <pre class="cb" data-label="settings.json"><code>{
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe -Command \"[System.Reflection.Assembly]::LoadWithPartialName('System.Windows.Forms'); [System.Windows.Forms.MessageBox]::Show('Claude Code needs your attention', 'Claude Code')\""
+          }
+        ]
+      }
+    ]
+  }
+}</code></pre>
+    </div>
+    <div class="tab-panel" role="tabpanel" data-panel="mac" data-print-label="macOS notification hook" hidden>
+      <p>Add to <code>~/.claude/settings.json</code> — a desktop notification appears when Claude needs you:</p>
+      <pre class="cb" data-label="settings.json"><code>{
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude Code needs your attention\" with title \"Claude Code\"'"
+          }
+        ]
+      }
+    ]
+  }
+}</code></pre>
+      <p class="muted"><small>No notification? Run <code>osascript -e 'display notification "test"'</code> once, then allow notifications for Script Editor in System Settings → Notifications.</small></p>
+    </div>
+  </div>
+  <p>Check it with <code>/hooks</code> (read-only browser). If your settings file already has a <code>hooks</code> key, add the event alongside the existing ones. Or simply ask: <em>"write a hook that notifies me when you need input"</em>.</p>
+  <div class="callout warn">
+    <div class="callout-title">Hooks run with your permissions</div>
+    <p class="mb0">A hook is a command on your machine. Only add hooks you understand, and review hooks in any repository you clone — a folder's hooks only run after you trust it.</p>
+  </div>
+
+  <h3>Plugins: install a whole setup at once</h3>
+  <p>Plugins bundle skills, subagents, hooks and MCP servers into one installable package. Run <code>/plugin</code> to browse marketplaces (including Anthropic's official one) and install. Example from the docs:</p>
+  <pre class="cb" data-label="Type in Claude Code" data-prompt><code>/plugin install mcp-server-dev@claude-plugins-official</code></pre>
+  <p class="muted"><small>If the marketplace isn't found, add it first: <code>/plugin marketplace add anthropics/claude-plugins-official</code>. Plugin skills are namespaced, e.g. <code>/mcp-server-dev:build-mcp-server</code>. Only install plugins from sources you trust.</small></p>
+
+  <h3>Output styles: change how Claude talks to you</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Style</th><th>What changes</th><th>Good for</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Explanatory</strong></td><td>Adds short "Insight" notes explaining the choices behind the work</td><td>Learning a codebase or a new tool — <em>recommended for this course</em></td></tr>
+        <tr><td><strong>Learning</strong></td><td>Explains, and leaves small pieces for you to write yourself</td><td>Hands-on skill building</td></tr>
+        <tr><td><strong>Concise</strong></td><td>Leads with the result, skips preamble and recaps</td><td>When answers feel too long</td></tr>
+        <tr><td><strong>Proactive</strong></td><td>Makes reasonable assumptions instead of asking about routine decisions</td><td>Fast iteration when you'll course-correct</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <pre class="cb" data-label="Type in Claude Code" data-prompt><code>/output-style explanatory</code></pre>
+  <div class="facilitator">
+    <p><strong>Teach the trigger table, not the features (8 min).</strong> Read three rows aloud and ask the room for a real moment from their own work for each. Demo one thing only: the notification hook for your OS, because it pays off immediately on long tasks.</p>
+    <p><strong>Safety point:</strong> hooks run commands with your own user's access, and a plugin can bundle hooks, skills and MCP servers. Install plugins only from marketplaces you or your organisation trust.</p>
+  </div>
+</section>
+
+<section class="section" id="m34" data-title="3.4 Beyond the terminal" data-day="3">
+  <div class="eyebrow">Module 3.4 · 12 min</div>
+  <h2><span class="gt">&gt;</span>Beyond the terminal</h2>
+  <p class="lead">Same engine everywhere: your <code>CLAUDE.md</code>, settings and MCP servers work across all surfaces. Pick the one that fits the moment.</p>
+
+  <h3>VS Code power moves</h3>
+  <div class="grid-2">
+    <div class="card"><div class="card-kicker">Point at code</div>Select lines and press <span class="k" data-mac="Option+K" data-win="Alt+K"></span> to insert <code>@file.ts#5-10</code>. Claude also sees your current selection and open file automatically.</div>
+    <div class="card"><div class="card-kicker">Review diffs properly</div>In Manual mode edits open side-by-side; accept or reject per change, or edit the proposal before accepting.</div>
+    <div class="card"><div class="card-kicker">Comment on plans</div>In Plan mode the plan opens as a Markdown document you can annotate inline before Claude starts.</div>
+    <div class="card"><div class="card-kicker">Rewind from any message</div>Hover a message → fork the conversation, rewind code, or both.</div>
+    <div class="card"><div class="card-kicker">Parallel conversations</div><em>Open in New Tab</em> / <em>New Window</em>. A blue dot = permission waiting; orange = finished while hidden.</div>
+    <div class="card"><div class="card-kicker">Terminal output as context</div>Reference <code>@terminal:name</code> to give Claude a terminal's output without copy-paste.</div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Feature</th><th>CLI</th><th>VS Code extension</th></tr></thead>
+      <tbody>
+        <tr><td>Commands &amp; skills</td><td>All</td><td>Subset (type <kbd>/</kbd> to see)</td></tr>
+        <tr><td>MCP server config</td><td>Yes</td><td>Yes (<code>/mcp</code> in the panel)</td></tr>
+        <tr><td>Checkpoints / rewind</td><td>Yes</td><td>Yes</td></tr>
+        <tr><td><code>!</code> shell shortcut · Tab completion</td><td>Yes</td><td>No</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Prefer the terminal look inside VS Code? Enable the extension's <strong>Use Terminal</strong> setting, or just run <code>claude</code> in the integrated terminal (it connects to the editor for diffs and selections; from an external terminal run <code>/ide</code>).</p>
+
+  <h3>Desktop, web and mobile</h3>
+  <div class="grid-3">
+    <div class="card"><div class="card-kicker">Desktop app</div>Code tab with visual diffs and side-by-side sessions; Local, Cloud, SSH and WSL environments. Hand over a terminal session with <code>/desktop</code>.</div>
+    <div class="card"><div class="card-kicker">Web · claude.ai/code</div>Cloud sessions on your GitHub repos that keep running when you close the laptop. Start one from the terminal with <code>claude --cloud "task"</code>; pull it back with <code>/teleport</code>.</div>
+    <div class="card"><div class="card-kicker">Phone</div>Run <code>/remote-control</code> to continue a local session from the Claude mobile app or a browser — files and execution stay on your machine.</div>
+  </div>
+
+  <h3>Automation: Claude without the chat</h3>
+  <p><strong>Print mode</strong> (<code>-p</code>) runs one task and exits — perfect for scripts, scheduled jobs and CI.</p>
+  <div class="os-mac"><pre class="cb" data-label="Terminal"><code># one-off question
+claude -p "explain what this project does"
+
+# pipe data in
+cat error.log | claude -p "explain the root cause of this error"
+
+# structured output for scripts
+claude -p "list every TODO comment in this folder" --output-format json
+
+# limit what an unattended run may do
+claude -p "fix the lint errors in src/" --allowedTools "Read,Edit"</code></pre></div>
+  <div class="os-win"><pre class="cb" data-label="PowerShell"><code># one-off question
+claude -p "explain what this project does"
+
+# pipe data in
+Get-Content error.log | claude -p "explain the root cause of this error"
+
+# structured output for scripts
+claude -p "list every TODO comment in this folder" --output-format json
+
+# limit what an unattended run may do
+claude -p "fix the lint errors in src/" --allowedTools "Read,Edit"</code></pre></div>
+  <div class="grid-2">
+    <div class="card"><div class="card-kicker">GitHub</div><code>/install-github-app</code> sets up the Claude GitHub App and Actions so teammates can mention <code>@claude</code> on issues and pull requests.</div>
+    <div class="card"><div class="card-kicker">Schedules</div><code>/schedule</code> creates cloud <em>routines</em> (run even when your computer is off); <code>/loop 10m …</code> repeats a check while your session is open.</div>
+    <div class="card"><div class="card-kicker">Parallel work</div><code>claude -w feature-x</code> starts a session in its own git worktree so parallel edits don't collide; <code>/background</code> detaches a session and <code>claude agents</code> monitors them all.</div>
+    <div class="card"><div class="card-kicker">Keep going until done</div><code>/goal all tests pass</code> keeps Claude working across turns until the condition is met.</div>
+  </div>
+  <div class="facilitator">
+    <p><strong>Demo by audience:</strong> for VS Code users, select lines to insert an <code>@file#lines</code> reference, then accept a side-by-side diff change by change. For everyone else, show the Desktop app's Code tab or a session on claude.ai/code.</p>
+    <p><strong>Watch for:</strong> people who installed only the VS Code extension expecting <code>claude</code> to work in any terminal. The extension bundles its own copy, which isn't on PATH; install the CLI too if they want both.</p>
+  </div>
+</section>
+
+<section class="section" id="m35" data-title="3.5 Use-case playbook" data-day="3">
+  <div class="eyebrow">Module 3.5 · reference</div>
+  <h2><span class="gt">&gt;</span>Use-case playbook</h2>
+  <p class="lead">Copy-ready prompts for everyday work, adapted from Anthropic's prompt library. Replace the <code>{braces}</code> with your own details. Filter by job:</p>
+  <div data-prompts></div>
+  <div class="facilitator">
+    <p><strong>Not timed.</strong> Point at the playbook as the session moves into the capstone and ask everyone to pick two prompts to try in the next week. Good follow-up homework: adapt one prompt to a real task and bring the result back.</p>
+  </div>
+</section>
+
+<section class="section" id="lab3" data-title="Capstone lab" data-day="3">
+  <div class="lab">
+    <span class="lab-badge">Capstone · 30 min</span>
+    <h3>Build a reusable "client-ready insights" workflow</h3>
+    <p><strong>Goal:</strong> combine everything — plan mode, verification, CLAUDE.md, permissions, a connector and your own skill — into a workflow you could hand to a colleague.</p>
+    <div class="checklist-head"><h4>Steps</h4><span class="cl-count" data-count-for="lab3"></span></div>
+    <ul class="checklist" data-checklist="lab3">
+      <li><label><input type="checkbox" data-id="k1"><span><strong>Fresh start</strong><span class="cl-detail">In <code>claude-lab</code>, run <code>claude -n capstone</code>, then switch to plan mode (<kbd>Shift</kbd>+<kbd>Tab</kbd>).</span></span></label></li>
+      <li><label><input type="checkbox" data-id="k2"><span><strong>Plan</strong><span class="cl-detail"><code>plan how to turn @sales_q3.csv into an exec-ready one-pager (reports/insights.md) and a dashboard (reports/dashboard.html). include how you'll verify every number. don't edit yet</code> — refine, then approve.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="k3"><span><strong>Build &amp; verify</strong><span class="cl-detail">Let Claude produce both outputs, then: <code>prove the totals are right by recomputing them a second way, and show me the evidence</code>.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="k4"><span><strong>Capture it as a skill</strong><span class="cl-detail"><code>create a project skill called insights that repeats this workflow for whatever CSV I pass as an argument, including the verification step</code>. Then run <code>/reload-skills</code> and test <code>/insights sales_q3.csv</code>.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="k5"><span><strong>House style</strong><span class="cl-detail">Ask Claude to add your formatting rules (dates, currency, spelling, tone) to the project CLAUDE.md.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="k6"><span><strong>Guard rails</strong><span class="cl-detail">Confirm <code>/permissions</code> still denies <code>Read(./.env)</code>; add an <strong>ask</strong> rule for <code>Bash(git push *)</code>.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="k7"><span><strong>Use a connector</strong><span class="cl-detail">If you removed it, re-add the docs server and ask: <code>use the claude-code-docs server to check whether my insights skill follows best practice for skill descriptions</code>.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="k8"><span><strong>Review</strong><span class="cl-detail">Run <code>/diff</code>. If you have git: <code>git init</code>, then ask Claude to <code>commit everything with a descriptive message</code>.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="k9"><span><strong>Show and tell</strong><span class="cl-detail">Share your <code>SKILL.md</code> with your neighbour. Could they run <code>/insights</code> on their own data?</span></span></label></li>
+    </ul>
+    <div class="callout ok">
+      <div class="callout-title">Success criteria</div>
+      <ul class="mb0">
+        <li>Outputs exist and their numbers were verified two ways</li>
+        <li><code>/insights &lt;file&gt;</code> works from a fresh session</li>
+        <li>CLAUDE.md carries your house style; <code>.env</code> is denied; pushes need approval</li>
+        <li>You can explain which feature handled which part of the job</li>
+      </ul>
+    </div>
+  </div>
+  <div class="facilitator">
+    <p><strong>Pace it:</strong> roughly 5 minutes to plan, 10 to build and verify, 8 for the skill, 5 for guard rails and the connector, 2 for show and tell. Call time at each boundary; unfinished steps are fine as long as everyone reaches the skill step.</p>
+    <p><strong>Common snags:</strong> the docs connector removed in 3.1 and not re-added (re-run the <code>claude mcp add</code> command from 3.1), and <code>/insights</code> not appearing until <code>/reload-skills</code> is run.</p>
+    <p><strong>Show and tell:</strong> pick two people whose skill descriptions differ and ask the room which one Claude would trigger on more reliably, and why.</p>
+  </div>
+</section>
+
+<section class="section" id="quiz3" data-title="Day 3 knowledge check" data-day="3">
+  <div class="eyebrow">Optional check-in · self-paced</div>
+  <h2>Day 3 knowledge check</h2>
+  <p>Not timed in the session: use it as a warm-up for the final assessment below, or as homework after the course.</p>
+  <div class="quiz" data-quiz="day3"></div>
+  <div class="facilitator">
+    <p><strong>Not in the timed agenda.</strong> Use it as a warm-up if the capstone finishes early, or set it as homework after the course.</p>
+  </div>
+</section>
+
+<section class="section" id="final" data-title="Final assessment &amp; certificate" data-day="3">
+  <div class="eyebrow">Final assessment · 10 min</div>
+  <h2>Final assessment &amp; certificate</h2>
+  <p>Fifteen scenario questions across all three days. Score <strong>80% or more</strong> to unlock your printable certificate of completion.</p>
+  <div class="quiz" data-quiz="final"></div>
+  <div class="cert-wrap" id="certWrap">
+    <div class="builder" style="margin-top:0">
+      <div class="builder-head"><h4>🎓 You passed — claim your certificate</h4></div>
+      <div style="padding:16px 18px">
+        <div class="field" style="max-width:420px"><label for="certName">Your name as it should appear</label><input type="text" id="certName" placeholder="e.g. Alex Taylor" autocomplete="name"></div>
+        <div class="inline-actions"><button class="btn btn-primary" type="button" id="printCert">Print / save as PDF</button></div>
+      </div>
+    </div>
+    <div class="certificate" id="certificate">
+      <div class="ct-kicker">Certificate of completion</div>
+      <div class="ct-title">Claude Code: Zero to Functional</div>
+      <div class="ct-text">This certifies that</div>
+      <div class="ct-name" id="certNameOut">Your name</div>
+      <div class="ct-text">completed the three-day, six-hour hands-on course covering installation on Windows, macOS and VS Code, essential slash commands, context management, permissions and safety, CLAUDE.md, MCP connectors, skills and automation — and passed the final assessment with a score of <strong id="certScore">–</strong>.</div>
+      <div class="ct-foot">
+        <div><strong id="certDate">–</strong>Date</div>
+        <div><strong>Adrian Cioanca, PhD</strong>Facilitator · Data &amp; AI Consultant, Accenture</div>
+      </div>
+    </div>
+  </div>
+  <div class="facilitator">
+    <p><strong>Timing (15-minute block):</strong> 10 minutes for the assessment, then 5 for certificates, the 30-day plan and questions. Anyone under 80% can retake straight away; the answer options reshuffle on each retake.</p>
+  </div>
+</section>
+
+<section class="section" id="next" data-title="After the course" data-day="3">
+  <div class="eyebrow">Keep the momentum</div>
+  <h2>After the course: your next 30 days</h2>
+  <div class="grid-2">
+    <div class="card accent"><div class="card-kicker">Week 1</div><h4>Daily reps</h4><p class="mb0">Use Claude Code once a day on a small, real task. Start in Manual or Plan mode; <code>/clear</code> between tasks.</p></div>
+    <div class="card accent"><div class="card-kicker">Week 2</div><h4>Teach it your world</h4><p class="mb0">Write a sharp <code>CLAUDE.md</code> for your main project and a deny rule for anything sensitive.</p></div>
+    <div class="card accent"><div class="card-kicker">Week 3</div><h4>Automate one thing</h4><p class="mb0">Turn your most repeated task into a skill; try one trusted connector.</p></div>
+    <div class="card accent"><div class="card-kicker">Week 4</div><h4>Share it</h4><p class="mb0">Post your skill and best prompt in your team channel. Run <code>/team-onboarding</code> to generate a setup guide for colleagues.</p></div>
+  </div>
+  <div class="callout tip">
+    <div class="callout-title">Keep learning</div>
+    <ul class="mb0">
+      <li>Inside Claude Code: <code>/powerup</code> lessons, <code>/help</code>, or ask <em>"how do I…?"</em> — Claude can explain its own features.</li>
+      <li>Official docs: <strong>code.claude.com/docs</strong> (quickstart, best practices, common workflows).</li>
+      <li>Free self-paced courses on Claude Academy (academy.claude.com): <em>Claude Code 101</em> and <em>Claude Code in Action</em>.</li>
+    </ul>
+  </div>
+  <div class="card" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+    <div><div class="card-kicker">Questions &amp; feedback</div><strong>Adrian Cioanca</strong> · Data &amp; AI Consultant, Accenture<br><a href="mailto:Adrian.Cioanca@accenture.com?subject=Claude%20Code%20course%20feedback">Adrian.Cioanca@accenture.com</a></div>
+    <a class="btn btn-primary" href="mailto:Adrian.Cioanca@accenture.com?subject=Claude%20Code%20course%20feedback">Send feedback</a>
+  </div>
+  <div class="facilitator">
+    <p><strong>Close the course:</strong> ask each person to name the first workflow they'll automate, and collect feedback on what to keep and what to cut. Remind everyone the page keeps working offline, so they can revisit any module or the reference section later.</p>
+  </div>
+</section>

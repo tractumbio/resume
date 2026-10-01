@@ -1,0 +1,544 @@
+
+<!-- ===================================================== DAY 2 ===================================================== -->
+<section class="section" id="day2" data-title="Day 2 · Agenda &amp; session clock" data-day="2">
+  <div class="day-banner">
+    <div class="eyebrow">Day 2 of 3 · 2 hours</div>
+    <h2>Working effectively: commands, context, permissions, memory</h2>
+    <p>Learn the commands you'll use every day, keep Claude's working memory healthy, control exactly what it may do, and give it lasting project knowledge.</p>
+    <div class="meta-row" style="margin-bottom:0"><span class="tag time">120 min</span><span class="tag">5 modules</span><span class="tag">Lab 2</span><span class="tag">Knowledge check</span></div>
+  </div>
+  <div class="agenda" data-agenda="2"></div>
+  <div class="facilitator">
+    <p><strong>Warm-up (10 min):</strong> two or three volunteers share their homework — one win, one thing that went wrong. Use the "went wrong" stories to preview today: most map to context (long messy sessions), permissions (too many prompts / not enough control) or missing project knowledge (CLAUDE.md).</p>
+  </div>
+</section>
+
+<section class="section" id="m21" data-title="2.1 Slash commands that matter" data-day="2">
+  <div class="eyebrow">Module 2.1 · 15 min</div>
+  <h2><span class="gt">&gt;</span>The slash commands that matter</h2>
+  <p class="lead">Type <kbd>/</kbd> to open the command menu, keep typing to filter, press <kbd>Tab</kbd> to complete and <kbd>Enter</kbd> to run. A command only counts at the <strong>start</strong> of your message; anything after it becomes its arguments.</p>
+  <div class="callout note">
+    <div class="callout-title">"Backslash" or "slash"?</div>
+    <p class="mb0">Claude Code commands start with a forward slash: <code>/help</code>. The backslash <kbd>\</kbd> has a different job — <kbd>\</kbd>+<kbd>Enter</kbd> inserts a new line in your prompt.</p>
+  </div>
+
+  <h3>The essentials, by job</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Command</th><th>What it does</th><th>Reach for it when…</th></tr></thead>
+      <tbody>
+        <tr><td colspan="3"><span class="tag purple">Start &amp; get help</span></td></tr>
+        <tr><td><code>/help</code></td><td>Lists available commands</td><td>You've forgotten a command</td></tr>
+        <tr><td><code>/powerup</code></td><td>Quick interactive lessons with animated demos</td><td>You want to discover features</td></tr>
+        <tr><td><code>/init</code></td><td>Generates a starter <code>CLAUDE.md</code> by analysing the project</td><td>First session in any repo/folder</td></tr>
+        <tr><td><code>/doctor</code></td><td>Setup checkup that diagnoses (and offers to fix) install &amp; config issues</td><td>Something feels broken</td></tr>
+        <tr><td><code>/status</code></td><td>Version, model, account, connectivity</td><td>"Which account/model am I on?"</td></tr>
+        <tr><td colspan="3"><span class="tag purple">Context &amp; sessions</span></td></tr>
+        <tr><td><code>/clear</code></td><td>Fresh conversation, empty context (old one stays resumable)</td><td>Switching to an unrelated task</td></tr>
+        <tr><td><code>/compact [focus]</code></td><td>Summarises the conversation to free context</td><td>Long session, same task</td></tr>
+        <tr><td><code>/context</code></td><td>Coloured grid of what's using the context window</td><td>Claude seems forgetful or slow</td></tr>
+        <tr><td><code>/btw &lt;question&gt;</code></td><td>Side question that never enters the history</td><td>Quick check without derailing</td></tr>
+        <tr><td><code>/resume</code> · <code>/rename</code></td><td>Pick up an earlier conversation · name this one</td><td>Multi-day work</td></tr>
+        <tr><td><code>/rewind</code></td><td>Restore code and/or conversation to a checkpoint (also <kbd>Esc</kbd> <kbd>Esc</kbd>)</td><td>Claude went the wrong way</td></tr>
+        <tr><td><code>/diff</code></td><td>Review all changes in your working tree, including Claude's edits</td><td>Before you accept or commit</td></tr>
+        <tr><td><code>/copy</code> · <code>/export</code></td><td>Copy the last answer · export the conversation as text</td><td>Sharing results</td></tr>
+        <tr><td colspan="3"><span class="tag purple">Model &amp; cost</span></td></tr>
+        <tr><td><code>/model</code></td><td>Switch model (saved as your default; ← → adjusts effort)</td><td>Harder task, or cheaper/faster needed</td></tr>
+        <tr><td><code>/effort</code></td><td>Reasoning depth: <code>low</code> · <code>medium</code> · <code>high</code> · <code>xhigh</code> · <code>max</code></td><td>Tricky problem vs quick edit</td></tr>
+        <tr><td><code>/usage</code></td><td>Session cost, plan limits and stats (<code>/cost</code>, <code>/stats</code> are aliases)</td><td>Watching your budget</td></tr>
+        <tr><td colspan="3"><span class="tag purple">Control &amp; safety</span></td></tr>
+        <tr><td><code>/permissions</code></td><td>View and edit allow / ask / deny rules; recent auto-mode denials</td><td>Too many prompts, or not enough control</td></tr>
+        <tr><td><code>/plan [task]</code></td><td>Enter plan mode (optionally start planning a task)</td><td>Bigger or riskier changes</td></tr>
+        <tr><td><code>/config</code></td><td>Settings: theme, model, output style, editor mode…</td><td>Personalising Claude Code</td></tr>
+        <tr><td><code>/add-dir &lt;path&gt;</code></td><td>Give Claude access to another folder this session</td><td>Work spans two folders</td></tr>
+        <tr><td colspan="3"><span class="tag purple">Extend (Day 3)</span></td></tr>
+        <tr><td><code>/memory</code> · <code>/mcp</code></td><td>Edit CLAUDE.md &amp; auto memory · manage connectors</td><td>Teaching Claude / connecting tools</td></tr>
+        <tr><td><code>/skills</code> · <code>/hooks</code> · <code>/plugin</code></td><td>List skills · view hooks · install plugins</td><td>Customising</td></tr>
+        <tr><td colspan="3"><span class="tag purple">Review &amp; ship</span></td></tr>
+        <tr><td><code>/code-review</code></td><td>Reviews your current diff for bugs (<code>--fix</code> applies findings; <code>/review</code> is an alias)</td><td>Before committing</td></tr>
+        <tr><td><code>/security-review</code></td><td>Checks your branch's changes for security vulnerabilities</td><td>Before a pull request</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Some commands run immediately even while Claude is working (for example <code>/status</code>, <code>/usage</code>, <code>/model</code>, <code>/effort</code>); most others queue until the current turn ends. Every command, with search, is in the <a href="#ref-commands">Slash command explorer</a>.</p>
+
+  <div class="game" data-game="drill"></div>
+
+  <h3>Keyboard shortcuts worth memorising</h3>
+  <div class="table-wrap">
+    <table class="kbd-table">
+      <thead><tr><th>Shortcut</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td><kbd>Esc</kbd></td><td>Stop Claude (keeps work so far)</td></tr>
+        <tr><td><kbd>Esc</kbd> <kbd>Esc</kbd></td><td>Rewind menu (empty prompt) / clear draft</td></tr>
+        <tr><td><kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Cycle permission modes</td></tr>
+        <tr><td><span class="k" data-mac="Option+P" data-win="Alt+P"></span></td><td>Switch model without clearing your prompt</td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>O</kbd></td><td>Detailed transcript view (see every tool call)</td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>B</kbd></td><td>Send a long-running command or agent to the background</td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>T</kbd></td><td>Show/hide Claude's task checklist</td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>R</kbd></td><td>Search previous prompts</td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td><td>Stash the prompt you're writing (press again to restore)</td></tr>
+        <tr><td><kbd>?</kbd></td><td>Show all shortcuts (empty prompt)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Full list: <a href="#ref-keys">Keyboard shortcuts</a>.</p>
+  <div class="facilitator">
+    <p><strong>Don't read the table aloud.</strong> Demo five commands live (<code>/help</code>, <code>/context</code>, <code>/clear</code>, <code>/rewind</code>, <code>/usage</code>), then run the command drill as a pairs race: first correct answer scores.</p>
+    <p><strong>Expect the question</strong> "my menu has commands yours doesn't", or the reverse. Menus vary with version, plan and installed skills or plugins; <code>/help</code> on the attendee's own machine is the source of truth.</p>
+    <p><strong>Terminology:</strong> beginners often say "backslash commands". Commands start with a forward slash; <kbd>\</kbd> + <kbd>Enter</kbd> is a new line.</p>
+  </div>
+</section>
+
+<section class="section" id="m22" data-title="2.2 Context &amp; sessions" data-day="2">
+  <div class="eyebrow">Module 2.2 · 10 min</div>
+  <h2><span class="gt">&gt;</span>Context &amp; sessions: Claude's working memory</h2>
+  <p class="lead">The <strong>context window</strong> is everything Claude can "see" right now: instructions, your <code>CLAUDE.md</code>, the conversation, every file it has read and every command output. It fills up fast — and quality drops as it fills. Managing it is the single biggest lever on result quality.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-kicker">What fills the context</div>
+      <ul class="mb0">
+        <li>System instructions and tool definitions</li>
+        <li><code>CLAUDE.md</code> files and auto memory</li>
+        <li>Skill descriptions and connector tool names</li>
+        <li>Your messages and Claude's replies</li>
+        <li>Every file read and every command output</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-kicker">What happens when it's full</div>
+      <p class="mb0">Claude Code <strong>auto-compacts</strong>: it clears old tool output first, then summarises the conversation. Your requests and key decisions survive, but detailed instructions from early on can be lost — so put lasting rules in <code>CLAUDE.md</code>, not in chat.</p>
+    </div>
+  </div>
+
+  <h3>Your context toolkit</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tool</th><th>Use it to…</th></tr></thead>
+      <tbody>
+        <tr><td><code>/context</code></td><td>See a breakdown of what's using space, with suggestions</td></tr>
+        <tr><td><code>/compact focus on the API changes</code></td><td>Summarise now, steering what the summary keeps</td></tr>
+        <tr><td><code>/clear</code></td><td>Start fresh between unrelated tasks (the old conversation stays in <code>/resume</code>)</td></tr>
+        <tr><td><code>/btw …</code></td><td>Ask something without adding it to the history</td></tr>
+        <tr><td><em>"Use a subagent to investigate…"</em></td><td>Research in a separate context; only the summary comes back</td></tr>
+        <tr><td>Rewind → <em>Summarize from here / up to here</em></td><td>Compress just part of a long conversation</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Sessions: pick up where you left off</h3>
+  <p>Every conversation is saved locally (under <code class="os-mac">~/.claude/projects/</code><code class="os-win">%USERPROFILE%\.claude\projects\</code>, kept 30 days by default). Each new session starts with a fresh context; <code>CLAUDE.md</code> and auto memory carry knowledge across sessions.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Command</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td><code>claude -c</code></td><td>Continue the most recent conversation in this folder</td></tr>
+        <tr><td><code>claude -r</code> · <code>/resume</code></td><td>Open the session picker (search by name or content)</td></tr>
+        <tr><td><code>claude -n q3-analysis</code> · <code>/rename q3-analysis</code></td><td>Name a session so you can resume it with <code>claude -r q3-analysis</code></td></tr>
+        <tr><td><code>/branch</code></td><td>Branch the conversation to try another direction; the original is kept</td></tr>
+        <tr><td><code>claude --resume</code> in VS Code's terminal</td><td>The extension and CLI share history — continue a panel conversation in the terminal</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Checkpoints &amp; rewind</h3>
+  <p>Every prompt you send creates a checkpoint. Press <kbd>Esc</kbd> <kbd>Esc</kbd> on an empty prompt (or run <code>/rewind</code>), pick a point and choose:</p>
+  <div class="grid-3">
+    <div class="card"><div class="card-kicker">Restore code &amp; conversation</div>Go back completely.</div>
+    <div class="card"><div class="card-kicker">Restore conversation</div>Rewind the chat, keep current files.</div>
+    <div class="card"><div class="card-kicker">Restore code</div>Undo file edits, keep the chat.</div>
+    <div class="card"><div class="card-kicker">Summarize from here</div>Compress later messages to free space.</div>
+    <div class="card"><div class="card-kicker">Summarize up to here</div>Compress earlier messages, keep recent ones.</div>
+    <div class="card"><div class="card-kicker">Never mind</div>Back out without changes.</div>
+  </div>
+  <div class="callout warn">
+    <div class="callout-title">What rewind can't undo</div>
+    <ul class="mb0">
+      <li>Files changed by <strong>shell commands</strong> (<code>rm</code>, <code>mv</code>, <code>cp</code>, scripts) — only edits made by Claude's file-editing tools are tracked.</li>
+      <li>Anything in an <strong>external system</strong>: databases, APIs, emails, deployments, pushed commits.</li>
+      <li>Most edits made by background subagents.</li>
+    </ul>
+    <p class="mb0" style="margin-top:8px">Checkpoints are a seatbelt, not version control. <strong>Commit often</strong> — git is your real undo.</p>
+  </div>
+
+  <div class="callout tip">
+    <div class="callout-title">Three habits of effective users</div>
+    <ol class="mb0">
+      <li><strong><code>/clear</code> between unrelated tasks.</strong> Kitchen-sink sessions degrade results.</li>
+      <li><strong>Corrected Claude twice on the same thing?</strong> <code>/clear</code> and write a better first prompt using what you learned.</li>
+      <li><strong>Name sessions like branches</strong> (<code>/rename client-deck-data</code>) so multi-day work is easy to resume.</li>
+    </ol>
+  </div>
+  <div class="facilitator">
+    <p><strong>Make context visible (3 min):</strong> run <code>/context</code> in a fresh session, have Claude read two or three lab files, run it again, then <code>/compact</code> with a focus and run it a third time. The grid makes the point faster than any slide.</p>
+    <p><strong>Key message:</strong> rules that matter belong in CLAUDE.md, not in chat. They survive compaction and every new session; a correction typed in chat may not.</p>
+    <p><strong>Watch for:</strong> <code>claude -c</code> run from a different folder. It continues the most recent conversation <em>in that folder</em>, so yesterday's session seems lost: <code>cd</code> back to the folder they worked in first.</p>
+  </div>
+</section>
+
+<section class="section" id="m23" data-title="2.3 Permissions &amp; safety" data-day="2">
+  <div class="eyebrow">Module 2.3 · 25 min</div>
+  <h2><span class="gt">&gt;</span>Permissions &amp; safety</h2>
+  <p class="lead">Claude Code can run commands on your machine. Permissions decide what it may do <strong>without asking</strong>. You control this with a <strong>permission mode</strong> (the baseline) plus <strong>rules</strong> (specific exceptions).</p>
+
+  <h3>The six permission modes</h3>
+  <div class="mode-grid">
+    <div class="mode-card"><span class="mc-status">⏸ manual mode on</span><h4>Manual <small class="muted">(default)</small></h4><p>Asks before file edits, most shell commands and network requests. Reads run freely.</p><div class="mc-use">Best for: learning, sensitive or unfamiliar work.</div></div>
+    <div class="mode-card"><span class="mc-status">⏵⏵ accept edits on</span><h4>Accept edits</h4><p>Edits files and runs common file commands (<code>mkdir</code>, <code>mv</code>, <code>cp</code>…) in your folder without asking; other commands still prompt.</p><div class="mc-use">Best for: iterating on work you'll review in a diff.</div></div>
+    <div class="mode-card"><span class="mc-status">⏸ plan mode on</span><h4>Plan</h4><p>Explores and writes a plan but doesn't edit your files until you approve the plan.</p><div class="mc-use">Best for: big, multi-file or unclear changes.</div></div>
+    <div class="mode-card"><span class="mc-status">⏵⏵ auto mode on</span><h4>Auto</h4><p>No routine prompts: a separate classifier model reviews actions and blocks risky ones. The built-in starting mode from v2.1.283.</p><div class="mc-use">Best for: long tasks where you trust the direction.</div></div>
+    <div class="mode-card"><span class="mc-status">⏵⏵ don't ask on</span><h4>Don't ask</h4><p>Anything that would prompt is <strong>denied</strong>; only pre-approved tools run. Never in the Shift+Tab cycle.</p><div class="mc-use">Best for: locked-down scripts and CI.</div></div>
+    <div class="mode-card danger"><span class="mc-status">⏵⏵ bypass permissions on</span><h4>Bypass permissions</h4><p>Skips (almost) all checks. Offers no protection against prompt injection or mistakes.</p><div class="mc-use"><strong>Only</strong> in isolated containers/VMs. Never on your work laptop.</div></div>
+  </div>
+
+  <h4>Switching modes</h4>
+  <p>Press <kbd>Shift</kbd>+<kbd>Tab</kbd> during a session. Try it here:</p>
+  <div class="game" data-game="cycle"></div>
+  <ul class="gt-list">
+    <li><strong>At launch:</strong> <code>claude --permission-mode plan</code> (values: <code>default</code>/<code>manual</code>, <code>acceptEdits</code>, <code>plan</code>, <code>auto</code>, <code>dontAsk</code>, <code>bypassPermissions</code>).</li>
+    <li><strong>As your default:</strong> set <code>"permissions": { "defaultMode": "default" }</code> in <code class="os-mac">~/.claude/settings.json</code><code class="os-win">%USERPROFILE%\.claude\settings.json</code>.</li>
+    <li><strong>VS Code:</strong> click the mode indicator under the prompt box (Manual · Edit automatically · Plan · Auto).</li>
+    <li><strong>From a prompt:</strong> type <code>/plan fix the auth bug</code> to plan a single task.</li>
+  </ul>
+
+  <h3>Auto mode in one minute</h3>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-kicker" style="color:var(--danger)">Blocked by default (examples)</div>
+      <ul class="mb0">
+        <li>Downloading and running code (<code>curl … | bash</code>)</li>
+        <li>Sending sensitive data to external endpoints</li>
+        <li>Production deploys, migrations, <code>terraform destroy</code></li>
+        <li>Force pushes; <code>git reset --hard</code>, <code>git clean -fd</code></li>
+        <li>Irreversibly deleting files that existed before the session</li>
+        <li>Granting permissions, changing shared infrastructure</li>
+        <li>Printing live credentials into the transcript</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-kicker" style="color:var(--ok)">Allowed by default (examples)</div>
+      <ul class="mb0">
+        <li>Reading and editing files in your working folder</li>
+        <li>Installing dependencies already declared in your project</li>
+        <li>Read-only web requests</li>
+        <li>Pushing to branches of the repo you're working in</li>
+        <li>Reading <code>.env</code> to call its matching API</li>
+      </ul>
+    </div>
+  </div>
+  <p>Boundaries you state in chat ("don't push", "wait for my review") are respected as block signals — but they can be lost if the conversation is compacted. For a <strong>guarantee</strong>, write a deny rule. After 3 blocks in a row (or 20 in a session) auto mode pauses and goes back to prompting. Your organisation can switch auto mode off.</p>
+  <div class="callout danger">
+    <div class="callout-title">Auto mode reduces prompts — it doesn't guarantee safety</div>
+    <p class="mb0">Use it for tasks where you trust the general direction, and keep reviewing results. For sensitive work, use Manual or Plan mode.</p>
+  </div>
+
+  <h3>Plan mode: think first, then act</h3>
+  <p>In plan mode Claude reads files, may run exploratory commands, and writes a plan — your files stay untouched. When the plan is ready you choose:</p>
+  <ul class="gt-list">
+    <li><strong>Yes, and use auto mode</strong> — approve and let Claude work (reads <em>Yes, auto-accept edits</em> if auto mode isn't available);</li>
+    <li><strong>Yes, manually approve edits</strong> — approve but review each edit;</li>
+    <li><strong>No, keep planning</strong> — tell Claude what to change.</li>
+  </ul>
+  <p>Press <kbd>Ctrl</kbd>+<kbd>G</kbd> to edit the plan in your text editor first. In VS Code the plan opens as a Markdown document you can comment on inline.</p>
+
+  <h3>Permission rules: allow, ask, deny</h3>
+  <p>Rules fine-tune a mode for specific tools. They're evaluated in a fixed order — <strong>deny → ask → allow</strong> — and the first match wins, whatever the rule's specificity. A deny rule in <em>any</em> settings file can't be overridden by an allow rule elsewhere.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Rule</th><th>Matches</th></tr></thead>
+      <tbody>
+        <tr><td><code>Bash(npm run test)</code></td><td>Exactly that command</td></tr>
+        <tr><td><code>Bash(npm run *)</code></td><td><code>npm run build</code>, <code>npm run test --watch</code>, bare <code>npm run</code> — not <code>npm install</code></td></tr>
+        <tr><td><code>Bash(git commit *)</code></td><td>Any <code>git commit …</code></td></tr>
+        <tr><td><code>Bash(git push *)</code> (in deny)</td><td>Blocks commands that start with <code>git push</code></td></tr>
+        <tr><td><code>PowerShell(Get-ChildItem *)</code></td><td>Windows PowerShell tool; aliases like <code>ls</code>, <code>dir</code>, <code>gci</code> match too</td></tr>
+        <tr><td><code>Read(./.env)</code> · <code>Read(./secrets/**)</code></td><td>Reading that file · anything under <code>secrets/</code></td></tr>
+        <tr><td><code>Edit(/docs/**)</code></td><td>Edits under the project's <code>docs/</code> folder</td></tr>
+        <tr><td><code>WebFetch(domain:docs.python.org)</code></td><td>Web fetches to that host</td></tr>
+        <tr><td><code>mcp__github__*</code></td><td>Every tool from the <code>github</code> connector</td></tr>
+        <tr><td><code>Bash</code> (no brackets)</td><td>Every Bash command (as a deny: removes the tool entirely)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <details class="acc"><summary>Gotchas that trip people up</summary><div class="acc-body">
+    <ul>
+      <li><strong>Put the <code>*</code> after the subcommand.</strong> <code>Bash(git log *)</code> allows only <code>git log</code>; <code>Bash(git *)</code> allows every git command.</li>
+      <li><strong>Spaces matter:</strong> <code>Bash(ls *)</code> doesn't match <code>lsof</code>; <code>Bash(ls*)</code> does. <code>Bash(ls:*)</code> is the same as <code>Bash(ls *)</code>.</li>
+      <li><strong>Compound commands are split:</strong> an allow rule for <code>safe-cmd *</code> doesn't approve <code>safe-cmd &amp;&amp; other-cmd</code>. Deny/ask rules apply if <em>any</em> part matches.</li>
+      <li><strong>Bash rules match the text as written</strong> — <code>Bash(curl *)</code> doesn't stop <code>/usr/bin/curl</code> or <code>sh -c 'curl …'</code>. For hard boundaries use the sandbox or hooks.</li>
+      <li><strong>Use <code>Edit(…)</code>, not <code>Write(…)</code>,</strong> for path rules — Claude Code only consults <code>Edit</code> and <code>Read</code> path rules.</li>
+      <li><strong>Path anchors:</strong> <code>/path</code> is relative to the settings file's project; <code>//path</code> is an absolute path; <code>~/path</code> is your home folder.</li>
+      <li><strong>CLAUDE.md is not enforcement.</strong> "Never read .env" in CLAUDE.md is a request; <code>Read(./.env)</code> in deny is a rule.</li>
+    </ul>
+  </div></details>
+
+  <h3>Where settings live (and who wins)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Priority</th><th>File</th><th>Applies to</th><th>Commit to git?</th></tr></thead>
+      <tbody>
+        <tr><td>1 (highest)</td><td>Managed settings (IT / MDM / claude.ai admin console)</td><td>Everyone in the organisation; can't be overridden</td><td>—</td></tr>
+        <tr><td>2</td><td>Command-line flags, <code>--settings</code></td><td>This session</td><td>—</td></tr>
+        <tr><td>3</td><td><code>.claude/settings.local.json</code></td><td>You, this project ("Yes, don't ask again" saves here)</td><td>No</td></tr>
+        <tr><td>4</td><td><code>.claude/settings.json</code></td><td>Everyone on the project</td><td>Yes</td></tr>
+        <tr><td>5</td><td><code class="os-mac">~/.claude/settings.json</code><code class="os-win">%USERPROFILE%\.claude\settings.json</code></td><td>You, every project</td><td>No</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Open <code>/permissions</code> to see every active rule and which file it came from, add or remove rules, manage extra working directories, and review <em>Recently denied</em> actions from auto mode (press <kbd>r</kbd> to retry one with manual approval).</p>
+
+  <div class="builder" data-builder="perm"></div>
+
+  <h3>Built-in guard rails</h3>
+  <ul class="gt-list">
+    <li><strong>Working-directory boundary:</strong> Claude can only write inside the folder you started it in (and folders you add with <code>/add-dir</code>).</li>
+    <li><strong>Protected paths</strong> are never auto-approved (except in bypass mode): <code>.git</code>, <code>.claude</code>, <code>.vscode</code>, <code>.idea</code>, shell profiles like <code>.bashrc</code>/<code>.zshrc</code>, <code>.gitconfig</code>, <code>.npmrc</code>, <code>.mcp.json</code> and similar.</li>
+    <li><strong>Critical paths:</strong> <code>rm</code> of your home folder, the drive root or the project folder always needs a human, whatever your rules say.</li>
+    <li><strong>Sandboxing</strong> (<code>/sandbox</code>): OS-level file and network isolation for shell commands on macOS, Linux and WSL 2 (not native Windows). Pairs well with Manual mode for fewer prompts.</li>
+    <li><strong>Workspace trust:</strong> a folder's own settings, hooks and connectors don't take effect until you trust it.</li>
+  </ul>
+
+  <h3>A sensible starter <code>.claude/settings.json</code></h3>
+  <pre class="cb" data-label=".claude/settings.json"><code>{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(python -m unittest *)",
+      "WebFetch(domain:code.claude.com)"
+    ],
+    "ask": [
+      "Bash(git push *)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)"
+    ]
+  }
+}</code></pre>
+  <p class="muted"><small>The <code>$schema</code> line gives you autocomplete and validation when editing the file in VS Code.</small></p>
+
+  <div class="callout danger">
+    <div class="callout-title">Seven golden rules for safe use</div>
+    <ol class="mb0">
+      <li>Start in <strong>Manual or Plan</strong> mode on unfamiliar or sensitive work.</li>
+      <li><strong>Never</strong> use bypass permissions outside an isolated container or VM.</li>
+      <li><strong>Deny secrets</strong> explicitly (<code>Read(./.env)</code>) — instructions alone aren't enough.</li>
+      <li><strong>Review diffs</strong> (<code>/diff</code>) before you commit or share outputs.</li>
+      <li><strong>Commit often</strong> — git is the real undo button.</li>
+      <li>Treat web pages, documents and third-party connectors as <strong>untrusted input</strong> (prompt injection is real).</li>
+      <li>Follow your organisation's <strong>data-handling policy</strong> — only use data you're allowed to use with AI tools.</li>
+    </ol>
+  </div>
+
+  <div class="facilitator">
+    <p><strong>Exercise (5 min):</strong> in the builder, have attendees create: allow <code>Bash(python -m unittest *)</code>, ask <code>Bash(git push *)</code>, deny <code>Read(./.env)</code>. Then use the tester to check <code>git push origin main</code> in each mode, and <code>Read .env</code> in bypass mode (still denied — deny rules apply in every mode).</p>
+    <p><strong>Data note:</strong> on commercial plans (Team, Enterprise, API) Anthropic doesn't train models on Claude Code prompts or code by default; consumer plans (Pro/Max) have a user-controlled training setting. Refer detailed data questions to your administrator — don't improvise policy.</p>
+  </div>
+</section>
+
+<section class="section" id="m24" data-title="2.4 CLAUDE.md &amp; memory" data-day="2">
+  <div class="eyebrow">Module 2.4 · 10 min</div>
+  <h2><span class="gt">&gt;</span>CLAUDE.md &amp; memory</h2>
+  <p class="lead">Every session starts with a fresh context. <code>CLAUDE.md</code> is a plain Markdown briefing that Claude reads at the start of <em>every</em> session — your project's conventions, commands and "always/never" rules.</p>
+
+  <h3>Where CLAUDE.md files live</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Scope</th><th>Location</th><th>Use for</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Project</strong> (team)</td><td><code>./CLAUDE.md</code> or <code>./.claude/CLAUDE.md</code></td><td>Build/test commands, conventions, architecture — commit it</td></tr>
+        <tr><td><strong>Personal, all projects</strong></td><td><code class="os-mac">~/.claude/CLAUDE.md</code><code class="os-win">%USERPROFILE%\.claude\CLAUDE.md</code></td><td>Your own preferences ("explain changes briefly", "British spelling")</td></tr>
+        <tr><td><strong>Personal, this project</strong></td><td><code>./CLAUDE.local.md</code></td><td>Your sandbox URLs, test data — add to <code>.gitignore</code></td></tr>
+        <tr><td><strong>Organisation</strong></td><td>Managed policy file deployed by IT</td><td>Company-wide standards and compliance rules</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Files in parent folders load too, and <code>CLAUDE.md</code> files in subfolders load when Claude works there. All of them are added together (not overridden).</p>
+
+  <h3>Create one in 30 seconds</h3>
+  <pre class="cb" data-label="Type in Claude Code" data-prompt><code>/init</code></pre>
+  <p>Claude analyses the project and writes a starter file (or suggests improvements if one exists). Then refine it with what Claude couldn't discover by itself. Run <code>/memory</code> to open it, and <code>/context</code> to confirm it loaded (listed under <em>Memory files</em>).</p>
+
+  <h3>What good looks like</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>✅ Include</th><th>❌ Leave out</th></tr></thead>
+      <tbody>
+        <tr><td>Commands Claude can't guess (how to run tests, build, lint)</td><td>Anything Claude can work out by reading the files</td></tr>
+        <tr><td>Conventions that differ from the defaults (date format, spelling, naming)</td><td>Generic advice like "write clean code"</td></tr>
+        <tr><td>Where things go ("reports in <code>reports/</code>, never edit <code>data/raw/</code>")</td><td>File-by-file descriptions of the project</td></tr>
+        <tr><td>Workflow rules (branch naming, "plan first for multi-file changes")</td><td>Long tutorials or pasted documentation (link instead)</td></tr>
+        <tr><td>Gotchas and non-obvious behaviour</td><td>Information that changes often</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="gt-list">
+    <li><strong>Be concrete and verifiable:</strong> "Run <code>npm test</code> before committing" beats "test your changes".</li>
+    <li><strong>Keep it under ~200 lines.</strong> For each line ask: "would removing this cause mistakes?" If not, cut it.</li>
+    <li><strong>Emphasise sparingly:</strong> "IMPORTANT:" on one line works; on twenty lines it means nothing.</li>
+    <li><strong>Split big files:</strong> <code>@docs/style.md</code> imports a file; <code>.claude/rules/*.md</code> holds topic rules, optionally scoped to file paths.</li>
+    <li><strong>Treat it like code:</strong> when Claude makes the same mistake twice, add a line. Ask Claude: <em>"you keep doing X — add a rule to CLAUDE.md so this stops happening"</em>.</li>
+  </ul>
+
+  <h3>Auto memory: notes Claude keeps for itself</h3>
+  <p>As you work, Claude saves useful learnings — your preferences, corrections, project context — to a per-project <code>MEMORY.md</code> index (the first 200 lines / 25 KB load each session). You'll see messages like "Saved 2 memories".</p>
+  <ul class="gt-list">
+    <li>Say <em>"remember that the API tests need a local Redis"</em> → saved to auto memory.</li>
+    <li>Say <em>"add this to CLAUDE.md"</em> → written into your project instructions instead.</li>
+    <li>Browse, edit or switch auto memory off in <code>/memory</code>. It's plain Markdown on your machine.</li>
+  </ul>
+  <div class="callout warn">
+    <div class="callout-title">Memory is guidance, not enforcement</div>
+    <p class="mb0">Claude tries hard to follow <code>CLAUDE.md</code>, but compliance isn't guaranteed. Anything that <em>must</em> happen (or must never happen) belongs in a permission rule or a hook.</p>
+  </div>
+
+  <h3>Example CLAUDE.md</h3>
+  <pre class="cb" data-label="CLAUDE.md"><code># Q3 sales insights (training lab)
+
+## Commands
+- Run tests: `python -m unittest -v`
+- Don't install new packages without asking first
+
+## Conventions
+- Australian English spelling
+- Dates as DD Mon YYYY (e.g. 01 Oct 2026); money in AUD with thousands separators
+- Write outputs to `reports/`; never modify files in `data/raw/`
+
+## Workflow
+- For changes touching more than two files, propose a plan first
+- After editing code, run the tests and show me the result
+- When compacting, keep the list of files changed and the test command</code></pre>
+
+  <div class="builder" data-builder="claudemd"></div>
+  <div class="facilitator">
+    <p><strong>Critique, don't lecture (5 min):</strong> run <code>/init</code> on the lab folder live, then hold the result against the include / leave-out table. Delete one line Claude could have worked out by reading the files, and add one it couldn't have guessed, such as the date format.</p>
+    <p><strong>Common misconception:</strong> CLAUDE.md is a briefing, not documentation. Keep it short. Anything that must <em>always</em> happen belongs in a permission rule or a hook, because memory is guidance, not enforcement.</p>
+  </div>
+</section>
+
+<section class="section" id="m25" data-title="2.5 Explore → Plan → Build → Verify" data-day="2">
+  <div class="eyebrow">Module 2.5 · 7 min</div>
+  <h2><span class="gt">&gt;</span>The workflow: explore → plan → build → verify</h2>
+  <p class="lead">Letting Claude jump straight to edits can solve the wrong problem. Separate thinking from doing — and always give Claude a way to check its own work.</p>
+  <ol class="steps">
+    <li><strong>Explore</strong> (plan mode — nothing changes)
+      <pre class="cb" data-label="Type in Claude Code" data-prompt><code>read @meeting-notes.md and @sales_q3.csv. what would a client exec care about most?</code></pre></li>
+    <li><strong>Plan</strong>
+      <pre class="cb" data-label="Type in Claude Code" data-prompt><code>plan a one-page insights summary and a simple dashboard. list the files you'd create and how you'll verify the numbers. don't edit anything yet</code></pre>
+      Press <kbd>Ctrl</kbd>+<kbd>G</kbd> to tweak the plan, then approve.</li>
+    <li><strong>Build</strong>
+      <pre class="cb" data-label="Type in Claude Code" data-prompt><code>implement the plan. write reports/insights.md and reports/dashboard.html</code></pre></li>
+    <li><strong>Verify</strong>
+      <pre class="cb" data-label="Type in Claude Code" data-prompt><code>recompute the regional totals a second way and confirm they match the report. show me the evidence</code></pre></li>
+    <li><strong>Commit</strong> (if you're using git)
+      <pre class="cb" data-label="Type in Claude Code" data-prompt><code>commit these changes with a descriptive message</code></pre></li>
+  </ol>
+  <div class="callout tip">
+    <div class="callout-title">Give Claude a check it can run</div>
+    <p>A test suite, a build, a script that recomputes totals, a screenshot to compare against — anything that returns pass/fail. Without one, "looks done" is the only signal and <em>you</em> become the verification loop. Ask Claude to <strong>show evidence</strong> (the command it ran and its output), not just say it worked.</p>
+    <p class="mb0">Skip the plan when the change is small and clear: <em>"if you could describe the diff in one sentence, skip the plan."</em></p>
+  </div>
+
+  <h3>For bigger pieces of work: let Claude interview you</h3>
+  <pre class="cb" data-label="Type in Claude Code" data-prompt><code>I want to build [brief description]. Interview me in detail using the AskUserQuestion tool. Ask about implementation, UX, edge cases, concerns and tradeoffs. Don't ask obvious questions — dig into the hard parts. Keep interviewing until we've covered everything, then write a complete spec to SPEC.md.</code></pre>
+  <p>Then start a fresh session (<code>/clear</code>) to implement the spec with clean context.</p>
+
+  <h3>Five failure patterns (and their fixes)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Pattern</th><th>Fix</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Kitchen-sink session</strong> — many unrelated tasks in one conversation</td><td><code>/clear</code> between tasks</td></tr>
+        <tr><td><strong>Correcting over and over</strong></td><td>After two failed corrections, <code>/clear</code> and write a better first prompt</td></tr>
+        <tr><td><strong>Over-stuffed CLAUDE.md</strong> — rules get lost in noise</td><td>Prune ruthlessly; move must-haves into hooks or permission rules</td></tr>
+        <tr><td><strong>Trust-then-verify gap</strong> — plausible output, missed edge cases</td><td>Always provide verification (tests, totals, screenshots)</td></tr>
+        <tr><td><strong>Infinite exploration</strong> — "investigate" with no scope fills the context</td><td>Scope narrowly, or "use a subagent to investigate…"</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="facilitator">
+    <p><strong>Model the habit:</strong> before each demo task, ask the room "how will Claude prove this worked?" and put the answer in the prompt. Use plan mode for the explore step, and show <kbd>Ctrl</kbd>+<kbd>G</kbd> to edit the plan before approving it.</p>
+    <p><strong>Time check:</strong> this is the last input before Lab 2. If you're behind, demo explore → plan → build only, and leave the interview pattern and the failure table as reading.</p>
+  </div>
+</section>
+
+<section class="section" id="lab2" data-title="Lab 2: Real mini use cases" data-day="2">
+  <div class="lab">
+    <span class="lab-badge">Lab 2 · 27 min</span>
+    <h3>Real mini use cases</h3>
+    <p><strong>Goal:</strong> lock down secrets, teach Claude your conventions, then complete one realistic task using explore → plan → build → verify. Use the <code>claude-lab</code> folder from Lab 1.</p>
+
+    <div class="checklist-head"><h4>Part A — required (10 min)</h4><span class="cl-count" data-count-for="lab2"></span></div>
+    <ul class="checklist" data-checklist="lab2">
+      <li><label><input type="checkbox" data-id="a1"><span><strong>Protect the secret</strong><span class="cl-detail">Run <code>/permissions</code>, add a <strong>deny</strong> rule <code>Read(./.env)</code> and save it to <em>project settings</em>. Then ask <code>what's in the .env file?</code> — Claude should be blocked.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="a2"><span><strong>Check the rule's source</strong><span class="cl-detail">Re-open <code>/permissions</code> and find which file your rule was saved in (<code>.claude/settings.json</code>).</span></span></label></li>
+      <li><label><input type="checkbox" data-id="a3"><span><strong>Generate a CLAUDE.md</strong><span class="cl-detail">Run <code>/init</code>, read the result, approve it.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="a4"><span><strong>Add two house rules</strong><span class="cl-detail">Run <code>/memory</code>, open the project CLAUDE.md and add: <em>Dates as DD Mon YYYY</em> and <em>Australian English spelling</em> (or your own).</span></span></label></li>
+      <li><label><input type="checkbox" data-id="a5"><span><strong>Prove it loaded</strong><span class="cl-detail"><code>/clear</code>, then <code>/context</code> — find CLAUDE.md under Memory files. Ask <code>summarise the meeting date and next steps in two lines</code> and check the date format.</span></span></label></li>
+    </ul>
+
+    <h4>Part B — choose one (15 min)</h4>
+    <div class="tabs" data-tabs="lab2b">
+      <div class="tab-list" role="tablist" aria-label="Lab 2 options">
+        <button class="tab-btn" role="tab" data-tab="data">📊 Data insights</button>
+        <button class="tab-btn" role="tab" data-tab="bug">🐞 Fix the bugs</button>
+        <button class="tab-btn" role="tab" data-tab="docs">📝 Meeting → actions</button>
+        <button class="tab-btn" role="tab" data-tab="files">🗂 Tidy the inbox</button>
+      </div>
+      <div class="tab-panel" role="tabpanel" data-panel="data" data-print-label="Option: Data insights">
+        <p><strong>No coding needed.</strong> Turn raw data into an exec-ready summary.</p>
+        <pre class="cb" data-label="Type in Claude Code" data-prompt><code>/plan read @sales_q3.csv. plan an analysis: revenue by region and by month, top 5 products, channel mix, and any data-quality problems. output reports/analysis.md and a single-file reports/dashboard.html with no external libraries</code></pre>
+        <pre class="cb" data-label="Type in Claude Code" data-prompt><code>before you finish, recompute the grand total two different ways and show me that they match. then tell me how to open the dashboard</code></pre>
+        <p><strong>Look for:</strong> did Claude spot the planted data error? Are numbers formatted per your CLAUDE.md?</p>
+      </div>
+      <div class="tab-panel" role="tabpanel" data-panel="bug" data-print-label="Option: Fix the bugs" hidden>
+        <p><strong>Needs Python 3</strong> (Claude will tell you if it's missing). The calculator has two planted bugs.</p>
+        <pre class="cb" data-label="Type in Claude Code" data-prompt><code>run the tests with python -m unittest -v. explain each failure in plain English, then fix the root cause in calculator.py (don't change the tests) and re-run until everything passes</code></pre>
+        <pre class="cb" data-label="Type in Claude Code" data-prompt><code>/diff</code></pre>
+        <p><strong>Stretch:</strong> run <code>/code-review</code> on your diff, or ask <code>add a test for percent_change when the old value is zero</code>.</p>
+      </div>
+      <div class="tab-panel" role="tabpanel" data-panel="docs" data-print-label="Option: Meeting to actions" hidden>
+        <p><strong>Consulting classic:</strong> messy notes → crisp outputs.</p>
+        <pre class="cb" data-label="Type in Claude Code" data-prompt><code>read @meeting-notes.md and create followup.md containing: (1) a 5-bullet executive summary, (2) an action table with owner, due date and status, (3) a short follow-up email to the steering committee. flag anything ambiguous instead of guessing</code></pre>
+        <p><strong>Then:</strong> <code>make the email more concise and put the decisions first</code> — notice how iterating in the same session builds on context.</p>
+      </div>
+      <div class="tab-panel" role="tabpanel" data-panel="files" data-print-label="Option: Tidy the inbox" hidden>
+        <p><strong>File organisation</strong> — and a lesson about checkpoints.</p>
+        <pre class="cb" data-label="Type in Claude Code" data-prompt><code>/plan look at the inbox/ folder. propose a folder structure and a consistent naming convention (YYYY-MM-DD_topic.ext). show me the full before → after mapping as a table. don't move anything yet</code></pre>
+        <pre class="cb" data-label="Type in Claude Code" data-prompt><code>copy (don't move) the files into a new organised/ folder following the plan, then list the result</code></pre>
+        <div class="callout warn mb0"><div class="callout-title">Why copy, not move?</div><p class="mb0">Moves and renames done with shell commands aren't covered by rewind. Copying (or committing to git first) keeps an easy way back.</p></div>
+      </div>
+    </div>
+
+    <div class="checklist-head"><h4>Part C — wrap up (2 min)</h4></div>
+    <ul class="checklist" data-checklist="lab2">
+      <li><label><input type="checkbox" data-id="c1"><span><strong>Check usage and context</strong><span class="cl-detail">Run <code>/usage</code> and <code>/context</code>.</span></span></label></li>
+      <li><label><input type="checkbox" data-id="c2"><span><strong>Name the session</strong><span class="cl-detail"><code>/rename lab2</code> — tomorrow you can run <code>claude -r lab2</code>.</span></span></label></li>
+    </ul>
+  </div>
+  <div class="facilitator">
+    <p><strong>Part A is mandatory: walk the room at the deny-rule step.</strong> The usual slip is saving the rule to local instead of project settings; step 2 (checking the rule's source) is there to catch it.</p>
+    <p><strong>If someone asks how airtight the deny rule is:</strong> it covers Claude's file tools, shell commands Claude Code recognises such as <code>cat</code>, <code>head</code> and <code>tail</code>, and redirections. It does not stop a Python script that opens the file itself; that needs the sandbox (macOS, Linux, WSL 2).</p>
+    <p><strong>Part B:</strong> steer non-coders to Data insights or Meeting → actions. Fix the bugs needs Python 3; if it's missing, switch tracks rather than install software mid-lab.</p>
+    <details class="fac-key"><summary>Answer key (hidden so it doesn't show on the projector)</summary>
+    <p>The planted data error is a row with −14 units and −$9,100 revenue (19 Aug 2026, NSW, Training Seat). The calculator bugs: <code>average()</code> divides by <code>len(values) - 1</code>, which is wrong and crashes on a single value, and <code>percent_change()</code> divides by <code>new</code> instead of <code>old</code>.</p>
+    </details>
+  </div>
+</section>
+
+<section class="section" id="quiz2" data-title="Day 2 knowledge check" data-day="2">
+  <div class="eyebrow">Wrap-up · 8 min</div>
+  <h2>Day 2 knowledge check</h2>
+  <div class="quiz" data-quiz="day2"></div>
+  <div class="callout tip">
+    <div class="callout-title">Homework (15 minutes)</div>
+    <p class="mb0">Write a real <code>CLAUDE.md</code> for one of your own projects or document folders — under 40 lines. Bring one task you repeat every week (a report, a status update, a checklist): on Day 3 you'll turn it into your own slash command.</p>
+  </div>
+  <div class="facilitator">
+    <p><strong>Run it (8 min):</strong> open with a 2-minute Lab 2 debrief (who spotted the planted data error? did the dates follow CLAUDE.md? who planned before building?), then five minutes on the check. Confirm everyone has a repeated weekly task in mind for Day 3: the skill exercise depends on it.</p>
+  </div>
+</section>
