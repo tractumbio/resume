@@ -3777,8 +3777,18 @@ COURSE.labkit = (function () {
     if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(text).then(done, fallback); } else { fallback(); }
   }
 
+  // Inside the claude.ai artifact viewer, files go through its downloads capability
+  // (plain download links are blocked there); opened as a local file, a normal link works.
+  var dlCap = null;
+  try { if (window.claude && typeof window.claude.use === "function") window.claude.use("downloads").then(function (d) { dlCap = d; }, function () {}); } catch (e) {}
   function download(name, content, type) {
     var blob = content instanceof Blob ? content : new Blob([content], { type: type || "text/plain;charset=utf-8" });
+    if (dlCap) {
+      dlCap.save({ filename: name, data: blob }).catch(function (err) {
+        if (err && err.code !== "declined") toast("Couldn't save " + name + " here. Open the course file directly to download it.");
+      });
+      return;
+    }
     var url = URL.createObjectURL(blob);
     var a = document.createElement("a"); a.href = url; a.download = name; document.body.appendChild(a); a.click();
     setTimeout(function () { URL.revokeObjectURL(url); a.remove(); }, 1500);
