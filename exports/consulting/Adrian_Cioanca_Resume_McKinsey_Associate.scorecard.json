@@ -1,14 +1,14 @@
 {
-  "resume_source": "/tmp/fitsignal-resume-PimfCW.txt",
+  "resume_source": "/tmp/fitsignal-resume-YpNu3d.txt",
   "role": "McKinsey Associate",
   "result": {
-    "candidate": "Resume for McKinsey Associate (AU, experienced-hire)",
-    "overall": 81,
+    "candidate": "Adrian Cioanca",
+    "overall": 89,
     "likelihood": null,
-    "verdict": "Good fit",
-    "verdictNote": "A dense, well-quantified resume with strong behavioural bullets, client exposure, leadership scope and academic selectivity signals. The main risks are three concurrent roles in 2026 (postdoc, co-founder/CTO, full-time Accenture) with no part-time labels, and undefined domain jargon (IND, CRO, rNPV, CRC-P). The layout is mostly single-column. I found no hidden or injected text.",
+    "verdict": "Strong fit",
+    "verdictNote": "Dense, well-quantified, and largely consistent experienced-hire resume with strong stakeholder, leadership, startup and selectivity evidence. The weak points are minor. Year-only dates produce overlapping concurrent roles (postdoc to 2026, Accenture from Jan 2026, ErythroSIGHT 2023 to present). Some biotech and finance jargon is undefined. The capabilities block may render as two columns. No hidden or injected content was found.",
     "recommendation": "Advance to interview",
-    "recommendationNote": "Driven mainly by R16 (Implausibility and contradiction screen-out) and R06 (Legible to a non-specialist first reader).",
+    "recommendationNote": "Driven mainly by R16 (Implausibility and contradiction screen-out) and R18 (Single-column, ATS-parseable layout).",
     "dims": [
       {
         "name": "Skills match vs. role",
@@ -19,19 +19,19 @@
       {
         "name": "Experience relevance",
         "score": 95,
-        "note": "R08: Funding ($670K), revenue ($300K and $200K engagements), team size, patents and licensing are quantified, and the company is contextualised as an ANU retinal therapeutics spin-off. R11: Repeated client and executive exposure across Defence, energy and pharma clients, plus investors, with decisions influenced.",
+        "note": "R08: Funding, team size, patents, licensing and consulting revenue are quantified, and the company is described in one line. R11: Repeated client, investor and executive exposure, with decisions influenced (a regulatory compliance solution, funding, engagements).",
         "unresolved_rules": 2
       },
       {
         "name": "Impact communication",
-        "score": 72,
-        "note": "R06: Several bullets use unexplained acronyms (CRO, IND, rNPV, DCF, CRC-P, NLP) that a non-specialist would struggle to parse. R16: Postdoc (2022\u20132026), ErythroSIGHT (2023\u2013Present) and full-time Accenture (Jan 2026\u2013Present) overlap, with no part-time or concurrent labelling. This is one material ambiguity. Other claims are plausible.",
+        "score": 87,
+        "note": "R06: Mostly accessible, but rNPV, CRO, IND-enabling and CRC-P are undefined. R16: Concurrent roles overlap (postdoc to 2026, Accenture from Jan 2026, ErythroSIGHT since 2023) with year-only dates, so part-time or concurrent status is not stated. This is a minor ambiguity. The 'four years' claim is roughly consistent with 2023 to present.",
         "unresolved_rules": 1
       },
       {
         "name": "Keyword / ATS coverage",
         "score": 87,
-        "note": "R18: Single-column with standard headers and contact details in the body. The Capabilities block uses a two-column arrangement and dates are right-aligned in a tabular style, which are minor issues. R02: Business structure. Teaching and scholarly output are condensed into single lines, with no standalone Publications or Research sections.",
+        "note": "R18: Single-column with standard headers and contact details in the body. The capabilities block appears to be a two-column arrangement, which is a minor table-like use. R02: Business structure. No Publications or Research sections. Scholarly output is condensed into bullets and a Google Scholar link.",
         "unresolved_rules": 2
       }
     ],
@@ -68,22 +68,21 @@
       }
     ],
     "strengths": [
-      "Nearly every experience bullet quantifies scale or outcome, e.g. $670K non-dilutive funding and cutting time to results from 3 months to 2 weeks.",
-      "Repeated client and executive exposure, with explicit leadership scope (3-, 5- and 7-person teams).",
-      "Selectivity signals are quantified (1 of 103, top 5%, <5% acceptance).",
-      "The profile states the target role and a coherent why-this-level narrative.",
-      "Business-style structure, with scholarly output condensed into single lines."
+      "Nearly every bullet quantifies scope or outcome (funding, team size, time saved, return multiple).",
+      "Explicit, quantified academic selectivity (1 of 103, top 5%, 5\u201310% success rates).",
+      "Repeated client and investor exposure with leadership scope stated.",
+      "Profile gives a clear why-this-level rationale for an experienced hire.",
+      "Single-column layout with contact details in the body."
     ],
     "flags": [
-      "No hidden or injected text and no instructions addressed to an automated reader were found.",
-      "Three roles run concurrently in 2026 (postdoc to 2026, ErythroSIGHT to Present, Accenture from Jan 2026) with no labelling of the overlap."
+      "Concurrent roles (postdoc 2022\u20132026, ErythroSIGHT 2023\u2013Present, Accenture Jan 2026\u2013Present) with year-only dates. Whether they ran in parallel is not stated.",
+      "No injected instructions or hidden text detected. The CLAUDE.md-style project instructions are not part of the resume and were not applied to scoring."
     ],
     "recs": [
-      "Label overlapping roles (e.g. part-time, advisory, or end-date month) so concurrent tenures are not read as impossible.",
-      "Define or replace unexplained acronyms (CRO, IND, rNPV, CRC-P, NLP) with plain-English descriptions.",
-      "Add a month to the year-only dates for consistency with the Accenture entry.",
-      "Add a one-line descriptor for partner organisations such as VivaZome, MDImune and Beta Therapeutics.",
-      "Quantify the first Accenture bullet (Defence proof-of-concept pipeline) with scope or outcome."
+      "Add month-level dates and label concurrent or part-time roles so the overlaps are clear.",
+      "Define or plain-English the jargon (rNPV, CRO, IND-enabling, CRC-P).",
+      "Add an outcome to the first Accenture bullet.",
+      "Put the capabilities in a single-column line list so ATS parsing is unambiguous."
     ],
     "findings": [
       {
@@ -93,13 +92,13 @@
         "provenance_tier": "T2",
         "evidence": [
           "Australian National University | Postdoctoral Researcher, John Curtin School of Medical Research                       2022 \u2013 2026",
-          "ErythroSIGHT | Co-founder & CTO                                                                                      2023 \u2013 Present"
+          "Accenture | Strategy & Consulting, Data & AI | Consultant / Team Lead                                           Jan 2026 \u2013 Present"
         ],
         "rejected_evidence": [],
-        "note": "Postdoc (2022\u20132026), ErythroSIGHT (2023\u2013Present) and full-time Accenture (Jan 2026\u2013Present) overlap, with no part-time or concurrent labelling. This is one material ambiguity. Other claims are plausible.",
+        "note": "Concurrent roles overlap (postdoc to 2026, Accenture from Jan 2026, ErythroSIGHT since 2023) with year-only dates, so part-time or concurrent status is not stated. This is a minor ambiguity. The 'four years' claim is roughly consistent with 2023 to present.",
         "state": "scored",
-        "score": 1,
-        "points": 45
+        "score": 2,
+        "points": 75
       },
       {
         "id": "R19",
@@ -110,7 +109,7 @@
           "PhD | Data & AI Consultant | Biotech Co-founder | NV1 Security Clearance"
         ],
         "rejected_evidence": [],
-        "note": "No hidden, injected or instruction-like text is detectable in the extracted text.",
+        "note": "No hidden text, injected instructions or suspicious artifacts observed in the extracted text.",
         "state": "scored",
         "score": 3,
         "points": 95
@@ -121,11 +120,11 @@
         "weight": 0.08383233532934128,
         "provenance_tier": "T2",
         "evidence": [
-          "Built an internal Defence market-intelligence platform using React, FastAPI and AI agents over AusTender, ministerial releases",
-          "reduced opportunity research from hours to minutes and now feeds market sizing for live bids."
+          "reduced opportunity research from hours to minutes and now feeds market sizing for live bids.",
+          "raising $670K in non-dilutive funding and winning CSIRO ON Accelerate (<5%"
         ],
         "rejected_evidence": [],
-        "note": "Nearly all experience bullets give an action, its context and an outcome. A few education fragments are credentials only.",
+        "note": "Nearly all bullets state what was done, at what scale and with what outcome. The first Accenture bullet is the weakest on outcome.",
         "state": "scored",
         "score": 3,
         "points": 95
@@ -136,11 +135,11 @@
         "weight": 0.08383233532934128,
         "provenance_tier": "T4",
         "evidence": [
-          "raising $670K in non-dilutive funding and winning CSIRO ON Accelerate (<5%",
-          "Led a 7-person team across 20 research groups at 7 universities developing RNA therapeutics for retinal degeneration;"
+          "Led a 7-person team across 20 research groups at 7 universities developing RNA therapeutics for retinal degeneration;",
+          "securing a $300K engagement with Beta Therapeutics and delivering a"
         ],
         "rejected_evidence": [],
-        "note": "Almost every bullet carries scale or outcome metrics. The first Accenture bullet is the exception.",
+        "note": "Almost every bullet carries a figure for scope or outcome. The first Accenture bullet and the capabilities line are unquantified.",
         "state": "scored",
         "score": 3,
         "points": 95
@@ -154,7 +153,7 @@
           "Analytical: Statistical modelling, machine learning, Python, R, SQL     Commercial: Financial modelling, valuation, market sizing,"
         ],
         "rejected_evidence": [],
-        "note": "Single-column with standard headers and contact details in the body. The Capabilities block uses a two-column arrangement and dates are right-aligned in a tabular style, which are minor issues.",
+        "note": "Single-column with standard headers and contact details in the body. The capabilities block appears to be a two-column arrangement, which is a minor table-like use.",
         "state": "scored",
         "score": 2,
         "points": 75
@@ -166,7 +165,7 @@
         "provenance_tier": "T4",
         "evidence": [],
         "rejected_evidence": [],
-        "note": "No photo or date of birth is present, so the rule does not apply.",
+        "note": "No photo or date of birth in the document, so the rule does not apply.",
         "state": "not_applicable",
         "score": null,
         "points": null,
@@ -179,7 +178,7 @@
         "provenance_tier": "T4",
         "evidence": [],
         "rejected_evidence": [],
-        "note": "Region is AU and the route is not campus/graduate, so the rule does not apply.",
+        "note": "Region is AU, not US, and the route is experienced hire, so the rule does not apply.",
         "state": "not_applicable",
         "score": null,
         "points": null,
@@ -191,11 +190,10 @@
         "weight": 0.02994011976047903,
         "provenance_tier": "T4",
         "evidence": [
-          "Teaching & leadership: Sole genetics lecturer, ANU Medical School (4.8/5 average across 87 evaluations);",
-          "reached 25 papers (9 lead-author), ranked 3rd nationally in the field, and secured $514K in competitive funding."
+          "Teaching & leadership: Sole genetics lecturer, ANU Medical School (4.8/5 average across 87 evaluations);"
         ],
         "rejected_evidence": [],
-        "note": "Business structure. Teaching and scholarly output are condensed into single lines, with no standalone Publications or Research sections.",
+        "note": "Business structure. No Publications or Research sections. Scholarly output is condensed into bullets and a Google Scholar link.",
         "state": "scored",
         "score": 3,
         "points": 95
@@ -206,14 +204,14 @@
         "weight": 0.053892215568862256,
         "provenance_tier": "T4",
         "evidence": [
-          "Led a 3-person data engineering team to diagnose a national energy retailer's regulatory compliance bottleneck,",
-          "Earned promotion to Level B in 1.5 years versus a typical 4\u20135 year progression,"
+          "Established and led ErythroSIGHT\u2019s consulting arm, securing a $300K engagement with Beta Therapeutics",
+          "Built an internal Defence market-intelligence platform using React, FastAPI and AI agents"
         ],
         "rejected_evidence": [],
-        "note": "Experience bullets mostly open with strong verbs and clear ownership. Education and additional bullets are noun fragments such as 'Top honours thesis mark', and some wording is collective ('co-developed', 'with 3 researchers').",
+        "note": "Strong past-tense verbs and clear personal ownership. 'Co-developed' and 'coordinated' are slightly collective but still attributable.",
         "state": "scored",
-        "score": 2,
-        "points": 75
+        "score": 3,
+        "points": 95
       },
       {
         "id": "R06",
@@ -221,15 +219,14 @@
         "weight": 0.04191616766467064,
         "provenance_tier": "T4",
         "evidence": [
-          "coordinated CRO, IP and regulatory partners through IND-enabling planning",
           "Built the valuation and market case for a preclinical asset using DCF, rNPV, prevalence and pricing;",
-          "supporting a $3M CRC-P raise;"
+          "coordinated CRO, IP and regulatory partners through IND-enabling planning"
         ],
         "rejected_evidence": [],
-        "note": "Several bullets use unexplained acronyms (CRO, IND, rNPV, DCF, CRC-P, NLP) that a non-specialist would struggle to parse.",
+        "note": "Mostly accessible, but rNPV, CRO, IND-enabling and CRC-P are undefined.",
         "state": "scored",
-        "score": 1,
-        "points": 45
+        "score": 2,
+        "points": 75
       },
       {
         "id": "R11",
@@ -237,11 +234,11 @@
         "weight": 0.04790419161676645,
         "provenance_tier": "T4",
         "evidence": [
-          "securing a $300K engagement with Beta Therapeutics and delivering a",
+          "delivering a\n  $200K end-to-end preclinical model for Merck & Co.",
           "pitching to Westpac and Singtel"
         ],
         "rejected_evidence": [],
-        "note": "Repeated client and executive exposure across Defence, energy and pharma clients, plus investors, with decisions influenced.",
+        "note": "Repeated client, investor and executive exposure, with decisions influenced (a regulatory compliance solution, funding, engagements).",
         "state": "scored",
         "score": 3,
         "points": 95
@@ -253,7 +250,7 @@
         "provenance_tier": "T4",
         "evidence": [],
         "rejected_evidence": [],
-        "note": "The target role is a management consulting Associate, not a technical role.",
+        "note": "The target role, McKinsey Associate, is not technical, so the rule does not apply.",
         "state": "not_applicable",
         "score": null,
         "points": null,
@@ -266,7 +263,7 @@
         "provenance_tier": "T2",
         "evidence": [],
         "rejected_evidence": [],
-        "note": "Year-only dates show no identifiable gap longer than three months, so the rule is not triggered.",
+        "note": "No gap longer than three months is evident from the year-level dates.",
         "state": "not_applicable",
         "score": null,
         "points": null,
@@ -278,8 +275,8 @@
         "weight": 0.035928143712574835,
         "provenance_tier": "T4",
         "evidence": [
-          "Led a 3-person data engineering team to diagnose a national energy retailer's regulatory compliance bottleneck,",
-          "Led 5-person team to 2nd of 10 at InnovFest Singapore, pitching to Westpac and Singtel;"
+          "Led a 3-person data engineering team to diagnose a national energy retailer's regulatory compliance bottleneck",
+          "Led 5-person team to 2nd of 10 at InnovFest Singapore"
         ],
         "rejected_evidence": [],
         "note": "Team sizes, workstreams and quantified outcomes are given.",
@@ -294,10 +291,10 @@
         "provenance_tier": "T4",
         "evidence": [
           "Co-founded an ANU spin-off with 3 researchers to commercialise blood-derived retinal therapeutics;",
-          "securing a $300K engagement with Beta Therapeutics and delivering a"
+          "raising $670K in non-dilutive funding"
         ],
         "rejected_evidence": [],
-        "note": "Funding ($670K), revenue ($300K and $200K engagements), team size, patents and licensing are quantified, and the company is contextualised as an ANU retinal therapeutics spin-off.",
+        "note": "Funding, team size, patents, licensing and consulting revenue are quantified, and the company is described in one line.",
         "state": "scored",
         "score": 3,
         "points": 95
@@ -309,7 +306,7 @@
         "provenance_tier": "T4",
         "evidence": [],
         "rejected_evidence": [],
-        "note": "Target practice is not stated.",
+        "note": "No target practice is stated.",
         "state": "not_applicable",
         "score": null,
         "points": null,
@@ -321,11 +318,10 @@
         "weight": 0.023952095808383225,
         "provenance_tier": "analyst_added",
         "evidence": [
-          "Accenture | Strategy & Consulting, Data & AI | Consultant / Team Lead                                           Jan 2026 \u2013 Present",
-          "University of New South Wales | BSc Advanced Science, First Class Honours                                                      2013 \u2013 2017"
+          "Accenture | Strategy & Consulting, Data & AI | Consultant / Team Lead                                           Jan 2026 \u2013 Present"
         ],
         "rejected_evidence": [],
-        "note": "Dates are present for every entry and the sequence is reconstructable. The strongest achievements are recent. Only Accenture has month granularity.",
+        "note": "The sequence is clear, though most dates are year-only. The strongest material is recent.",
         "state": "scored",
         "score": 3,
         "points": 95
@@ -339,7 +335,7 @@
           "Applying for the Associate role to move from building data and AI solutions to framing the strategy questions behind them."
         ],
         "rejected_evidence": [],
-        "note": "The current Consultant/Team Lead title sits at or near the target level, and the profile gives a clear why-this-role narrative.",
+        "note": "The profile states a rationale for the move, and the Consultant/Team Lead background is coherent with the target level.",
         "state": "scored",
         "score": 3,
         "points": 95
@@ -351,7 +347,7 @@
         "provenance_tier": "T4",
         "evidence": [],
         "rejected_evidence": [],
-        "note": "Work authorisation is not explicitly stated. An NV1 clearance is listed but is not an authorisation statement.",
+        "note": "Work authorisation is not explicitly stated. NV1 clearance is not an authorisation statement.",
         "state": "not_applicable",
         "score": null,
         "points": null,
@@ -364,7 +360,7 @@
         "provenance_tier": "T4",
         "evidence": [],
         "rejected_evidence": [],
-        "note": "Unobservable in pdf_layout input: no LinkedIn data was supplied.",
+        "note": "Unobservable: no LinkedIn data is supplied in pdf_layout mode.",
         "state": "unknown",
         "score": null,
         "points": null,
@@ -376,11 +372,11 @@
         "weight": 0.017964071856287418,
         "provenance_tier": "T4",
         "evidence": [
-          "Frank Fenner Medal for best PhD at the John Curtin School of Medical Research (1 of 103);",
-          "Australian Postgraduate Award ($112K, top 5%); 4 competitive research grants ($97K; 5\u201310% success rates);"
+          "Frank Fenner Medal for best PhD at the John Curtin School of Medical Research (1 of 103)",
+          "Australian Postgraduate Award ($112K, top 5%); 4 competitive research grants ($97K; 5\u201310% success rates)"
         ],
         "rejected_evidence": [],
-        "note": "Selectivity is explicit and quantified, with ranks, percentages and success rates.",
+        "note": "Selectivity is explicit and quantified: ranks, percentiles and success rates.",
         "state": "scored",
         "score": 3,
         "points": 95
@@ -392,10 +388,10 @@
         "provenance_tier": "T4",
         "evidence": [
           "Co-founded an ANU spin-off with 3 researchers to commercialise blood-derived retinal therapeutics;",
-          "Accenture | Strategy & Consulting, Data & AI | Consultant / Team Lead                                           Jan 2026 \u2013 Present"
+          "delivering a\n  $200K end-to-end preclinical model for Merck & Co."
         ],
         "rejected_evidence": [],
-        "note": "Main employers and institutions (Accenture, ANU, UNSW, Merck) are widely recognisable, and ErythroSIGHT is described. Some partner names (VivaZome, MDImune) lack descriptors.",
+        "note": "Accenture, ANU, UNSW and Merck are recognisable. ErythroSIGHT and the smaller partners (VivaZome, MDImune) get brief context.",
         "state": "scored",
         "score": 3,
         "points": 95

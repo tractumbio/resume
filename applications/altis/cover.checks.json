@@ -24,7 +24,7 @@
     {
       "level": "PASS",
       "check": "margins",
-      "detail": "top 19.0mm, bottom 72.0mm, left 22.0mm, right 23.0mm"
+      "detail": "top 19.0mm, bottom 72.0mm, left 22.0mm, right 22.9mm"
     },
     {
       "level": "PASS",
@@ -40,6 +40,11 @@
       "level": "PASS",
       "check": "quantification",
       "detail": "no vague filler phrases"
+    },
+    {
+      "level": "PASS",
+      "check": "voice: no em dashes",
+      "detail": "none found"
     },
     {
       "level": "PASS",

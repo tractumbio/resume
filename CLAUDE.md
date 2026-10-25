@@ -79,6 +79,47 @@ Any resume produced or edited in this repo must meet the standards below.
 - **Bullets:** consistent glyph and weight across the whole document; avoid bullet markers heavy
   enough to compete visually with bold text in the line.
 
+## Adrian's own voice
+
+Derived from his actual published scientific papers (verified against the full text of
+Cioanca et al. 2025, *Communications Biology*, and the abstract of Cioanca et al. 2021,
+*Pigment Cell & Melanoma Research*, not guessed), so a resume or letter reads as something
+he would plausibly have written, not as generic "AI resume" prose.
+
+- **No em dashes, anywhere.** Checked directly: his papers never use one as prose punctuation.
+  Where an aside or appositive is needed, do what his writing actually does instead:
+    - Join with a comma when the clause flows on ("...at Accenture, architecting pipelines...").
+    - Use parentheses for an inline list or specification ("a data pipeline (PostgreSQL storage,
+      text embedding, hybrid retrieval) surfacing..."), exactly how his papers handle
+      abbreviations and inline detail, e.g. "Human choroidal melanocytes (HCMs)".
+    - Split into two sentences when the aside is really a second claim, not a qualifier on the
+      first. His Discussion sections lean on short sentences opening with "This..." to carry
+      a claim forward, rather than bolting it onto the previous one with a dash.
+    - Use a plain hyphen for compound modifiers ("time-dependent," "research-informed,"
+      "client-facing") and an en dash only for a true range or a title/role separator
+      ("Jan 2022 – Dec 2024", "Senior Consultant – Data Engineer"), never as a stand-in comma.
+  `pipeline/verify.py`'s "voice: no em dashes" check enforces this on every rendered PDF
+  (resume and cover alike); any FAIL blocks promotion the same as any other check.
+- **Commas carry the load; semicolons are rare.** His sentences join related clauses with
+  commas, sometimes several in one sentence, rather than reaching for a semicolon or dash.
+  Reserve the semicolon for truly independent clauses, the way existing resume bullets already
+  do ("...from days to minutes; worked directly with the client's compliance team...").
+- **Hedge findings, not resume claims.** His papers hedge genuinely uncertain results
+  ("might," "suggests," "could," explicit limitation sentences) but state what was actually
+  done plainly and in active voice ("We detected...", "This study aimed..."). A resume bullet
+  describing Adrian's own completed work should stay in that same confident, active, declarative
+  register — the hedging habit is for claims about what the data might mean, not for whether he
+  did the work. Nothing here loosens "no vague filler" above; a hedge is not a substitute for a
+  number either.
+- **British/Australian spelling throughout** ("organisation," "specialise," "colour,"
+  "programme" where it's a plan rather than software) — confirmed in his own papers
+  ("neovascularisation," "elucidated"). `pipeline/verify.py` does not check spelling; this is
+  an eyes-on standard, same as MECE.
+- **Prose paragraphs (Profile, cover-letter body) may open a sentence with a signposting
+  connective** when genuinely linking two ideas — "This," "That," "Despite" — matching how his
+  Discussion sections move between claims. Resume bullets stay telegraphic as elsewhere in this
+  document; this is for the handful of places the repo already uses full sentences.
+
 ## Cover-letter standards (MBB recommendations)
 
 Applies to every `cover.html` in `applications/<slug>/`. The same content standards above
@@ -145,6 +186,7 @@ not check. What it checks today:
 | header extraction | section headers don't split into single-character runs (letter-spacing) |
 | header tagline | no self-laudatory language |
 | quantification | no vague filler where a number belongs |
+| voice: no em dashes | none in the rendered text — see "Adrian's own voice" |
 | profile section | a Profile/summary section is present |
 | orphan words | no short word stranded alone on a line |
 

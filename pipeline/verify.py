@@ -200,6 +200,17 @@ def check_language(layout, report):
     else:
         report.passed("quantification", "no vague filler phrases")
 
+    em_dash_lines = [ln.strip() for ln in layout.splitlines() if "—" in ln]
+    if em_dash_lines:
+        report.fail(
+            "voice: no em dashes",
+            f"{len(em_dash_lines)} line(s) contain an em dash (e.g. {em_dash_lines[0][:80]!r}) — "
+            f"not part of Adrian's own writing style (see \"Adrian's own voice\" in CLAUDE.md); "
+            f"use a comma, parentheses, a new sentence, or an en dash for a true range/separator",
+        )
+    else:
+        report.passed("voice: no em dashes", "none found")
+
 
 def check_profile(layout, report):
     if re.search(r"^\s*(profile|summary)\b", layout, re.M | re.I):

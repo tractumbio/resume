@@ -43,6 +43,11 @@
     },
     {
       "level": "PASS",
+      "check": "voice: no em dashes",
+      "detail": "none found"
+    },
+    {
+      "level": "PASS",
       "check": "cover length",
       "detail": "436 words"
     },

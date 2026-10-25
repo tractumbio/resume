@@ -101,7 +101,7 @@ Two patterns in the template exist for reasons the checks enforce:
 make verify DRAFT=drafts/consulting/<new-variant>.html
 ```
 
-Nine checks run. Fix every FAIL; read every WARN and decide.
+Eleven checks run. Fix every FAIL; read every WARN and decide.
 
 | Check | What a failure means |
 |---|---|
@@ -110,8 +110,10 @@ Nine checks run. Fix every FAIL; read every WARN and decide.
 | fonts embedded | A non-vendored family was named, or the font config was bypassed |
 | reading order | A date is being extracted ahead of its role — a `float` crept back in |
 | margins | Dead space at the foot (thin content) or asymmetric sides |
+| header extraction | `letter-spacing` on a section header is splitting it into single characters |
 | header tagline | Self-laudatory language in the header |
 | quantification | Vague filler where a number belongs |
+| voice: no em dashes | An em dash crept in — not part of Adrian's own writing style |
 | profile section | The Profile was cut |
 | orphan words | A short word stranded alone at the end of a block |
 
