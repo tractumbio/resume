@@ -110,10 +110,24 @@ this repo (all corrected, all exports re-released):
   knowledge base's narrative — both wrong; you've now confirmed January 2026).
 - The Defence engagement bullet had the wrong project's detail attached to it — it described
   "led 3 analysts... Azure DevOps", which actually belongs to the AGL engagement per the
-  knowledge base, while the real Defence GDC PoC detail (Google Distributed Cloud, PostgreSQL/
-  AlloyDB/Dataproc/Elastic/Tableau, demonstrated air-gapped delivery to the client and Google)
-  was missing. Fixed using the detail you gave; the AGL bullet now correctly carries the
-  3-person team-lead detail instead.
+  knowledge base, while the real Defence GDC PoC detail was missing. Fixed using the detail
+  you gave; the AGL bullet now correctly carries the 3-person team-lead detail instead.
+  **Then generalised for OPSEC** (see below) — the resume bullet does not name the vendor or
+  the in-environment tool stack; those live only in the knowledge base's private record.
 - `letter-spacing` on section headers was high enough that WeasyPrint split "EDUCATION" into
   separate characters in PDF text extraction ("E D U C AT I O N") — invisible on the page, but
   exactly what an ATS parses. `pipeline/verify.py` now checks for this.
+
+3. **OPSEC review on the Defence content (requested, now done, re-confirm before sending).**
+   The Defence PoC bullet previously named a specific commercial cloud product alongside
+   "air-gapped" and a full client-side tool stack — the pattern a security officer flags
+   regardless of formal classification, since together it describes the architecture of a
+   secure government system. Generalised to "a Defence client... a secure, air-gapped cloud
+   environment" with no vendor name and no in-environment tool list; the tool names (AlloyDB,
+   Dataproc, Elastic, Tableau) now sit in the general Capabilities list instead, decoupled from
+   the Defence context. The score actually moved up (86→89) after this change, and FitSignal's
+   own independent recommendation on the McKinsey APD re-run literally said "keep the Defence
+   engagement description generic" — unprompted agreement with the same fix. CLAUDE.md now
+   documents this as a standing content standard. **This is not a substitute for your own
+   employer/Defence security sign-off** — please have your actual security officer review the
+   Defence bullet (and the equivalent one in the McKinsey drafts) before anything is submitted.

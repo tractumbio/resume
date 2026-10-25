@@ -87,6 +87,16 @@
 - **BHP (national mining operator):** Built production NLP pipeline using transfer learning and semantic similarity to detect duplicate records in industrial repair logs; validated on held-out sets, stress-tested for edge cases, deployed to production. *(Note: client referred to generically as "national mining operator" in current resume draft per design decisions.)*
 - **Health (public-sector client):** Fitted multivariate statistical models identifying leading predictors of provider underperformance; used clustering to surface declining providers before regulatory thresholds were breached, enabling earlier oversight.
 - **Defence — GDC PoC:** Took ownership of developing a proof-of-concept data pipeline for a Defence client on Google Distributed Cloud (GDC) in an air-gapped environment; responsible for designing the pipeline architecture, analytical steps and tool integration. Tools: PostgreSQL, AlloyDB, Dataproc, Elastic, Tableau. **Result:** demonstrated to the Defence client and to Google that the team could deliver data products in an air-gapped environment. *(Detail confirmed by Adrian; supersedes earlier vague/placeholder framing of this engagement — see Open Items.)*
+  **⚠ OPSEC — private record only, do not publish verbatim.** Naming the specific commercial
+  product (Google Distributed Cloud) together with "air-gapped," the full tool stack and
+  "Defence" in one place describes the technical architecture of a secure government system —
+  the pattern a Facility/Contract Security Officer would flag, clearance or not. Resumes and
+  cover letters built from this entry must generalise: "a Defence client," "a secure, air-gapped
+  cloud environment," outcome stated without naming the vendor or the in-environment tool stack
+  (the tool names can appear elsewhere, e.g. a general Capabilities/Skills list, decoupled from
+  the Defence/air-gapped context). This is what every current draft in `drafts/` now does. This
+  is not a substitute for Adrian's own employer/Defence security sign-off before publishing
+  anything about this engagement — check with the actual security officer, not this repo.
 - **Defence intelligence platform (internal AI app):** Built single intelligence platform for Australian Defence consulting opportunities — combines procurement data, defence news, and market intelligence into a searchable knowledge base; AI-generated executive summaries, trend identification, opportunity flagging; natural-language Q&A and bespoke report generation; interactive dashboards and exportable PPT/PDF reports.
   - Architecture: React frontend (Procurement Dashboard, Weekly AI Intelligence Report, AI Research & Report Builder pages); Python/FastAPI backend; structured JSON evolving to PostgreSQL + pgvector; specialist AI agents (Opportunity, Procurement, Defence, Competitor, Accenture Positioning, Technology, Executive Summary) coordinated by an orchestration agent; local dev via JSON/OneDrive, migrating to Azure Blob/GCP Cloud Storage
   - Data sources: AusTender, state procurement portals, Dept of Defence releases, Defence Connect, Australian Defence Magazine, ASPI, competitor newsrooms (Deloitte, EY, PwC, KPMG, McKinsey, BCG, Bain, IBM Consulting, Capgemini), AFR, Google News

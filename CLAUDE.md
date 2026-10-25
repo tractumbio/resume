@@ -34,6 +34,18 @@ Any resume produced or edited in this repo must meet the standards below.
   leadership, and translating technical/scientific complexity into commercial strategy — this is
   the differentiated positioning for Adrian's target roles (see Career Intentions in the
   knowledge base).
+- **Defence/Government content stays generic.** Adrian holds an NV1 clearance and has worked
+  on Defence engagements — stating the clearance and "a Defence client" is standard and fine.
+  Never combine a specific vendor/product name with "air-gapped"/"classified"/"secure
+  environment" and a client-side tool stack in the same sentence — that combination describes
+  the technical architecture of a secure government system, which is the pattern a security
+  officer flags regardless of formal classification. Describe the work generically (client
+  type, your ownership, the outcome) and keep any tool names in a general Capabilities/Skills
+  list, decoupled from the Defence/secure-environment context. The knowledge base's Defence —
+  GDC PoC entry carries the full detail with an OPSEC flag for exactly this reason — pull the
+  generalised framing from there, not the raw entry. This is guidance, not a clearance sign-off:
+  anything Defence-related should go through Adrian's actual security/employer process before
+  publishing, regardless of what this repo's checks say.
 
 ## Layout / typography standards
 

@@ -105,3 +105,14 @@ Real scorecard (via the local `claude` CLI, no mock): 91/100, "Strong fit",
 "Advance to interview" — see resume.scorecard.json. Minor, low-weight items also flagged and
 left as-is (diminishing returns against the one-page limit): a couple of unglossed acronyms
 (IND-enabling, CRC-P, NPV).
+
+**OPSEC review (requested, now done, re-confirm before sending).** The Defence PoC bullet
+previously named a specific commercial cloud product alongside "air-gapped" plus "demonstrated
+to the client and Google" — the pattern a security officer flags regardless of formal
+classification, since together it describes the architecture of a secure government system.
+Generalised to "a Defence client's... secure, air-gapped cloud environment," no vendor named.
+FitSignal's own independent recommendation on this re-run literally said "keep the Defence
+engagement description generic" — unprompted agreement with the same fix, made before this
+note was written. CLAUDE.md now documents this as a standing content standard for every
+future draft. **Not a substitute for your own employer/Defence security sign-off** — please
+have your actual security officer review this bullet before anything is submitted.
