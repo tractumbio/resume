@@ -1,5 +1,5 @@
 source:    drafts/consulting/mckinsey-apd-associate.html
-rendered:  2026-10-25T19:24:25Z by pipeline/release.sh
-commit:    2b019fb
+rendered:  2026-10-25T19:32:33Z by pipeline/release.sh
+commit:    6454b4f
 checks:    all passed (see Adrian_Cioanca_Resume_MckinseyApdAssociate.checks.json)
-fitsignal: rubric v2.0.0 — overall 88/100 (Strong fit, Advance to interview), provider=claude-cli
+fitsignal: rubric v2.0.0 — overall 81/100 (Good fit, Advance to interview), provider=claude-cli

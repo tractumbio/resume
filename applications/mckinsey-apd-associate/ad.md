@@ -101,10 +101,31 @@ Open Items. Not filled in with a guess, same reason as before — CLAUDE.md's st
 reconcile-or-flag, never invent a fact like "part-time" that isn't confirmed. Please give
 month-level dates for ErythroSIGHT and the postdoc, and confirm whether the postdoc has ended.
 
-Real scorecard (via the local `claude` CLI, no mock): 91/100, "Strong fit",
-"Advance to interview" — see resume.scorecard.json. Minor, low-weight items also flagged and
-left as-is (diminishing returns against the one-page limit): a couple of unglossed acronyms
-(IND-enabling, CRC-P, NPV).
+Real scorecard (via the local `claude` CLI, no mock): 81/100, "Good fit" — see
+resume.scorecard.json. Lower than the 91/100 recorded above in an earlier run on this same
+resume; FitSignal's scoring is an LLM judgement so some run-to-run variance is expected, but
+this run weighted the still-open R16 date-overlap item above noticeably harder than before.
+The resume content is unchanged since the 91/100 run. Resolving R16 (month-level dates for
+ErythroSIGHT/postdoc) remains the single highest-leverage fix left. Minor, low-weight items
+also flagged and left as-is (diminishing returns against the one-page limit): a couple of
+unglossed acronyms (NLP, NPV, CRO, preclinical, AusTender) and ErythroSIGHT/Beta Therapeutics
+lack a one-line company descriptor.
+
+**Merck &amp; Co. / Beta Therapeutics reattribution.** You confirmed the $200K Merck engagement
+and the $300K Beta Therapeutics engagement were postdoc-era industry consulting work, not
+ErythroSIGHT's as the drafts previously (and incorrectly) had it. Fixed in the knowledge base
+and all three resume drafts: the postdoc section now carries a new bullet on this industry-
+consulting work, and ErythroSIGHT's second bullet now covers the scientific
+strategy/candidate-selection/3-patents work instead.
+
+**Cover letter: new "about me" paragraph.** Added a short narrative opening (replacing the old
+one-line pathway announcement) covering the Frank Fenner Medal, leading the 7-person research
+team, enjoying the team itself over the publication count, the Merck/Beta Therapeutics
+industry work, and the realisation that led to Accenture. Also fixed a now-stale "What I
+bring" bullet that still attributed the Merck engagement to the ErythroSIGHT/founder role
+after the reattribution above; dropped the redundant Accenture-retrieval bullet (now covered
+in "Why McKinsey") to keep total length under the 450-word WARN threshold (438 words, 0
+warnings).
 
 **OPSEC review (requested, now done, re-confirm before sending).** The Defence PoC bullet
 previously named a specific commercial cloud product alongside "air-gapped" plus "demonstrated

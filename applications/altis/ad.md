@@ -99,12 +99,31 @@ Ready to see your career differently? We'd love to hear from you.
    fact, so neither document asserts it directly. Confirm you're comfortable with that framing,
    or state it explicitly if you'd rather.
 
-Real scorecard (via the local `claude` CLI, no mock): 89/100, "Strong fit" — see
-resume.scorecard.json (score moved up again after the Profile headline, relevance-ordered
-bullets and the new bullet-point cover letter). Minor items also flagged and left as-is
-(diminishing returns against the one-page limit): a few unglossed technical terms (BM25,
-pgvector, AlloyDB, Dataproc, non-dilutive), and the Defence PoC bullet has no scale/volume
-figure.
+Real scorecard (via the local `claude` CLI, no mock): 79/100, "Mixed signals" — see
+resume.scorecard.json. The score is lower than the 89/100 recorded above in an earlier run on
+this same resume; FitSignal's scoring is an LLM judgement, so some run-to-run variance is
+expected, but this run weighted the still-open R16 date-overlap item (below) noticeably harder
+than before. The resume content, Profile headline, relevance ordering and cover-letter
+structure are unchanged since the 89/100 run. Worth noting given the swing: resolving the R16
+date-overlap item (month-level dates for ErythroSIGHT/postdoc) is the single highest-leverage
+fix left, both for the score and for how an actual MBB screener would read the overlap. Minor
+items also flagged and left as-is (diminishing returns against the one-page limit): a few
+unglossed technical terms (BM25, pgvector, AlloyDB, Dataproc, non-dilutive), and the Defence
+PoC and pitch-deck/AI-agent bullets have no scale/volume figure.
+
+4. **Merck &amp; Co. / Beta Therapeutics reattribution.** You confirmed the $200K Merck
+   engagement and the $300K Beta Therapeutics engagement were postdoc-era industry consulting
+   work, not ErythroSIGHT's as the drafts previously (and incorrectly) had it. Fixed in the
+   knowledge base and all three resume drafts: the postdoc section now carries a new bullet on
+   this industry-consulting work, and ErythroSIGHT's second bullet now covers the scientific
+   strategy/candidate-selection/3-patents work instead, per your instruction.
+5. **Cover letter: new "about me" paragraph.** Added a short narrative opening (replacing the
+   old one-line role announcement) covering the Frank Fenner Medal, leading the 7-person
+   research team, enjoying the team itself over the publication count, the Merck/Beta
+   Therapeutics industry work, and the realisation that led to Accenture. Trimmed "Why
+   Altis"/"What I bring" from 2+3 to 2+2 bullets to keep total length under the 450-word WARN
+   threshold (440 words, 0 warnings except a pre-existing, unrelated orphan-word flag on the
+   recipient address block's "Altis" line).
 
 This run also caught and fixed three real defects affecting all three resume drafts/exports in
 this repo (all corrected, all exports re-released):
