@@ -24,7 +24,7 @@
     {
       "level": "PASS",
       "check": "margins",
-      "detail": "top 19.0mm, bottom 44.8mm, left 22.0mm, right 22.0mm"
+      "detail": "top 19.0mm, bottom 30.2mm, left 22.0mm, right 22.2mm"
     },
     {
       "level": "PASS",
@@ -49,7 +49,7 @@
     {
       "level": "PASS",
       "check": "cover length",
-      "detail": "436 words"
+      "detail": "395 words"
     },
     {
       "level": "PASS",

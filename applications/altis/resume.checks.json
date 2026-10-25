@@ -24,7 +24,7 @@
     {
       "level": "PASS",
       "check": "margins",
-      "detail": "top 12.4mm, bottom 9.9mm, left 15.0mm, right 15.0mm"
+      "detail": "top 12.4mm, bottom 5.4mm, left 15.0mm, right 15.0mm"
     },
     {
       "level": "PASS",

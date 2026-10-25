@@ -99,10 +99,12 @@ Ready to see your career differently? We'd love to hear from you.
    fact, so neither document asserts it directly. Confirm you're comfortable with that framing,
    or state it explicitly if you'd rather.
 
-Real scorecard (via the local `claude` CLI, no mock): 86/100, "Strong fit" — see
-resume.scorecard.json. Minor items also flagged and left as-is (diminishing returns against
-the one-page limit): a few unglossed technical terms (BM25, pgvector, AlloyDB, Dataproc,
-non-dilutive), and the Defence PoC bullet has no scale/volume figure.
+Real scorecard (via the local `claude` CLI, no mock): 89/100, "Strong fit" — see
+resume.scorecard.json (score moved up again after the Profile headline, relevance-ordered
+bullets and the new bullet-point cover letter). Minor items also flagged and left as-is
+(diminishing returns against the one-page limit): a few unglossed technical terms (BM25,
+pgvector, AlloyDB, Dataproc, non-dilutive), and the Defence PoC bullet has no scale/volume
+figure.
 
 This run also caught and fixed three real defects affecting all three resume drafts/exports in
 this repo (all corrected, all exports re-released):

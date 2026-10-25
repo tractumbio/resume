@@ -1,5 +1,5 @@
 source:    drafts/consulting/altis-senior-consultant.html
-rendered:  2026-10-25T18:35:23Z by pipeline/release.sh
-commit:    1157310
+rendered:  2026-10-25T19:06:18Z by pipeline/release.sh
+commit:    c3a958d
 checks:    all passed (see Adrian_Cioanca_Resume_Altis.checks.json)
-fitsignal: rubric v2.0.0 — overall 86/100 (Strong fit, Advance to interview), provider=claude-cli
+fitsignal: rubric v2.0.0 — overall 89/100 (Strong fit, Advance to interview), provider=claude-cli

@@ -301,23 +301,28 @@ build artefact, same rule as `exports/`.
 
 ### 4. Draft `cover.html`
 
-The template's four paragraph blocks are commented with what each one has to do — read the
-comments, don't just type around them. In order:
+The template's blocks are commented with what each one has to do, read the comments, don't
+just type around them. Hook and close are prose; why-this-firm and what-I-bring are dot
+points, each written in personal register (a person talking, "I," a full sentence) rather
+than a telegraphic resume-bullet fragment. In order:
 
-1. **Hook** — something specific to this firm/role/ad in the first sentence or two, not
-   "I am writing to apply for...". State the role once, inside the hook.
-2. **Why this firm** — a named practice, a published case, a sector focus *from the ad or
-   the firm's own materials* — never "your prestigious firm" or "your reputation for
-   excellence". This is where the resume's Profile line gets argued, not repeated.
-3. **Why you** — two, at most three, proof points, each one evidence plus what it
-   demonstrates for *this* role. Quantify anything that has a number, same bar as the
-   resume. If a sentence could be lifted verbatim from a resume bullet, cut it — this
-   paragraph's job is the connective narrative the resume's bullet format can't carry.
-4. **Close** — fit, a clear call to action, thanks. No hedging, no re-summarising.
+1. **Hook** (prose) — something specific to this firm/role/ad in the first sentence or two,
+   not "I am writing to apply for...". State the role once, inside the hook.
+2. **Why this firm** (2-3 dot points) — each names something specific and real (a practice,
+   a published case, a sector focus *from the ad or the firm's own materials*), never "your
+   prestigious firm". This is where the resume's Profile line gets argued, not repeated.
+   Where it's genuinely true, let a point draw on both the scientific and the consulting
+   career rather than keeping them in separate lanes, that combination is the differentiated
+   story.
+3. **What I bring** (2-3 dot points) — each one evidence plus what it demonstrates for *this*
+   role. Quantify anything that has a number, same bar as the resume. If a point could be
+   lifted verbatim from a resume bullet, cut it, its job is the connective narrative the
+   resume's bullet format can't carry. Same blend-both-careers instruction as above.
+4. **Close** (prose) — fit, a clear call to action, thanks. No hedging, no re-summarising.
 
 Personalize the salutation (a named recruiter if you have one; otherwise the practice or
 recruiting team by name) and mirror the firm's own vocabulary for the role
-(McKinsey "Associate", BCG "Consultant", Bain "Associate Consultant" — whatever the ad
+(McKinsey "Associate", BCG "Consultant", Bain "Associate Consultant", whatever the ad
 itself says, not a generic label).
 
 ### 5. Render and check

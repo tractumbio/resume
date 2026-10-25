@@ -28,8 +28,23 @@ Any resume produced or edited in this repo must meet the standards below.
   AI Consultant | Biotech Co-founder").
 - **Include a Profile/summary line** that states the target role and the specific angle being
   offered (e.g. "Applying for the Associate role to move from building data and AI solutions to
-  framing the strategy questions behind them"). Do not cut this section to save space — cut
-  bullet density instead.
+  framing the strategy questions behind them"). Do not cut this section to save space, cut
+  bullet density instead. **The Profile is a headline, not an introduction.** State the 2-3
+  things that actually make this candidacy distinctive, not a gesture at them: name the
+  capability, not just the role being applied for. A reader skimming for 6-8 seconds should get
+  the throughline from the Profile alone, not have to reconstruct it by reading every bullet
+  across three very different jobs.
+- **Order bullets by relevance to the target role, not by chronology or job order.** Within a
+  role's bullet list, the strongest, most concrete, most on-brief proof point goes first, even
+  if a more abstract or more senior-sounding bullet would conventionally lead. A screener reads
+  top to bottom and loses attention fast; the best evidence earns the first line, not the
+  oldest or the most impressive-sounding title.
+- **Name the throughline across career chapters.** Adrian's background spans consulting
+  delivery, biotech founder/commercial work, and academic research leadership, genuinely
+  different institutional forms. Breadth reads as strength only when something states what
+  connects them (e.g. taking an ambiguous technical problem to a concrete, delivered outcome,
+  regardless of institutional form); left unstated, three different-looking careers just read
+  as three different careers.
 - **Cross-sector framing.** Where relevant, foreground stakeholder management, cross-functional
   leadership, and translating technical/scientific complexity into commercial strategy — this is
   the differentiated positioning for Adrian's target roles (see Career Intentions in the
@@ -123,44 +138,56 @@ he would plausibly have written, not as generic "AI resume" prose.
 ## Cover-letter standards (MBB recommendations)
 
 Applies to every `cover.html` in `applications/<slug>/`. The same content standards above
-hold — quantify every claim that has a number, no self-laudatory language, no vague filler
-— plus what's specific to a letter:
+hold (quantify every claim that has a number, no self-laudatory language, no vague filler),
+plus what's specific to a letter:
 
-- **Structure: hook, why-this-firm, why-you, close. Four short paragraphs, nothing more.**
-  This is the structure McKinsey, BCG and Bain career-advice materials converge on:
-    1. **Hook** — open with something specific to this firm, practice, or ad. Never open
-       with "I am writing to apply for..." as the first sentence; state the role once,
-       inside the hook, not as a bare announcement ahead of it.
-    2. **Why this firm** — tie a specific, named thing (a practice area, a published case,
-       a sector focus stated in the ad) to the angle being offered. "Your prestigious firm"
-       or "your reputation for excellence" is exactly the generic language a screener has
-       read a hundred times that week — it signals the whole letter is a template, whether
-       or not it is.
-    3. **Why you** — two, at most three, proof points. Each one is evidence plus what it
-       demonstrates *for this role* — this paragraph's job is to connect the dots the
-       resume can't, not to restate resume bullets. If a sentence here could be copy-pasted
-       out of the resume unchanged, cut it.
-    4. **Close** — state fit plainly, make a clear call to action (a conversation, an
-       interview), say thanks. No hedging, no summarising the letter that was just read.
-- **One page, ~300-400 words.** Long enough to make the case, short enough that a
-  screener reads all of it. This is materially shorter than a resume's information density
-  — a letter that reads like a fifth resume section has failed at the form.
-- **Personalize the salutation.** A named recruiter or partner if the ad or a referral
-  gives you one; otherwise address the practice or recruiting team by name, never "To Whom
-  It May Concern" — a generic salutation undercuts paragraph 2 before it starts.
+- **Structure: hook (prose), why-this-firm (dot points), what-I-bring (dot points), close
+  (prose).** Bullets give a screener the clarity of a list; personal register in each one is
+  what keeps it a letter, not a second resume. Adrian's own call, overriding the pure-prose
+  structure this file used to specify:
+    1. **Hook** (2-3 sentences, prose) — open with something specific to this firm, practice,
+       or ad. Never open with "I am writing to apply for..." as the first sentence; state the
+       role once, inside the hook, not as a bare announcement ahead of it.
+    2. **Why this firm** (2-3 dot points) — each point names something specific and real about
+       the firm (a practice area, a published case, a sector focus stated in the ad), not
+       "your prestigious firm" or "your reputation for excellence." Each point is written in
+       personal register: a full sentence or two in Adrian's own voice, with "I," not a
+       telegraphic resume-bullet fragment. Where it's genuinely true, let a single point draw
+       on both the scientific and the consulting career rather than keeping them in separate
+       lanes; that combination is the differentiated story, and siloing it by job loses it.
+    3. **What I bring** (2-3 dot points) — each point is evidence plus what it demonstrates
+       *for this role*, connecting dots the resume's format can't, not restating a resume
+       bullet. If a point could be copy-pasted out of the resume unchanged, cut it. Same
+       personal-register rule as above, and the same instruction to blend scientific and
+       consulting experience within a point where the combination is the actual argument.
+    4. **Close** (2-3 sentences, prose) — state fit plainly, make a clear call to action (a
+       conversation, an interview), say thanks. No hedging, no summarising the letter just read.
+  Dot-point styling matches the resume's `<ul>/<li>` (same glyph, same type scale) so the two
+  documents still read as one family, just with prose bookending the lists.
+- **Personal register means a person is talking, not a list compressing.** A resume bullet
+  opens with a bare past-tense verb and drops "I." A cover-letter dot point keeps "I," runs as
+  a real sentence, and can carry a trace of why something mattered, not only what happened.
+  The "Adrian's own voice" rules below (commas over semicolons, no em dashes, hedge findings
+  not completed work) still apply inside each point; personal register is about register, not
+  license to loosen the other standards.
+- **One page, ~300-400 words.** Long enough to make the case, short enough that a screener
+  reads all of it. This is materially shorter than a resume's information density; a letter
+  that reads like a fifth resume section has failed at the form.
+- **Personalize the salutation.** A named recruiter or partner if the ad or a referral gives
+  you one; otherwise address the practice or recruiting team by name, never "To Whom It May
+  Concern," a generic salutation undercuts the why-this-firm points before they start.
 - **Match the firm's own vocabulary.** Mirror how the ad refers to the role and practice
-  (McKinsey "Associate", BCG "Consultant", Bain "Associate Consultant", the specific
-  practice name as the ad states it) — not a generic label for the job family.
-- **No restating the resume.** The cover letter's only job is what the resume's format
-  cannot do: build a narrative argument connecting specific experience to this specific
-  role. A letter that lists achievements the resume already lists is redundant, not
-  reinforcing.
-- **Same letterhead as the resume.** Same typefaces (`assets/fonts.css`), same name
-  treatment, same contact line — an application package should read as one document
+  (McKinsey "Associate," BCG "Consultant," Bain "Associate Consultant," the specific practice
+  name as the ad states it), not a generic label for the job family.
+- **No restating the resume.** The cover letter's only job is what the resume's format cannot
+  do: build a narrative argument connecting specific experience to this specific role. A point
+  that lists an achievement the resume already lists is redundant, not reinforcing.
+- **Same letterhead as the resume.** Same typefaces (`assets/fonts.css`), same name treatment,
+  same contact line, same list style; an application package should read as one document
   family, not two documents that happen to be about the same person.
-- **Cover-specific layout:** wider margins than the resume (18-25mm — this is a business
+- **Cover-specific layout:** wider margins than the resume (18-25mm, this is a business
   letter, not a densely packed one-pager) and the resume's "fill the page" rule does **not**
-  apply — white space below a 300-400 word letter is normal, not thin content.
+  apply; white space below a 300-400 word letter is normal, not thin content.
 
 ## Verification checklist before treating a resume PDF as final
 
