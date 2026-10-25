@@ -80,13 +80,13 @@
 
 ## PROFESSIONAL EXPERIENCE
 
-### AI & Data Consultant / Team Lead — Accenture (2025 – Present, Level 9)
-**Current role.**
+### AI & Data Consultant / Team Lead — Accenture (Jan 2026 – Present, Level 9)
+**Current role. Start date confirmed by Adrian: January 2026 (supersedes earlier "2025" narrative — see Open Items).**
 - **Internal:** Designed psychometric assessments; built and cross-validated statistical scoring models deployable at scale
 - **AGL (regulatory team AI app):** Led a data engineering team of 3, building on Azure DevOps — Python backend for parsing regulatory documents, text embedding, knowledge graph construction, AI vector search, retrieval strategy design grounded in literature. Worked directly with the compliance team to identify requirements and iteratively optimised the design to maximise value. Responsibilities: automatic file retrieval, blob storage management, Postgres DB setup, text embedding + similarity measurement, hybrid retrieval (AI vector search + BM25), prompt design. Fully automated system, designed with a human in the loop. **Result:** reduced time to identify newly-relevant changes in regulatory legislation from days to minutes; retrieval accuracy >99%; matched business/regulatory requirements in seconds (previously took the team days); surfaced previously-missed clauses; de-risked compliance.
 - **BHP (national mining operator):** Built production NLP pipeline using transfer learning and semantic similarity to detect duplicate records in industrial repair logs; validated on held-out sets, stress-tested for edge cases, deployed to production. *(Note: client referred to generically as "national mining operator" in current resume draft per design decisions.)*
 - **Health (public-sector client):** Fitted multivariate statistical models identifying leading predictors of provider underperformance; used clustering to surface declining providers before regulatory thresholds were breached, enabling earlier oversight.
-- **Defence — GDC PoC:** Engagement on a Google Distributed Cloud proof-of-concept in an air-gapped environment (see /areas/defence-gdc-engagement.md for detail)
+- **Defence — GDC PoC:** Took ownership of developing a proof-of-concept data pipeline for a Defence client on Google Distributed Cloud (GDC) in an air-gapped environment; responsible for designing the pipeline architecture, analytical steps and tool integration. Tools: PostgreSQL, AlloyDB, Dataproc, Elastic, Tableau. **Result:** demonstrated to the Defence client and to Google that the team could deliver data products in an air-gapped environment. *(Detail confirmed by Adrian; supersedes earlier vague/placeholder framing of this engagement — see Open Items.)*
 - **Defence intelligence platform (internal AI app):** Built single intelligence platform for Australian Defence consulting opportunities — combines procurement data, defence news, and market intelligence into a searchable knowledge base; AI-generated executive summaries, trend identification, opportunity flagging; natural-language Q&A and bespoke report generation; interactive dashboards and exportable PPT/PDF reports.
   - Architecture: React frontend (Procurement Dashboard, Weekly AI Intelligence Report, AI Research & Report Builder pages); Python/FastAPI backend; structured JSON evolving to PostgreSQL + pgvector; specialist AI agents (Opportunity, Procurement, Defence, Competitor, Accenture Positioning, Technology, Executive Summary) coordinated by an orchestration agent; local dev via JSON/OneDrive, migrating to Azure Blob/GCP Cloud Storage
   - Data sources: AusTender, state procurement portals, Dept of Defence releases, Defence Connect, Australian Defence Magazine, ASPI, competitor newsrooms (Deloitte, EY, PwC, KPMG, McKinsey, BCG, Bain, IBM Consulting, Capgemini), AFR, Google News
@@ -252,9 +252,11 @@
 
 ## OPEN ITEMS / TO RECONCILE
 
+- [x] Accenture start date — **confirmed by Adrian: January 2026.** (Was previously conflicting "2025" in narrative bullets / "2026" in resume drafts — both wrong. Propagated to all drafts.)
+- [x] Defence GDC PoC engagement detail — **confirmed by Adrian** (see Accenture entry above: owned PoC pipeline development, PostgreSQL/AlloyDB/Dataproc/Elastic/Tableau, demonstrated air-gapped delivery capability to client and Google).
+- [ ] **Month-level start/end dates still needed** for: ErythroSIGHT (Co-founder & CTO, currently "2023 – Present"), ANU postdoc (currently "2022 – 2026" — also need to confirm whether concluded and, if so, exact end month), BSc and PhD (currently year-only). FitSignal's R16 (implausibility/contradiction screen-out) consistently flags the resulting overlap between Accenture (now confirmed Jan 2026) and the still-year-only postdoc/ErythroSIGHT dates as an unresolved ambiguity — this is the single highest-value remaining fix for every resume variant's score. Do not fill these in with a guess; ask Adrian.
 - [ ] Confirm true current publication count and citation metrics (Scholar link available)
 - [ ] Reconcile postdoc funding figures ($381K grants table vs. $464K/$514K/$714K cited in narrative bullets)
 - [ ] Reconcile ErythroSight funding raised ($50K / $250K / $370K / $670K) and current status (active vs. exited/licensed)
-- [ ] Confirm whether postdoc/lecturer roles are still active or have concluded (2026 end dates appear on two versions)
 - [ ] Confirm base location (Canberra vs. Sydney) for current applications
 - [ ] Personal projects list (referenced in "Extra skills and personal projects" note) — not yet itemised, needs content

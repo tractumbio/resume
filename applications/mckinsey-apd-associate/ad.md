@@ -89,26 +89,19 @@ live posting before submitting):
 
 ⚠ FLAG FOR ADRIAN — before submitting
 
-FitSignal's R16 (implausibility/contradiction screen-out) consistently marks
-the resume's overlapping "Present" dates as an unresolved ambiguity, not a
-hard contradiction: ANU Postdoctoral Researcher (2022–2026), ErythroSIGHT
-Co-founder & CTO (2023–Present) and Accenture Consultant/Team Lead
-(2026–Present) all show as concurrent, full-time-looking roles with no
-part-time/advisory/concurrent labelling. This mirrors an item already open
-in the knowledge base ("Confirm whether postdoc/lecturer roles are still
-active or have concluded").
+**Partially resolved.** You confirmed Accenture started January 2026, and also gave the real
+Defence engagement detail (it was a Google Distributed Cloud PoC — the original bullet had
+mistakenly borrowed "led 3 analysts... Azure DevOps" from a different engagement). Both are
+now fixed, and together cut R16's cost roughly in half (~22pts → ~11pts of `overall`).
 
-Not resolved here deliberately — CLAUDE.md's standard is to reconcile
-against the knowledge base or flag, never invent a fact like "part-time" or
-"advisory" that isn't confirmed. Please confirm the actual current status
-of the ErythroSIGHT and ANU roles relative to Accenture (concluded, formally
-part-time, advisory-only, etc.) so the resume can state it plainly. This is
-costing roughly 11-22 points of the FitSignal `overall` score across runs —
-the single highest-value fix available.
+What's still open: ErythroSIGHT (2023–Present) and the ANU postdoc (2022–2026) remain
+year-only, and the postdoc's overlap with the now-confirmed Accenture start (and whether the
+postdoc has concluded) is still unresolved. This mirrors the item now in the knowledge base's
+Open Items. Not filled in with a guess, same reason as before — CLAUDE.md's standard is
+reconcile-or-flag, never invent a fact like "part-time" that isn't confirmed. Please give
+month-level dates for ErythroSIGHT and the postdoc, and confirm whether the postdoc has ended.
 
-Real scorecard (via the local `claude` CLI, no mock): 90/100, "Strong fit",
-"Advance to interview" — see resume.scorecard.json. Two minor, low-weight
-items also flagged and left as-is (diminishing returns against the one-page
-limit): a couple of unglossed acronyms (IND-enabling, CRC-P), and no one-line
-descriptor for the smaller named partners (Beta Therapeutics, MDImune,
-VivaZome).
+Real scorecard (via the local `claude` CLI, no mock): 91/100, "Strong fit",
+"Advance to interview" — see resume.scorecard.json. Minor, low-weight items also flagged and
+left as-is (diminishing returns against the one-page limit): a couple of unglossed acronyms
+(IND-enabling, CRC-P, NPV).

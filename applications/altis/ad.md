@@ -86,29 +86,34 @@ Ready to see your career differently? We'd love to hear from you.
 
 ⚠ FLAGS FOR ADRIAN — before submitting
 
-1. **R16 date overlap (not resolved on purpose).** FitSignal consistently marks the resume's
-   concurrent "Present" dates as a material inconsistency: Accenture (2025–Present) overlaps
-   the ANU postdoc (2022–2026) and ErythroSIGHT (2023–Present), with no part-time/concurrent
-   labelling. This is the same open item already flagged in the knowledge base ("confirm
-   whether postdoc/lecturer roles are still active or have concluded") and in the McKinsey APD
-   application. Not resolved here for the same reason: CLAUDE.md's standard is reconcile-or-flag,
-   never invent a status like "part-time" that isn't confirmed. Please confirm the actual
-   current status of the postdoc and ErythroSIGHT roles relative to Accenture. Costing an
-   estimated ~22 points of `overall` — the single highest-value fix available.
+1. **R16 date overlap — partially resolved.** You confirmed Accenture started January 2026,
+   which is now on the resume and cut this finding's cost roughly in half (~22pts → ~11pts of
+   `overall`). What's left: ErythroSIGHT (2023–Present) and the ANU postdoc (2022–2026) are
+   still year-only, and the postdoc's overlap with Accenture (and whether it's concluded) is
+   still unconfirmed. Please give month-level dates for both, and confirm whether the postdoc
+   has ended — see the matching item now in the knowledge base's Open Items. Not filled in with
+   a guess, same reason as before: CLAUDE.md's standard is reconcile-or-flag, never invent.
 2. **Citizenship.** The ad hard-requires Australian citizenship. The resume/cover letter
    reference the NV1 security clearance (which requires citizenship) as circumstantial
    evidence, but nothing in the knowledge base explicitly states citizenship as a confirmed
    fact, so neither document asserts it directly. Confirm you're comfortable with that framing,
    or state it explicitly if you'd rather.
 
-Real scorecard (via the local `claude` CLI, no mock): 84/100, "Good fit" — see
+Real scorecard (via the local `claude` CLI, no mock): 86/100, "Strong fit" — see
 resume.scorecard.json. Minor items also flagged and left as-is (diminishing returns against
-the one-page limit): a few unglossed technical terms (BM25, pgvector, non-dilutive,
-air-gapped), and no team-size/user figures for ErythroSIGHT.
+the one-page limit): a few unglossed technical terms (BM25, pgvector, AlloyDB, Dataproc,
+non-dilutive), and the Defence PoC bullet has no scale/volume figure.
 
-This run also caught and fixed two real defects affecting the two prior McKinsey drafts/exports
-too (now corrected in all three, and those exports re-released):
-- The Accenture start date was wrong everywhere (said "2026", knowledge base says "2025").
+This run also caught and fixed three real defects affecting all three resume drafts/exports in
+this repo (all corrected, all exports re-released):
+- The Accenture start date was wrong everywhere (said "2026" in drafts, "2025" in the
+  knowledge base's narrative — both wrong; you've now confirmed January 2026).
+- The Defence engagement bullet had the wrong project's detail attached to it — it described
+  "led 3 analysts... Azure DevOps", which actually belongs to the AGL engagement per the
+  knowledge base, while the real Defence GDC PoC detail (Google Distributed Cloud, PostgreSQL/
+  AlloyDB/Dataproc/Elastic/Tableau, demonstrated air-gapped delivery to the client and Google)
+  was missing. Fixed using the detail you gave; the AGL bullet now correctly carries the
+  3-person team-lead detail instead.
 - `letter-spacing` on section headers was high enough that WeasyPrint split "EDUCATION" into
   separate characters in PDF text extraction ("E D U C AT I O N") — invisible on the page, but
   exactly what an ATS parses. `pipeline/verify.py` now checks for this.
