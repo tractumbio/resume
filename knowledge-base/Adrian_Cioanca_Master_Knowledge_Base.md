@@ -112,7 +112,12 @@
 - Funding secured (figures vary significantly by version — ⚠ reconcile): $514,000 / $464,000 / $714,000 / $381,000 (lead or co-investigator) — one of only two researchers nationally funded by Retina Australia in 2022
 - Collaborated with ~20 academic groups across 7 universities
 - Designed/implemented data analytics pipelines (bioinformatics, statistical modelling, ML) for biotech partners — enabled $3M capital raise and contributed to 2 international patents
-- **Merck & Co. (S&P 500):** commissioned to design/deliver a $200,000 retinal degeneration animal model / end-to-end preclinical pipeline — led prototyping, managed fabrication, authored user manuals, delivered installation and end-user training; generated 8x ROI; cut client time-to-results from 3 months to 2 weeks; enabled Merck's R&D team to bring ophthalmic drug discovery in-house, reducing reliance on external CROs
+- **Merck & Co. (S&P 500):** commissioned to design/deliver a $200,000 retinal degeneration animal model / end-to-end preclinical pipeline — led prototyping, managed fabrication, authored user manuals, delivered installation and end-user training; generated 8x ROI; cut client time-to-results from 3 months to 2 weeks; enabled Merck's R&D team to bring ophthalmic drug discovery in-house, reducing reliance on external CROs.
+  **Confirmed by Adrian: this Merck engagement, plus a $300K engagement with Beta
+  Therapeutics, were postdoc-era industry consulting work — not ErythroSIGHT's. Resume
+  drafts previously misattributed both to "ErythroSIGHT's consulting arm"; corrected
+  across all drafts to sit under this postdoc role instead, framed for consulting
+  relevance (embedded technical-consulting delivery for industry clients).**
 - Collaborative research with biotech start-ups: **VivaZome Therapeutics** (2022–2025) — identified new disease indication for lead therapeutic, shaped ophthalmology R&D roadmap, supported $3M/$3.5M funding round via CRC-P grants; **Carmine Therapeutics**; **MDImune/BioDrone-MDImune** — data integration pipelines enabled joint IP acquisition in South Korea, boosted lead therapeutic efficacy by 20%; **Genentech** (mentioned once)
 - Automated complex data analysis using MS Power BI, R, Python — eliminated need for costly external analysis services, cut time-to-results from weeks to under 1 hour
 - Mentored 6 research students in programming, data analysis, retinal disease modelling — all placed top of cohort, secured entry into competitive medical/PhD programs (per one version)

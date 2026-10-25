@@ -1,5 +1,5 @@
 source:    drafts/consulting/mckinsey-associate.html
-rendered:  2026-10-25T19:07:01Z by pipeline/release.sh
-commit:    c3a958d
+rendered:  2026-10-25T19:23:50Z by pipeline/release.sh
+commit:    2b019fb
 checks:    all passed (see Adrian_Cioanca_Resume_McKinsey_Associate.checks.json)
-fitsignal: rubric v2.0.0 — overall 82/100 (Good fit, Advance to interview), provider=claude-cli
+fitsignal: rubric v2.0.0 — overall 83/100 (Good fit, Advance to interview), provider=claude-cli
