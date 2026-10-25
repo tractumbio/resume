@@ -223,6 +223,34 @@ def check_cover_length(layout, report):
         report.passed("cover length", f"{words} words")
 
 
+def check_header_extraction(layout, report):
+    # Caught on a real draft: CSS letter-spacing >=1pt on a section header can
+    # make WeasyPrint emit each glyph (or near-glyph) as its own text run, so
+    # pdftotext reads "EDUCATION" as "E D U C AT I O N" — invisible on the
+    # rendered page, but exactly what an ATS parses. A line made up of
+    # all-caps fragments of 1-2 letters that reassemble into a real word is
+    # that defect, not a coincidence (a genuine acronym string reads
+    # differently: tokens stay 2-5 letters each, not a near-1-per-token spray).
+    offenders = []
+    for ln in layout.splitlines():
+        tokens = ln.strip().split()
+        if len(tokens) < 3:
+            continue
+        if not all(tok.isalpha() and tok.isupper() and len(tok) <= 2 for tok in tokens):
+            continue
+        joined = "".join(tokens)
+        if len(joined) >= 5:
+            offenders.append(ln.strip())
+    if offenders:
+        report.fail(
+            "header extraction",
+            f"letter-spacing is splitting a header into separate characters in text extraction "
+            f"(e.g. {offenders[0]!r}) — reduce letter-spacing below ~1pt on .section-title",
+        )
+    else:
+        report.passed("header extraction", "no header splits into single-character runs")
+
+
 def check_orphans(layout, report):
     orphans = []
     for ln in layout.splitlines():
@@ -260,6 +288,7 @@ def main() -> int:
     check_reading_order(pdf, report)
     layout = run(["pdftotext", "-layout", str(pdf), "-"])
     check_margins(pdf, report, kind=args.kind)
+    check_header_extraction(layout, report)
     check_language(layout, report)
     if args.kind == "resume":
         check_profile(layout, report)

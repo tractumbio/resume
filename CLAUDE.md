@@ -56,7 +56,11 @@ Any resume produced or edited in this repo must meet the standards below.
 - **Margins:** roughly 13–15mm on all sides for A4. Keep left/right and top/bottom symmetric
   pairs within ~2mm of each other.
 - **Section headers:** small caps or all-caps, letter-spaced, with a thin rule — consistent
-  weight/size across all sections, no section header larger or bolder than another.
+  weight/size across all sections, no section header larger or bolder than another. Keep
+  `letter-spacing` under ~1pt: WeasyPrint has been observed emitting each glyph as a separate
+  text run above that, which `pdftotext` then reads as single characters ("E D U C AT I O N")
+  — invisible on the page, but exactly what an ATS parses. Verify with plain `pdftotext` that
+  no header splits like this (`pipeline/verify.py`'s "header extraction" check).
 - **No orphaned single words** wrapping onto their own line at the end of a list/column (e.g. a
   two-column skills block leaving "R, SQL" alone on a line) — rebalance column widths or content
   length to avoid it.
@@ -126,6 +130,7 @@ not check. What it checks today:
 | fonts embedded | every font `emb=yes`, `sub=yes`, and a chosen family, not a substitute |
 | reading order | role reads before its date in raw extraction (no `float:right`) |
 | margins | 13–15mm, symmetric, no dead space at the foot |
+| header extraction | section headers don't split into single-character runs (letter-spacing) |
 | header tagline | no self-laudatory language |
 | quantification | no vague filler where a number belongs |
 | profile section | a Profile/summary section is present |

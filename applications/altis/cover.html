@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adrian Cioanca — Cover Letter — Altis Senior Consultant, Data Engineer</title>
+<!--
+Draft source. Copy this whole applications/_template/ folder to
+applications/<firm>-<role-slug>/, fill in ad.md first, then this file.
+
+Render and check with:
+  python3 pipeline/render.py applications/<slug>/cover.html -o applications/<slug>/cover.pdf
+  python3 pipeline/verify.py applications/<slug>/cover.pdf --kind cover
+or in one step:
+  pipeline/build_cover.sh applications/<slug>
+
+Structure and standards: see "Cover-letter standards" in CLAUDE.md and
+"Building a cover letter" in BUILDER_INSTRUCTIONS.md. Each paragraph below is
+commented with what MBB guidance says it needs to do — replace the comment
+and the placeholder text together, don't just fill in around them.
+-->
+<style>
+/* Same type system and page geometry as the resume draft — this is a matched
+   letterhead, not a separate document. See drafts/consulting/*.html. */
+@page{size:A4;margin:0}
+:root{--ink:#111;--muted:#555;--rule:#222}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#fff;color:var(--ink)}
+body{font-family:"Source Sans 3", sans-serif;font-size:10.3pt;line-height:1.5;-webkit-font-smoothing:antialiased}
+.page{width:210mm;height:297mm;padding:20mm 22mm;margin:0 auto;background:#fff;display:flex;flex-direction:column}
+h1{font-family:"Source Serif 4", serif;font-size:16pt;line-height:1;margin:0 0 3pt;font-weight:700;letter-spacing:-.2pt}
+.contact{font-size:8.6pt;color:#444;letter-spacing:.05pt}
+.rule{height:0;border:0;border-top:1.15px solid var(--rule);margin:9pt 0 16pt}
+.meta{display:flex;justify-content:space-between;align-items:baseline;font-size:9.3pt;color:var(--muted);margin-bottom:16pt}
+.recipient{font-size:9.6pt;line-height:1.4;margin-bottom:14pt}
+.salutation{margin-bottom:11pt}
+p{margin:0 0 11pt}
+.body p:last-of-type{margin-bottom:0}
+.signoff{margin-top:14pt}
+.name{font-weight:700;margin-top:26pt}
+@media print{.page{margin:0}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+<h1>ADRIAN CIOANCA</h1>
+<div class="contact">adrian.v.cioanca@gmail.com &nbsp;|&nbsp; 0450 399 725 &nbsp;|&nbsp; Canberra, Australia &nbsp;|&nbsp; linkedin.com/in/adrian-c-58743b25a</div>
+<hr class="rule">
+</header>
+
+<div class="meta">
+<span>25 October 2026</span>
+</div>
+
+<!--
+Recipient block: use a named person if the ad or a referral gives you one
+("Dear Ms. Smith,"). If not, address the practice, not "To Whom It May
+Concern" — e.g. "Dear <Firm> Associate Recruiting Team,". A generic salutation
+is a signal to the screener that the whole letter is generic; do not let it be.
+-->
+<div class="recipient">
+Altis Talent Acquisition Team<br>
+Altis<br>
+Canberra, Australian Capital Territory
+</div>
+
+<div class="salutation">Dear Altis Talent Acquisition Team,</div>
+
+<div class="body">
+
+<!--
+PARAGRAPH 1 — the hook (2-3 sentences).
+Open with something specific to this firm/role/ad, not "I am writing to
+apply for...". Name the practice, a live piece of the firm's work, or the
+specific reason this role: what problem, sector or client type pulled you
+in. State the role you're applying for once, plainly, inside this hook —
+do not lead with it as a bare announcement.
+-->
+<p>I am applying for the Senior Consultant &mdash; Data Engineer role in Canberra. What drew me to
+it specifically is the brief to own engagements end to end &mdash; discovery through delivery
+&mdash; rather than hand off a design to someone else's build: that is the shape of the data
+engineering work I already do at Accenture, and I would rather keep doing it inside a firm
+built around exactly that model.</p>
+
+<!--
+PARAGRAPH 2 — why this firm (2-4 sentences).
+Tie the firm's actual positioning (a named practice, a published case, a
+sector focus, something concrete from the ad or the firm's own materials —
+not "your prestigious firm" or "your reputation for excellence") to the
+specific angle you are offering. This is where the Profile line from the
+resume gets argued, not repeated.
+-->
+<p>Altis being technology-agnostic matters to me for a practical reason, not an abstract one: on
+every engagement I have led, the right architecture only became clear after I understood what
+the client actually needed the data to do, not which platform was on the table. At Accenture I
+have built on Postgres, pgvector, Azure and GCP depending on what the problem called for, and
+walked clients through why &mdash; which is the same client-outcomes-first posture this role asks
+for rather than a vendor-first one.</p>
+
+<!--
+PARAGRAPH 3 — why you (3-5 sentences).
+2, at most 3, proof points. Each one is evidence + what it demonstrates for
+THIS role, not a bullet restated from the resume — the cover letter's job is
+to connect dots the resume can't, not list achievements again. Quantify
+every claim that has a number, same standard as the resume (see CLAUDE.md).
+-->
+<p>Three things I would bring to this role. First, end-to-end delivery ownership: I designed and
+built a data pipeline for a national energy retailer &mdash; storage, embedding, hybrid retrieval
+&mdash; working directly with their compliance team to get the requirement right, which cut their
+regulatory review time from days to minutes. Second, people leadership: I currently lead 3
+analysts on a Defence engagement and have mentored research students and 115+ medical
+students as a university lecturer, so developing a team alongside delivering is not new ground.
+Third, judgement under ambiguity at a level most data engineers are not tested on: my PhD
+involved statistical inference across 50M+ noisy observations with no clean answer available,
+which is the same muscle as scoping a client's actual problem before architecting a solution.</p>
+
+<!--
+PARAGRAPH 4 — the close (2-3 sentences).
+State fit plainly, then a clear call to action (a conversation, an
+interview) and thanks. No hedging language, no restating the whole letter.
+-->
+<p>I am Canberra-based already, hold an NV1 security clearance, and am ready for the hybrid
+arrangement this role describes. I would welcome the chance to discuss how this background
+fits the Data &amp; Analytics team you are building. Thank you for your consideration.</p>
+
+</div>
+
+<div class="signoff">
+Sincerely,
+<div class="name">Adrian Cioanca</div>
+</div>
+
+</div>
+</body>
+</html>

@@ -28,6 +28,11 @@
     },
     {
       "level": "PASS",
+      "check": "header extraction",
+      "detail": "no header splits into single-character runs"
+    },
+    {
+      "level": "PASS",
       "check": "header tagline",
       "detail": "no self-laudatory claims in the header"
     },
